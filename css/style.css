@@ -1,1 +1,6 @@
 /*Stylesheet by Timothy Prestby 2019*/
+#map{
+    height: 99.5vh;
+    width: 99.99vw;
+    display: inline-block;
+}
