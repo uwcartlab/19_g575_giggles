@@ -1,8 +1,16 @@
 /*Stylesheet by Timothy Prestby 2019*/
+#info-pane{
+    height: 99.5vh;
+    width: 11.99vw;
+    display: inline-block;
+    float: left;
+}
+
 #map{
     height: 99.5vh;
-    width: 99.99vw;
+    width: 84.99vw;
     display: inline-block;
+    float: right;
 }
 
 .leaflet-tile{
