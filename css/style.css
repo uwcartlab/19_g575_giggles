@@ -1,4 +1,11 @@
-/*Stylesheet by Timothy Prestby 2019*/
+/*Stylesheet by Timothy Prestby and Joe Marks 2019*/
+
+/* Defines a horzontal center for leaflet controls */ 
+.leaflet-verticalCenter {
+    /*top: 50%;
+    //transform: translate(0%, -50%);*/
+}
+
 #info-pane{
     height: 99.5vh;
     width: 11.99vw;
@@ -6,11 +13,16 @@
     float: left;
 }
 
+#timelineSlider{
+    padding-left: 0px;
+}
+
 #map{
     height: 99.5vh;
     width: 84.99vw;
     display: inline-block;
     float: right;
+    
 }
 
 .leaflet-tile{

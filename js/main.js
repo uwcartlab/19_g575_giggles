@@ -29,22 +29,61 @@ function createMap(){
 
 // A function to create the sequence controls for the interactive timeline
 function createTimeline(map){
+    
+        
+    // Create new control position to place title in left center of map
+    var corners = map._controlCorners;
+    container = map._controlContainer;
+    var className = 'leaflet-left leaflet-verticalCenter';
+    corners['leftverticalCenter'] = L.DomUtil.create('div', className, container);
+    
+    // Create control extension for the left center of the map
+    var TimelineControl = L.Control.extend({
+        options: {
+            position: 'leftverticalCenter'
+        },
+        
+        onAdd: function (map) {
+            // Container will go in the top center
+            var container = L.DomUtil.create('div', 'timeline-container');
+            
+            return container;
+        }
+    });
+    
+    // Add control layout to map
+    map.addControl(new TimelineControl());
 
 
-
-    // Append controls to container
+    var timelineSlider = L.control.slider(function(value) {
+            console.log(value);
+        },{
+        size: '800px',
+        position: 'leftverticalCenter',
+        id: 'timelineSlider',
+        min: 1776,
+        max: 2019,
+        value: 1776,
+        step: 1,
+        collapsed: false,
+        orientation: 'vertical',
+        syncSlider: true
+        }).addTo(map);
+    
+/*    // Append controls to container
     $('#info-pane').append('<span id = timelineControls></span>');
 
     
     // Create range input element (slider)
-    $('#timelineControls').html('<input class = "timeline-slider" orientation = "vertical" id = "timelineSlider" type = "range" min = "1776" max = "2019" step="1" value = "1776">');
+    $('#timelineControls').html('<input class = "timeline-slider" orient = "vertical" id = "timelineSlider" type = "range" min = "1776" max = "2019" step="1" value = "1776">');
+    
     
     // Add event listeners for slider
     $('.timeline-slider').on('input', function(){
         // TODO: change visible map
         // TODO: change context pane if passing major event
         
-    })
+    })*/
 }
 
 $(document).ready(createMap);
