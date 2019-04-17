@@ -4,3 +4,7 @@
     width: 99.99vw;
     display: inline-block;
 }
+
+.leaflet-tile{
+    border: 0px;
+}
