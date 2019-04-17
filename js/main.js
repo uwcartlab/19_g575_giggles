@@ -25,8 +25,41 @@ function createMap(){
     
     // Create the sequence slider
     createTimeline(map);
+    loadData(map);
 }
 
+
+function loadData(map, year){
+    $.ajax("data/NativeLand1880On.geojson", {
+        dataType: "json",
+        success: function(response){
+            console.log(response);
+            addDataToMap(response, map);
+        }
+    });
+    $.ajax("data/NativeLandPre1880.geojson", {
+        dataType: "json",
+        success: function(response){
+            addDataToMap(response, map);
+        }
+    });
+    $.ajax("data/LandLostWithoutTreaty.geojson", {
+        dataType: "json",
+        success: function(response){
+            addDataToMap(response, map);
+        }
+    });
+}
+
+function addDataToMap(data, map) {
+    var myStyle = {
+        "color": "#ffffff",
+        "weight": 2,
+        "opacity": 1
+    };
+    var dataLayer = L.geoJson(data, {style: myStyle});
+    dataLayer.addTo(map);
+}
 // A function to create the sequence controls for the interactive timeline
 function createTimeline(map){
     
