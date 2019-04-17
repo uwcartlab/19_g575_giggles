@@ -1,10 +1,20 @@
 //Main  Code//
 
+//Function: Initialize map
 function createMap(){
+    //Set Max bounds for map to limit panning
+    var bounds = [[51.3457868, -62.9513812],
+    [22.7433195,-127.7844079]];
+
 	var map = L.map('map',{
 		//Sets the longitude and latitude of where the map center is
 			center: [37,-97],
-			zoom: 4,
+            zoom: 4,
+            maxZoom:8,
+            minZoom:4,
+            maxBounds: bounds,
+            maxBoundsViscosity: 1.0
+            
 		});
 		//Add OSM baselayer
 		L.tileLayer.provider('CartoDB.DarkMatterNoLabels').addTo(map);
@@ -28,13 +38,14 @@ function createMap(){
     loadData(map);
 }
 
-
+//Function: Load  all the data using AJAX//
 function loadData(map, year){
     $.ajax("data/NativeLand1880On.geojson", {
         dataType: "json",
         success: function(response){
             console.log(response);
             addDataToMap(response, map);
+            createPopup(response,map);
         }
     });
     $.ajax("data/NativeLandPre1880.geojson", {
@@ -51,6 +62,7 @@ function loadData(map, year){
     });
 }
 
+//Function: Add and stylize data layers//
 function addDataToMap(data, map) {
     var myStyle = {
         "color": "#ffffff",
@@ -60,16 +72,17 @@ function addDataToMap(data, map) {
     var dataLayer = L.geoJson(data, {style: myStyle});
     dataLayer.addTo(map);
 }
-// A function to create the sequence controls for the interactive timeline
+
+//Function: to create the sequence controls for the interactive timeline//
 function createTimeline(map){
     
         
     // Create new control position to place title in left center of map
     var corners = map._controlCorners;
-    container = map._controlContainer;
+        container = map._controlContainer;
     var className = 'leaflet-left leaflet-verticalCenter';
-    corners['leftverticalCenter'] = L.DomUtil.create('div', className, container);
-    
+        corners['leftverticalCenter'] = L.DomUtil.create('div', className, container);
+
     // Create control extension for the left center of the map
     var TimelineControl = L.Control.extend({
         options: {
@@ -91,7 +104,7 @@ function createTimeline(map){
     var timelineSlider = L.control.slider(function(value) {
             console.log(value);
         },{
-        size: '800px',
+        size: '700px',
         position: 'leftverticalCenter',
         id: 'timelineSlider',
         min: 1776,
@@ -118,5 +131,16 @@ function createTimeline(map){
         
     })*/
 }
+
+//Function: Create and format popup//
+function createPopup(response,map) {
+    features=response.features
+    var i;
+    for (i=0; i<features.length;i++){
+        nation=features[i].properties.Nation_Cor
+        console.log(nation)
+        //Bind details to popup(module 5)
+    }
+};
 
 $(document).ready(createMap);
