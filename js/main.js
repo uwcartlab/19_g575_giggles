@@ -76,17 +76,17 @@ function addDataToMap(data, map) {
 //Function: to create the sequence controls for the interactive timeline//
 function createTimeline(map){
     
-        
+    /*
     // Create new control position to place title in left center of map
     var corners = map._controlCorners;
         container = map._controlContainer;
-    var className = 'leaflet-left leaflet-verticalCenter';
-        corners['leftverticalCenter'] = L.DomUtil.create('div', className, container);
+    var className = 'leaflet-verticalCenter leaflet-left';
+        corners['leaflet-verticalCenterleft'] = L.DomUtil.create('div', className, container);
 
     // Create control extension for the left center of the map
     var TimelineControl = L.Control.extend({
         options: {
-            position: 'leftverticalCenter'
+            position: 'leaflet-verticalCenterleft'
         },
         
         onAdd: function (map) {
@@ -99,13 +99,30 @@ function createTimeline(map){
     
     // Add control layout to map
     map.addControl(new TimelineControl());
+    */
+    
+    // Create additional Control placeholders
+    function addControlPlaceholders(map) {
+        var corners = map._controlCorners,
+            l = 'leaflet-',
+            container = map._controlContainer;
 
+        function createCorner(vSide, hSide) {
+            var className = l + vSide + ' ' + l + hSide;
+
+            corners[vSide + hSide] = L.DomUtil.create('div', className, container);
+        }
+
+        createCorner('verticalcenter', 'left');
+        createCorner('verticalcenter', 'right');
+    }
+    addControlPlaceholders(map);
 
     var timelineSlider = L.control.slider(function(value) {
             console.log(value);
         },{
-        size: '700px',
-        position: 'leftverticalCenter',
+        size: '800px',
+        position: 'verticalcenterleft',
         id: 'timelineSlider',
         min: 1776,
         max: 2019,
