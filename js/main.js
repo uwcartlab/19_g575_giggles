@@ -13,7 +13,8 @@ function createMap(){
             maxZoom:8,
             minZoom:4,
             maxBounds: bounds,
-            maxBoundsViscosity: 1.0
+            maxBoundsViscosity: 1.0,
+            doubleClickZoom: false
             
 		});
 		//Add OSM baselayer
@@ -73,6 +74,16 @@ function addDataToMap(data, map) {
         onEachFeature: onEachFeature
     });
     dataLayer.addTo(map);
+    /* //Change class names of each polygon
+    var boundaries = $('.leaflet-interactive')
+        .addClass(function (d) {
+            console.log(d)
+            return 'nation' + d;
+        }) 
+    //Set default style for once region is dehighlighted 
+    var desc = boundaries.append("desc")
+    .text('{"opacity": "1"}');
+    */
 }
 
 function addSearch(map){
@@ -142,18 +153,55 @@ function createPopup(response,map) {
 function onEachFeature(feature, layer) {
     // Does this feature have a property named Nation_Cor?
     if (feature.properties && feature.properties.Nation_Cor) {
-        var popupContent = "<p><b>Nation:</b> " + feature.properties.Nation_Cor + "</p><p><b>Primary Source:</b> <a href='" + feature.properties.LinkRoyce +"'> Click Here </a></p>";
-        layer.bindPopup(popupContent);
+        var popupContent = "<p><b>Nation:</b> " + feature.properties.Nation_Cor + "</p><p><b>Double Click for primary source</p></b>";
+        // <a href='" + feature.properties.LinkRoyce +"'> Click Here </a></p>"
+        var popup=L.responsivePopup({autoPanPadding: [40,40] }).setContent(popupContent);
+        layer.bindPopup(popup);
     }
     // Add event listeners to open the popup on hover
     layer.on({
         mouseover: function(){
             this.openPopup();
+            //this.highlight(feature.properties);
+        },
+        dblclick: function(){
+            window.open(feature.properties.LinkRoyce)
         },
         mouseout: function(){
             this.closePopup();
+            //this.dehighlight(feature.properties);
         }
     });
+};
+
+ //Function: highlight enumeration units and bars//
+ function highlight(props) {
+    //Change the opacity of the highlighted item by selecting the class
+    var selected = $("." + props.Nation_Cor)
+        .style("opacity", ".2");
+    //Call setlabel to create dynamic label
+    setLabel(props);
+};
+
+//Function: dehighlight regions//
+function dehighlight(props) {
+    var selected = $("." + props.Nation_Cor)
+        .style("opacity", function () {
+            //Get the unique opacity element for current DOM element within the desc element
+            return getStyle(this, "opacity")
+        });
+
+    //Create function that gets the description text of an element
+    function getStyle(element, styleName) {
+        //Select current DOM element
+        var styleText = $(element)
+            .select("desc")
+            //Return text content in desc
+            .text();
+        //Create JSON string
+        var styleObject = JSON.parse(styleText);
+        return styleObject[styleName];
+    };
 };
 
 $(document).ready(createMap);
