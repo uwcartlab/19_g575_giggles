@@ -34,6 +34,10 @@ function createMap(){
 			});
 		})()
     
+    // Change attributions; include disclaimer
+    // TODO: Add an actual disclaimer; maybe find a link to a good one
+    map.attributionControl.setPrefix('DISCLAIMER: For visualization purposes only.  Not to be used in a court of law to represent tribal boundaries. | <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+    
     // Create the sequence slider
     createTimeline(map);
     addSearch(map);
