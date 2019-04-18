@@ -43,9 +43,7 @@ function loadData(map, year){
     $.ajax("data/NativeLand1880On.geojson", {
         dataType: "json",
         success: function(response){
-            console.log(response);
             addDataToMap(response, map);
-            createPopup(response,map);
         }
     });
     $.ajax("data/NativeLandPre1880.geojson", {
@@ -69,7 +67,10 @@ function addDataToMap(data, map) {
         "weight": 2,
         "opacity": 1
     };
-    var dataLayer = L.geoJson(data, {style: myStyle});
+    var dataLayer = L.geoJson(data, {
+        style: myStyle,
+        onEachFeature: onEachFeature
+    });
     dataLayer.addTo(map);
 }
 
@@ -158,6 +159,23 @@ function createPopup(response,map) {
         console.log(nation)
         //Bind details to popup(module 5)
     }
+};
+
+function onEachFeature(feature, layer) {
+    // Does this feature have a property named Nation_Cor?
+    if (feature.properties && feature.properties.Nation_Cor) {
+        var popupContent = "<p><b>Nation:</b> " + feature.properties.Nation_Cor + "</p><p><b>Primary Source:</b> <a href='" + feature.properties.LinkRoyce +"'> Click Here </a></p>";
+        layer.bindPopup(popupContent);
+    }
+    // Add event listeners to open the popup on hover
+    layer.on({
+        mouseover: function(){
+            this.openPopup();
+        },
+        mouseout: function(){
+            this.closePopup();
+        }
+    });
 };
 
 $(document).ready(createMap);
