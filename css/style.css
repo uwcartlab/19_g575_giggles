@@ -5,8 +5,8 @@
     position: absolute;
     z-index: 1000;
     pointer-events: none;
-    top: 55%; /* possible because the placeholder's parent is the map */
-    transform: translateY(-50%); /* using the CSS3 Transform technique */
+    top: 50%; /* possible because the placeholder's parent is the map */
+    transform: translate(-23%, -50%); /* using the CSS3 Transform technique */
     padding-top: 10px;
 }
 
@@ -37,10 +37,10 @@
 .leaflet-tile{
     border: 0px;
 }
-/*
+
 .leaflet-top{
     margin-left: 50px;
-}*/
+}
 
 /*Fill up all screen real-esate*/
 html,body{
