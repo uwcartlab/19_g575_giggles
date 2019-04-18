@@ -121,7 +121,7 @@ function createTimeline(map){
     var timelineSlider = L.control.slider(function(value) {
             console.log(value);
         },{
-        size: '800px',
+        size: window.innerHeight + 'px',
         position: 'verticalcenterleft',
         id: 'timelineSlider',
         min: 1776,
