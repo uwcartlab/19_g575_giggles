@@ -5,6 +5,13 @@
 //test by changing to time stamps within the dataset
 TimeStamp = -9000000000000;
 
+// A Map (data structure) to sort the layers by year
+var yearMap = new Map();
+// A Map (data structure) to hold the layerGroups
+var layerGroups = new Map();
+// A counter to track how many Ajax requests have been completed
+var numAjax = 0;
+
 //Function: Initialize map
 function createMap(){
     //Set Max bounds for map to limit panning
@@ -54,21 +61,49 @@ function loadData(map, year){
     $.ajax("data/NativeLand1880On.geojson", {
         dataType: "json",
         success: function(response){
-            addDataToMap(response, map);
+            processData(response);
+            numAjax++;
+            if(numAjax == 3) {createLayerGroups();};
         }
     });
     $.ajax("data/NativeLandPre1880.geojson", {
         dataType: "json",
         success: function(response){
-            addDataToMap(response, map);
+            processData(response);
+            numAjax++;
+            if(numAjax == 3) {createLayerGroups();};
         }
     });
     $.ajax("data/LandLostWithoutTreaty.geojson", {
         dataType: "json",
         success: function(response){
-            addDataToMap(response, map);
+            processData(response);
+            numAjax++;
+            if(numAjax == 3) {createLayerGroups();};
         }
     });
+}
+
+
+// Function to process data
+function processData(data, map){
+    var myStyle = {
+        "color": "#ffffff",
+        "weight": 2,
+        "opacity": 1
+    };
+    var dataLayer = L.geoJson(data, {
+        style: myStyle,
+        onEachFeature: onEachFeature
+    });
+}
+
+function createLayerGroups() {
+    for (var [key, value] of yearMap.entries()){
+        var layerGroup = L.layerGroup(value);
+        layerGroups.set(key, layerGroup);
+    }
+    console.log(layerGroups);
 }
 
 //Function: Add and stylize data layers//
@@ -182,6 +217,19 @@ function onEachFeature(feature, layer) {
             //this.dehighlight(feature.properties);
         }
     });
+    
+    /*** Sorting data by year value ***/
+    // Does this feature have a property called Year_value?
+    if (feature.properties && feature.properties.Year_value) {
+        // Does this year already exist in the yearMap?
+        if (feature.properties.Year_value in yearMap){
+            // If it does, add the layer to the entry
+            yearMap.get(feature.properties.Year_value).push(layer);
+        }else{
+            // If it does not, create an entry
+            yearMap.set(feature.properties.Year_value, [layer]);
+        }
+    }
 };
 
 function filter(feature) {
