@@ -1,5 +1,10 @@
 //Main  Code//
 
+//global var for time stamp
+//set to arbitrary "low" number here
+//test by changing to time stamps within the dataset
+TimeStamp = -9000000000000;
+
 //Function: Initialize map
 function createMap(){
     //Set Max bounds for map to limit panning
@@ -75,7 +80,8 @@ function addDataToMap(data, map) {
     };
     var dataLayer = L.geoJson(data, {
         style: myStyle,
-        onEachFeature: onEachFeature
+        onEachFeature: onEachFeature,
+        filter: filter
     });
     dataLayer.addTo(map);
     /* //Change class names of each polygon
@@ -157,7 +163,7 @@ function createPopup(response,map) {
 function onEachFeature(feature, layer) {
     // Does this feature have a property named Nation_Cor?
     if (feature.properties && feature.properties.Nation_Cor) {
-        var popupContent = "<p><b>Nation:</b> " + feature.properties.Nation_Cor + "</p><p><b>Double Click for primary source</p></b>";
+        var popupContent = "<p><b>Nation(s):</b> " + feature.properties.Nation_Cor + "</p><p><b>Double Click for primary source</p></b>";
         // <a href='" + feature.properties.LinkRoyce +"'> Click Here </a></p>"
         var popup=L.responsivePopup({autoPanPadding: [40,40] }).setContent(popupContent);
         layer.bindPopup(popup);
@@ -177,6 +183,14 @@ function onEachFeature(feature, layer) {
         }
     });
 };
+
+function filter(feature) {
+    if (feature.properties && feature.properties.Cession_Da) {
+        if (feature.properties.Cession_Da > TimeStamp){
+            return true;
+        }
+    }
+}
 
  //Function: highlight enumeration units and bars//
  function highlight(props) {
