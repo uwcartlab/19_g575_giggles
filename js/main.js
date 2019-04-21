@@ -118,6 +118,7 @@ function processData(data, map){
 
 function createLayerGroups() {
     for (var [key, value] of yearMap.entries()){
+        console.log(value);
         var layerGroup = L.layerGroup(value);
         layerGroups.set(key, layerGroup);
     }
@@ -129,10 +130,8 @@ function addLayerGroupsToMap(map) {
     // Create an array of the key values in reverse
     var keys = Array.from(layerGroups.keys()).sort().reverse();
     // Iterate through layer groups and add them to the map
-    console.log(layerGroups);
+    console.log(yearMap);
     for(i = 0; i < keys.length; i++) {
-        console.log(keys[i]);
-        console.log(layerGroups.get(keys[i]));
         layerGroups.get(keys[i]).addTo(map);
     }
 }
@@ -253,7 +252,7 @@ function onEachFeature(feature, layer) {
     // Does this feature have a property called Year_value?
     if (feature.properties && feature.properties.Year_value) {
         // Does this year already exist in the yearMap?
-        if (feature.properties.Year_value in yearMap){
+        if (yearMap.get(feature.properties.Year_value) != undefined){
             // If it does, add the layer to the entry
             yearMap.get(feature.properties.Year_value).push(layer);
         }else{
