@@ -61,25 +61,43 @@ function loadData(map, year){
     $.ajax("data/NativeLand1880On.geojson", {
         dataType: "json",
         success: function(response){
+            // Sort the data in yearMap by year
             processData(response);
+            // Update number of completed Ajax requests
             numAjax++;
-            if(numAjax == 3) {createLayerGroups();};
+            // Create layer groups once all Ajax requests are completed and add to map
+            if(numAjax == 3) {
+                createLayerGroups();
+                addLayerGroupsToMap(map);
+            };
         }
     });
     $.ajax("data/NativeLandPre1880.geojson", {
         dataType: "json",
         success: function(response){
+            // Sort the data in yearMap by year
             processData(response);
+            // Update number of completed Ajax requests
             numAjax++;
-            if(numAjax == 3) {createLayerGroups();};
+            // Create layer groups once all Ajax requests are completed and add to map
+            if(numAjax == 3) {
+                createLayerGroups();
+                addLayerGroupsToMap(map);
+            };
         }
     });
     $.ajax("data/LandLostWithoutTreaty.geojson", {
         dataType: "json",
         success: function(response){
+            // Sort the data in yearMap by year
             processData(response);
+            // Update number of completed Ajax requests
             numAjax++;
-            if(numAjax == 3) {createLayerGroups();};
+            // Create layer groups once all Ajax requests are completed and add to map
+            if(numAjax == 3) {
+                createLayerGroups();
+                addLayerGroupsToMap(map);
+            };
         }
     });
 }
@@ -103,7 +121,20 @@ function createLayerGroups() {
         var layerGroup = L.layerGroup(value);
         layerGroups.set(key, layerGroup);
     }
+}
+
+function addLayerGroupsToMap(map) {
+    // We want to add the groups to the map starting with most recent
+    // and working our way back
+    // Create an array of the key values in reverse
+    var keys = Array.from(layerGroups.keys()).sort().reverse();
+    // Iterate through layer groups and add them to the map
     console.log(layerGroups);
+    for(i = 0; i < keys.length; i++) {
+        console.log(keys[i]);
+        console.log(layerGroups.get(keys[i]));
+        layerGroups.get(keys[i]).addTo(map);
+    }
 }
 
 //Function: Add and stylize data layers//
