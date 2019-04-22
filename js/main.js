@@ -1,5 +1,7 @@
 //Main  Code//
 
+//http://tombatossals.github.io/angular-leaflet-directive/examples/0000-viewer.html#/basic/geojson-center-example
+//^^For centering search result
 //global var for time stamp
 //set to arbitrary "low" number here
 //test by changing to time stamps within the dataset
@@ -249,8 +251,8 @@ function onEachFeature(feature, layer) {
     if (feature.properties && feature.properties.Nation_Cor) {
         var popupContent = "<p><b>Nation(s):</b> " + feature.properties.Nation_Cor + "</p><p><b>Double Click for primary source</p></b>";
         // <a href='" + feature.properties.LinkRoyce +"'> Click Here </a></p>"
-        var popup=L.responsivePopup({autoPanPadding: [40,40] }).setContent(popupContent);
-        layer.bindPopup(popup);
+        var popup=L.responsivePopup({autoPanPadding: [40,40], hasTip: false }).setContent(popupContent);
+        layer.bindPopup(popup)
     }
     // Add event listeners to open the popup on hover
     layer.on({
@@ -291,7 +293,7 @@ function filter(feature) {
         weight: 5,
         color: '#666',
         dashArray: '',
-        fillOpacity: 0.7
+        fillOpacity: 1
     });
 
     if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {

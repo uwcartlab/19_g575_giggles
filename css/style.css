@@ -55,3 +55,5 @@ html,body{
     max-width: 200px;
     max-height: 200px;
 }
+
+.leaflet-popup{ pointer-events: none; }
