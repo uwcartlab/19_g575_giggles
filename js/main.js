@@ -13,9 +13,10 @@ var layerGroups = new Map();
 var numAjax = 0;
 // Holds value of previous year selected in timeline
 var prevYear = 1762;
-
 // The leaflet map
 var map;
+//The data layers 
+var dataLayer
 
 //Function: Initialize map
 function createMap(){
@@ -60,16 +61,16 @@ function createMap(){
     
 }
 
+//Function: Add barebones to map//
 function ajaxCompleted(map){
     createLayerGroups();
-    //addLayerGroupsToMap(map);
     // Create the sequence slider
-    console.log(layerGroups);
     createTimeline(map);
     addSearch(map);
+
 }
 
-//Function: Load  all the data using AJAX//
+//Function: Load all the data using AJAX//
 function loadData(map, year){
     $.ajax("data/NativeLand1880On.geojson", {
         dataType: "json",
@@ -115,7 +116,6 @@ function loadData(map, year){
 
 // Function to process data
 function processData(data, map){
-    console.log(data);
     var myStyle = {
         "color": "#dddddd",
         "weight": 2,
@@ -124,11 +124,16 @@ function processData(data, map){
         "fillColor": "#ffffff",
         "fillOpacity": 1
     };
-    var dataLayer = L.geoJson(data, {
+    dataLayer = L.geoJson(data, {
         style: myStyle,
         onEachFeature: onEachFeature
     });
-}
+    
+    
+};
+
+
+    
 
 // Creates group layers from yearMap
 function createLayerGroups() {
@@ -138,22 +143,6 @@ function createLayerGroups() {
         layerGroups.set(key, layerGroup);
     }
 }
-
-/*
-// No longer needed; layer groups added on load in using updateLayerGroups
-// Adds all group layers to the map
-function addLayerGroupsToMap(map) {
-    // We want to add the groups to the map starting with most recent
-    // and working our way back
-    // Create an array of the key values in reverse
-    var keys = Array.from(layerGroups.keys()).sort().reverse();
-    // Iterate through layer groups and add them to the map
-    for(i = 0; i < keys.length; i++) {
-        console.log("key: " + keys[i]);
-        layerGroups.get(keys[i]).addTo(map);
-    }
-}
-*/
 
 // Updates group layers on map to match selected year on timeline
 function updateLayerGroups(selectedYear){
@@ -187,32 +176,7 @@ function updateLayerGroups(selectedYear){
         }
     }
     
-}
-
-//Function: Add and stylize data layers//
-function addDataToMap(data, map) {
-    var myStyle = {
-        "color": "#ffffff",
-        "weight": 2,
-        "opacity": 1
-    };
-    var dataLayer = L.geoJson(data, {
-        style: myStyle,
-        onEachFeature: onEachFeature,
-        filter: filter
-    });
-    dataLayer.addTo(map);
-    /* //Change class names of each polygon
-    var boundaries = $('.leaflet-interactive')
-        .addClass(function (d) {
-            console.log(d)
-            return 'nation' + d;
-        }) 
-    //Set default style for once region is dehighlighted 
-    var desc = boundaries.append("desc")
-    .text('{"opacity": "1"}');
-    */
-}
+};
 
 function addSearch(map){
     
@@ -290,17 +254,12 @@ function onEachFeature(feature, layer) {
     }
     // Add event listeners to open the popup on hover
     layer.on({
-        mouseover: function(){
-            this.openPopup();
-            //this.highlight(feature.properties);
-        },
+        mouseover: highlightFeature,
+
         dblclick: function(){
             window.open(feature.properties.LinkRoyce)
         },
-        mouseout: function(){
-            this.closePopup();
-            //this.dehighlight(feature.properties);
-        }
+        mouseout: resetHighlight,
     });
     
     /*** Sorting data by year value ***/
@@ -326,33 +285,26 @@ function filter(feature) {
 }
 
  //Function: highlight enumeration units and bars//
- function highlight(props) {
-    //Change the opacity of the highlighted item by selecting the class
-    var selected = $("." + props.Nation_Cor)
-        .style("opacity", ".2");
-    //Call setlabel to create dynamic label
-    setLabel(props);
-};
+ function highlightFeature(e) {
+    var layer = e.target;
+    layer.setStyle({
+        weight: 5,
+        color: '#666',
+        dashArray: '',
+        fillOpacity: 0.7
+    });
+
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+    this.openPopup()
+}
 
 //Function: dehighlight regions//
-function dehighlight(props) {
-    var selected = $("." + props.Nation_Cor)
-        .style("opacity", function () {
-            //Get the unique opacity element for current DOM element within the desc element
-            return getStyle(this, "opacity")
-        });
+function resetHighlight(e) {
+    this.closePopup()
+    dataLayer.resetStyle(e.target);
+}
 
-    //Create function that gets the description text of an element
-    function getStyle(element, styleName) {
-        //Select current DOM element
-        var styleText = $(element)
-            .select("desc")
-            //Return text content in desc
-            .text();
-        //Create JSON string
-        var styleObject = JSON.parse(styleText);
-        return styleObject[styleName];
-    };
-};
 
 $(document).ready(createMap);
