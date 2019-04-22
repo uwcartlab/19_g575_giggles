@@ -11,6 +11,11 @@ var yearMap = new Map();
 var layerGroups = new Map();
 // A counter to track how many Ajax requests have been completed
 var numAjax = 0;
+// Holds value of previous year selected in timeline
+var prevYear = 1762;
+
+// The leaflet map
+var map;
 
 //Function: Initialize map
 function createMap(){
@@ -18,7 +23,7 @@ function createMap(){
     var bounds = [[51.3457868, -62.9513812],
     [22.7433195,-127.7844079]];
 
-	var map = L.map('map',{
+	map = L.map('map',{
 		//Sets the longitude and latitude of where the map center is
 			center: [37,-97],
             zoom: 4,
@@ -50,10 +55,18 @@ function createMap(){
     // TODO: Add an actual disclaimer; maybe find a link to a good one
     map.attributionControl.setPrefix('DISCLAIMER: For visualization purposes only.  Not to be used in a court of law to represent tribal boundaries. | <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
     
+    
+    loadData(map);
+    
+}
+
+function ajaxCompleted(map){
+    createLayerGroups();
+    //addLayerGroupsToMap(map);
     // Create the sequence slider
+    console.log(layerGroups);
     createTimeline(map);
     addSearch(map);
-    loadData(map);
 }
 
 //Function: Load  all the data using AJAX//
@@ -67,8 +80,7 @@ function loadData(map, year){
             numAjax++;
             // Create layer groups once all Ajax requests are completed and add to map
             if(numAjax == 3) {
-                createLayerGroups();
-                addLayerGroupsToMap(map);
+                ajaxCompleted(map);
             };
         }
     });
@@ -81,8 +93,7 @@ function loadData(map, year){
             numAjax++;
             // Create layer groups once all Ajax requests are completed and add to map
             if(numAjax == 3) {
-                createLayerGroups();
-                addLayerGroupsToMap(map);
+                ajaxCompleted(map);
             };
         }
     });
@@ -95,8 +106,7 @@ function loadData(map, year){
             numAjax++;
             // Create layer groups once all Ajax requests are completed and add to map
             if(numAjax == 3) {
-                createLayerGroups();
-                addLayerGroupsToMap(map);
+                ajaxCompleted(map);
             };
         }
     });
@@ -105,10 +115,14 @@ function loadData(map, year){
 
 // Function to process data
 function processData(data, map){
+    console.log(data);
     var myStyle = {
-        "color": "#ffffff",
+        "color": "#dddddd",
         "weight": 2,
-        "opacity": 1
+        "opacity": 1,
+        "fill": true,
+        "fillColor": "#ffffff",
+        "fillOpacity": 1
     };
     var dataLayer = L.geoJson(data, {
         style: myStyle,
@@ -116,24 +130,63 @@ function processData(data, map){
     });
 }
 
+// Creates group layers from yearMap
 function createLayerGroups() {
     for (var [key, value] of yearMap.entries()){
-        console.log(value);
-        var layerGroup = L.layerGroup(value);
+        var layerGroup = L.featureGroup(value);
+        layerGroup.setZIndex(2010 - key);
         layerGroups.set(key, layerGroup);
     }
 }
 
+/*
+// No longer needed; layer groups added on load in using updateLayerGroups
+// Adds all group layers to the map
 function addLayerGroupsToMap(map) {
     // We want to add the groups to the map starting with most recent
     // and working our way back
     // Create an array of the key values in reverse
     var keys = Array.from(layerGroups.keys()).sort().reverse();
     // Iterate through layer groups and add them to the map
-    console.log(yearMap);
     for(i = 0; i < keys.length; i++) {
+        console.log("key: " + keys[i]);
         layerGroups.get(keys[i]).addTo(map);
     }
+}
+*/
+
+// Updates group layers on map to match selected year on timeline
+function updateLayerGroups(selectedYear){
+    
+    // Create an array of the key values in reverse
+    var keys = Array.from(layerGroups.keys()).sort().reverse();
+    
+    // If we have moved forward in time, we will need to remove layers
+    if (selectedYear > prevYear) {
+        for(i = 0; i < keys.length; i++) {
+            if (keys[i] >= prevYear && keys[i] < selectedYear) {
+                map.removeLayer(layerGroups.get(keys[i]));
+            }
+        }
+    // If we have moved forward in time, we will need to add layers
+    } else if (selectedYear < prevYear) {
+        for(i = 0; i < keys.length; i++) {
+            if (keys[i] < prevYear && keys[i] >= selectedYear) {
+                map.addLayer(layerGroups.get(keys[i]));
+                layerGroups.get(keys[i]).bringToFront();
+            }
+        }
+    } else if (selectedYear == 1762 && prevYear == 1762) {
+        // We want to add the groups to the map starting with most recent
+        // and working our way back (using our reverse order keys array)
+
+        // Iterate through layer groups and add them to the map
+        for(i = 0; i < keys.length; i++) {
+            layerGroups.get(keys[i]).addTo(map);
+            layerGroups.get(keys[i]).bringToFront();
+        }
+    }
+    
 }
 
 //Function: Add and stylize data layers//
@@ -198,14 +251,16 @@ function createTimeline(map){
     var timelineSlider = L.control.slider(function(value) {
         // Put function calls that use the slider value here
             //console.log(value);
+            updateLayerGroups(value);
+            prevYear = value;
         },{
         // Styling the slider
         size: window.innerHeight + 'px',
         position: 'verticalcenterleft',
         id: 'timelineSlider',
-        min: 1776,
+        min: 1762,
         max: 2019,
-        value: 1776,
+        value: 1762,
         step: 1,
         collapsed: false,
         orientation: 'vertical',
