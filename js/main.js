@@ -141,7 +141,7 @@ function processData(data, map){
 function createLayerGroups() {
     for (var [key, value] of yearMap.entries()){
         var layerGroup = L.featureGroup(value);
-        layerGroup.setZIndex(2010 - key);
+        layerGroup.setZIndex(1906 - key);
         layerGroups.set(key, layerGroup);
     }
 }
@@ -164,7 +164,7 @@ function updateLayerGroups(selectedYear){
         for(i = 0; i < keys.length; i++) {
             if (keys[i] < prevYear && keys[i] >= selectedYear) {
                 map.addLayer(layerGroups.get(keys[i]));
-                layerGroups.get(keys[i]).bringToFront();
+                //layerGroups.get(keys[i]).bringToFront();
             }
         }
     } else if (selectedYear == 1762 && prevYear == 1762) {
@@ -174,7 +174,7 @@ function updateLayerGroups(selectedYear){
         // Iterate through layer groups and add them to the map
         for(i = 0; i < keys.length; i++) {
             layerGroups.get(keys[i]).addTo(map);
-            layerGroups.get(keys[i]).bringToFront();
+            //layerGroups.get(keys[i]).bringToFront();
         }
     }
     
@@ -225,7 +225,7 @@ function createTimeline(map){
         position: 'verticalcenterleft',
         id: 'timelineSlider',
         min: 1762,
-        max: 2019,
+        max: 1906,
         value: 1762,
         step: 1,
         collapsed: false,
@@ -290,15 +290,12 @@ function filter(feature) {
  function highlightFeature(e) {
     var layer = e.target;
     layer.setStyle({
-        weight: 5,
-        color: '#666',
+        //weight: 5,
+        fillColor: '#999',
         dashArray: '',
         fillOpacity: 1
     });
 
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-    }
     this.openPopup()
 }
 
