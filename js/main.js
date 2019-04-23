@@ -14,7 +14,7 @@ var layerGroups = new Map();
 // A counter to track how many Ajax requests have been completed
 var numAjax = 0;
 // Holds value of previous year selected in timeline
-var prevYear = 1762;
+var prevYear = 1775;
 // The leaflet map
 var map;
 //The data layers 
@@ -155,19 +155,19 @@ function updateLayerGroups(selectedYear){
     // If we have moved forward in time, we will need to remove layers
     if (selectedYear > prevYear) {
         for(i = 0; i < keys.length; i++) {
-            if (keys[i] >= prevYear && keys[i] < selectedYear) {
+            if (keys[i] >= prevYear && keys[i] <= selectedYear) {
                 map.removeLayer(layerGroups.get(keys[i]));
             }
         }
     // If we have moved forward in time, we will need to add layers
     } else if (selectedYear < prevYear) {
         for(i = 0; i < keys.length; i++) {
-            if (keys[i] < prevYear && keys[i] >= selectedYear) {
+            if (keys[i] <= prevYear && keys[i] > selectedYear) {
                 map.addLayer(layerGroups.get(keys[i]));
                 //layerGroups.get(keys[i]).bringToFront();
             }
         }
-    } else if (selectedYear == 1762 && prevYear == 1762) {
+    } else if (selectedYear == 1775 && prevYear == 1775) {
         // We want to add the groups to the map starting with most recent
         // and working our way back (using our reverse order keys array)
 
@@ -224,9 +224,9 @@ function createTimeline(map){
         size: window.innerHeight + 'px',
         position: 'verticalcenterleft',
         id: 'timelineSlider',
-        min: 1762,
+        min: 1775,
         max: 1906,
-        value: 1762,
+        value: 1775,
         step: 1,
         collapsed: false,
         orientation: 'vertical',

@@ -1,6 +1,26 @@
 /*Stylesheet by Timothy Prestby and Joe Marks 2019*/
 
-/* Defines a horzontal center for leaflet controls */ 
+/* Begin styling from human trafficking */
+#wrapper {
+  position:absolute;
+  height:100%;
+  width:100%;
+}
+
+
+article.container {
+  background: #414142;
+  color: #d8d8d8;
+  opacity: 0.9;
+  width: 50%;
+  max-width: 600px;
+  float: left;
+
+}
+
+/* End styling from human trafficking */
+
+/* Defines a horizontal center for leaflet controls */ 
 .leaflet-verticalcenter {
     position: absolute;
     z-index: 1000;
@@ -19,6 +39,7 @@
     width: 11.99vw;
     display: inline-block;
     float: left;
+    overflow-y: scroll;
 }
 
 #timelineSlider{
