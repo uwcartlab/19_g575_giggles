@@ -69,7 +69,7 @@ function ajaxCompleted(map){
     // Create the sequence slider
     createTimeline(map);
     addSearch(map);
-
+    createLegend(map);
 }
 
 //Function: Load all the data using AJAX//
@@ -305,5 +305,25 @@ function resetHighlight(e) {
     dataLayer.resetStyle(e.target);
 }
 
+//Function: create legend//
+function createLegend(map){
+    var legend = L.control({position: 'bottomright'});
+    legend.onAdd = function (map) {
+
+    var div = L.DomUtil.create('div', 'info legend');
+    labels = ['<strong>Legend</strong>'],
+    categories = ['Native Land','Selected Tribe'];
+    symbols=['../images/NativeLand.svg','../images/SelectedTribe.svg',]
+     // loop through our density intervals and generate a label with a colored square for each interval
+     for (var i = 0; i < symbols.length; i++) {
+        div.innerHTML +=
+            categories[i] + (" <img src="+ symbols[i] +" height='100' width='100'>") +'<br>';
+    }
+
+    return div;
+    };
+
+legend.addTo(map);
+};
 
 $(document).ready(createMap);
