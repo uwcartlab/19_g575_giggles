@@ -251,7 +251,8 @@ function createTimeline(map){
         step: 1,
         collapsed: false,
         orientation: 'vertical',
-        syncSlider: true
+        syncSlider: true,
+        showValue: false
         }).addTo(map);
     
 }
