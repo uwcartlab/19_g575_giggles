@@ -18,7 +18,8 @@ var prevYear = 1775;
 // The leaflet map
 var map;
 //The data layers 
-var dataLayer
+var dataLayer;
+
 
 //Function: Initialize map
 function createMap(){
@@ -69,7 +70,11 @@ function ajaxCompleted(map){
     // Create the sequence slider
     createTimeline(map);
     addSearch(map);
-    createLegend(map);
+    //Call create legend function
+    createLegend(map)
+    //Ensures that the legend loads with the correct first year
+    updateLegend('1775')
+
 }
 
 //Function: Load all the data using AJAX//
@@ -217,6 +222,8 @@ function createTimeline(map){
     var timelineSlider = L.control.slider(function(value) {
         // Put function calls that use the slider value here
             //console.log(value);
+            //updateLegend(map,value);
+            updateLegend(value)
             updateLayerGroups(value);
             prevYear = value;
         },{
@@ -307,23 +314,41 @@ function resetHighlight(e) {
 
 //Function: create legend//
 function createLegend(map){
-    var legend = L.control({position: 'bottomright'});
-    legend.onAdd = function (map) {
+    var LegendControl = L.Control.extend({
+		options: {
+			position: 'bottomright'
+		},
+            onAdd: function (map) {
+                //Create the control container with a particular class name
+                var container = L.DomUtil.create('div', 'legend-control-container');
+                //Add temporal legend div to container
+                $(container).append('<div id="temporal-legend">')
+                //Start attribute legend div string to further be manipulated below 
+                var div = L.DomUtil.create('div', 'attribute-legend');
+                    categories = ['Native Land','Selected Native Land'];
+                    symbols=['../images/NativeLand.svg','../images/SelectedTribe.svg',]
+                // Add labels and images to legend with year benchmark
+                //div.innerHTML += '<p id=title><strong>LEGEND: 1775 </strong></p>'
 
-    var div = L.DomUtil.create('div', 'info legend');
-    labels = ['<strong>Legend</strong>'],
-    categories = ['Native Land','Selected Tribe'];
-    symbols=['../images/NativeLand.svg','../images/SelectedTribe.svg',]
-     // loop through our density intervals and generate a label with a colored square for each interval
-     for (var i = 0; i < symbols.length; i++) {
-        div.innerHTML +=
-            categories[i] + (" <img src="+ symbols[i] +" height='100' width='100'>") +'<br>';
-    }
-
-    return div;
-    };
-
-legend.addTo(map);
+                for (var i = 0; i < symbols.length; i++) {
+                    div.innerHTML += "<p>" + categories[i] + "</p>" + (" <img src="+ symbols[i] +" height='100' width='100'>") +'<br>';
+                };
+            //Add attribute legend to container
+            $(container).append(div);
+            return container
+            }
+        });
+    map.addControl(new LegendControl());
 };
+
+//Function: Update the legend with new attribute//
+function updateLegend(value){
+    //Create Content for legend using the year and text
+	var content = '<p id=title><strong>LEGEND:'+ value + '</strong></p>'
+	//Replace legend content with updated content
+	$('#temporal-legend').html(content);
+};
+    
+
 
 $(document).ready(createMap);
