@@ -1,10 +1,11 @@
 /*Stylesheet by Timothy Prestby and Joe Marks 2019*/
 
-/* Begin styling from human trafficking */
+/* HTML STLYING */
 #wrapper {
   position:absolute;
   height:100%;
   width:100%;
+    /*overflow: hidden;*/
 }
 
 
@@ -12,13 +13,26 @@ article.container {
   background: #414142;
   color: #d8d8d8;
   opacity: 0.9;
-  width: 50%;
+  width: 100%;
   max-width: 600px;
   float: left;
 
 }
 
-/* End styling from human trafficking */
+.article_paragraph {
+  max-width: 600px;
+  margin: 18px auto;
+}
+
+.center{
+    text-align: center;
+}
+
+#title{
+    font-size:2em;
+}
+
+/* HTML STYLING */
 
 /* Defines a horizontal center for leaflet controls */ 
 .leaflet-verticalcenter {
@@ -36,10 +50,10 @@ article.container {
 
 #info-pane{
     height: 100vh;
-    width: 11.99vw;
+    width: 27.99vw;
     display: inline-block;
     float: left;
-    overflow-y: scroll;
+    background-color: #414142;
 }
 
 #timelineSlider{
@@ -49,9 +63,13 @@ article.container {
 
 #map{
     height: 100vh;
-    width: 84.99vw;
+    width: 71.99vw;
+    right: 0px;
     display: inline-block;
     float: right;
+    position: fixed;
+    top: 0px;
+    /*z-index: -99;*/
     
 }
 
@@ -67,7 +85,7 @@ article.container {
 html,body{
     margin: 0;
     height: 100%;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 
 /*Format Popup*/
@@ -75,6 +93,7 @@ html,body{
     margin: 0.2em 0;
     max-width: 200px;
     max-height: 200px;
+    font-family: 'Rubik', sans-serif;
 }
 
 .leaflet-popup{ pointer-events: none; }
@@ -85,16 +104,22 @@ html,body{
     background: white;
     border-radius: 15px;
     text-align: center;
-    min-width: 125px;
+    min-width: 175px;
+    font-family: 'Sanchez', serif;
+    font-size: 1.25em;
 
 }
 
-.legend p{
+.attribute-legend p{
     color: black !important;
     margin: 0;
+    font-family: 'Sanchez', serif;
+    margin-bottom:0;
+
 
 }
 
-#title{
-    margin-bottom: 30px !important;
+#legend-title{
+    margin-bottom: 10px !important;
+    font-size: 1.33em;
 }

@@ -23,11 +23,13 @@
 	display:block;
 	float:left;
 	background: #fff;
-	border:1px solid #666;
+	/*border:1px solid #666;*/
 	border-radius:2px;
 	height:22px;
 	padding:0 20px 0 2px;
 	margin:4px 0 4px 4px;
+	font-family: 'Rubik', sans-serif;
+
 }
 .leaflet-control-search.search-load .search-input {
 	background: url('../images/loader.gif') no-repeat center right #fff;
@@ -57,9 +59,13 @@
 	line-height:20px;
 	color:#ccc;
 	font-weight:bold;
+	font-family: 'Rubik', sans-serif;
+
 }
 .leaflet-control-search .search-cancel:hover span {
 	color:#aaa;
+	font-family: 'Rubik', sans-serif;
+
 }
 .leaflet-control-search .search-button {
 	display:block;
@@ -115,6 +121,8 @@
 	color:#e00;
 	font-weight:bold;
 	border-radius:.25em;
+	font-family: 'Rubik', sans-serif;
+
 }
 
 

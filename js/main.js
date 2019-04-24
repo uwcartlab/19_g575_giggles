@@ -6,7 +6,6 @@
 //set to arbitrary "low" number here
 //test by changing to time stamps within the dataset
 TimeStamp = -9000000000000;
-
 // A Map (data structure) to sort the layers by year
 var yearMap = new Map();
 // A Map (data structure) to hold the layerGroups
@@ -29,13 +28,14 @@ function createMap(){
 
 	map = L.map('map',{
 		//Sets the longitude and latitude of where the map center is
-			center: [37,-97],
-            zoom: 4,
+			center: [37,-96.55],
+            zoom: 5,
             maxZoom:8,
-            minZoom:4,
+            minZoom:5,
             maxBounds: bounds,
             maxBoundsViscosity: 1.0,
-            doubleClickZoom: false
+            doubleClickZoom: false,
+            scrollWheelZoom: false
             
 		});
 		//Add OSM baselayer
@@ -71,11 +71,25 @@ function ajaxCompleted(map){
     createTimeline(map);
     addSearch(map);
     //Call create legend function
-    createLegend(map)
+    createLegend(map);
     //Ensures that the legend loads with the correct first year
-    updateLegend('1775')
+    updateLegend('1775');
+    
+    
+    //createSectionWatchers();
+    //addScrollListener();
 
 }
+function createSectionWatchers(){
+    var exploreWatcher = scrollMonitor.create($('#explore'));
+}
+
+function addScrollListener(){
+    window.addEventListener('scroll', function(e) {
+        
+    });
+}
+
 
 //Function: Load all the data using AJAX//
 function loadData(map, year){
@@ -237,7 +251,8 @@ function createTimeline(map){
         step: 1,
         collapsed: false,
         orientation: 'vertical',
-        syncSlider: true
+        syncSlider: true,
+        showValue: false
         }).addTo(map);
     
 }
@@ -257,8 +272,8 @@ function onEachFeature(feature, layer) {
     // Does this feature have a property named Nation_Cor?
     if (feature.properties && feature.properties.Nation_Cor) {
         var popupContent = "<p><b>Nation(s):</b> " + feature.properties.Nation_Cor + "</p><p><b>Double Click for primary source</p></b>";
-        // <a href='" + feature.properties.LinkRoyce +"'> Click Here </a></p>"
-        var popup=L.responsivePopup({autoPanPadding: [40,40], hasTip: false }).setContent(popupContent);
+        //Create responsive popup that cannot extend beyond borders
+        var popup=L.responsivePopup({offset: [25,25], autoPanPadding: [40,40], hasTip: false }).setContent(popupContent);
         layer.bindPopup(popup)
     }
     // Add event listeners to open the popup on hover
@@ -325,13 +340,13 @@ function createLegend(map){
                 $(container).append('<div id="temporal-legend">')
                 //Start attribute legend div string to further be manipulated below 
                 var div = L.DomUtil.create('div', 'attribute-legend');
-                    categories = ['Native Land','Selected Native Land'];
+                    categories = ['Native Land','Searched Native Land'];
                     symbols=['../images/NativeLand.svg','../images/SelectedTribe.svg',]
                 // Add labels and images to legend with year benchmark
                 //div.innerHTML += '<p id=title><strong>LEGEND: 1775 </strong></p>'
 
                 for (var i = 0; i < symbols.length; i++) {
-                    div.innerHTML += "<p>" + categories[i] + "</p>" + (" <img src="+ symbols[i] +" height='100' width='100'>") +'<br>';
+                    div.innerHTML += "<p>" + categories[i] + "</p>" + (" <img src="+ symbols[i] +" height='100' width='100'>");
                 };
             //Add attribute legend to container
             $(container).append(div);
@@ -344,7 +359,7 @@ function createLegend(map){
 //Function: Update the legend with new attribute//
 function updateLegend(value){
     //Create Content for legend using the year and text
-	var content = '<p id=title><strong>LEGEND:'+ value + '</strong></p>'
+	var content = '<p id=legend-title><strong>Year: '+ value + '</strong></p>'
 	//Replace legend content with updated content
 	$('#temporal-legend').html(content);
 };
