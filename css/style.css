@@ -50,9 +50,10 @@ article.container {
 
 #info-pane{
     height: 100vh;
-    width: 26.99vw;
+    width: 27.99vw;
     display: inline-block;
     float: left;
+    background-color: #414142;
 }
 
 #timelineSlider{
@@ -62,7 +63,7 @@ article.container {
 
 #map{
     height: 100vh;
-    width: 70.99vw;
+    width: 71.99vw;
     right: 0px;
     display: inline-block;
     float: right;
