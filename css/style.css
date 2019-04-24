@@ -5,7 +5,7 @@
   position:absolute;
   height:100%;
   width:100%;
-    overflow-y: scroll;
+    /*overflow: hidden;*/
 }
 
 
@@ -62,11 +62,13 @@ article.container {
 
 #map{
     height: 100vh;
-    width: 70.99vw;
-    right: 17.5px;
+    width: 84.99vw;
+    right: 0px;
     display: inline-block;
     float: right;
-    position: absolute;
+    position: fixed;
+    top: 0px;
+    /*z-index: -99;*/
     
 }
 
@@ -82,7 +84,7 @@ article.container {
 html,body{
     margin: 0;
     height: 100%;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 
 /*Format Popup*/
