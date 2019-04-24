@@ -34,7 +34,8 @@ function createMap(){
             minZoom:5,
             maxBounds: bounds,
             maxBoundsViscosity: 1.0,
-            doubleClickZoom: false
+            doubleClickZoom: false,
+            scrollWheelZoom: false
             
 		});
 		//Add OSM baselayer

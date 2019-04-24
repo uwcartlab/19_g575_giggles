@@ -5,6 +5,7 @@
   position:absolute;
   height:100%;
   width:100%;
+    overflow-y: scroll;
 }
 
 
@@ -12,10 +13,15 @@ article.container {
   background: #414142;
   color: #d8d8d8;
   opacity: 0.9;
-  width: 50%;
+  width: 100%;
   max-width: 600px;
   float: left;
 
+}
+
+.article_paragraph {
+  max-width: 600px;
+  margin: 18px auto;
 }
 
 /* End styling from human trafficking */
@@ -39,7 +45,6 @@ article.container {
     width: 11.99vw;
     display: inline-block;
     float: left;
-    overflow-y: scroll;
 }
 
 #timelineSlider{
@@ -50,8 +55,11 @@ article.container {
 #map{
     height: 100vh;
     width: 84.99vw;
+    right: 17.5px;
     display: inline-block;
     float: right;
+    position: absolute;
+    z-index: -99;
     
 }
 
