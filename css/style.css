@@ -1,6 +1,6 @@
 /*Stylesheet by Timothy Prestby and Joe Marks 2019*/
 
-/* Begin styling from human trafficking */
+/* HTML STLYING */
 #wrapper {
   position:absolute;
   height:100%;
@@ -24,7 +24,15 @@ article.container {
   margin: 18px auto;
 }
 
-/* End styling from human trafficking */
+.center{
+    text-align: center;
+}
+
+#title{
+    font-size:2em;
+}
+
+/* HTML STYLING */
 
 /* Defines a horizontal center for leaflet controls */ 
 .leaflet-verticalcenter {
@@ -42,7 +50,7 @@ article.container {
 
 #info-pane{
     height: 100vh;
-    width: 11.99vw;
+    width: 26.99vw;
     display: inline-block;
     float: left;
 }
@@ -54,12 +62,11 @@ article.container {
 
 #map{
     height: 100vh;
-    width: 84.99vw;
+    width: 70.99vw;
     right: 17.5px;
     display: inline-block;
     float: right;
     position: absolute;
-    z-index: -99;
     
 }
 
@@ -109,7 +116,7 @@ html,body{
 
 }
 
-#title{
+#legend-title{
     margin-bottom: 10px !important;
     font-size: 1.33em;
 }

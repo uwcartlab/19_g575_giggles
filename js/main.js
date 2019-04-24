@@ -28,7 +28,7 @@ function createMap(){
 
 	map = L.map('map',{
 		//Sets the longitude and latitude of where the map center is
-			center: [37,-97],
+			center: [37,-96.55],
             zoom: 5,
             maxZoom:8,
             minZoom:5,
@@ -257,8 +257,8 @@ function onEachFeature(feature, layer) {
     // Does this feature have a property named Nation_Cor?
     if (feature.properties && feature.properties.Nation_Cor) {
         var popupContent = "<p><b>Nation(s):</b> " + feature.properties.Nation_Cor + "</p><p><b>Double Click for primary source</p></b>";
-        // <a href='" + feature.properties.LinkRoyce +"'> Click Here </a></p>"
-        var popup=L.responsivePopup({autoPanPadding: [40,40], hasTip: false }).setContent(popupContent);
+        //Create responsive popup that cannot extend beyond borders
+        var popup=L.responsivePopup({offset: [25,25], autoPanPadding: [40,40], hasTip: false }).setContent(popupContent);
         layer.bindPopup(popup)
     }
     // Add event listeners to open the popup on hover
@@ -344,7 +344,7 @@ function createLegend(map){
 //Function: Update the legend with new attribute//
 function updateLegend(value){
     //Create Content for legend using the year and text
-	var content = '<p id=title><strong>Year: '+ value + '</strong></p>'
+	var content = '<p id=legend-title><strong>Year: '+ value + '</strong></p>'
 	//Replace legend content with updated content
 	$('#temporal-legend').html(content);
 };
