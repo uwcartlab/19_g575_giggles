@@ -71,11 +71,25 @@ function ajaxCompleted(map){
     createTimeline(map);
     addSearch(map);
     //Call create legend function
-    createLegend(map)
+    createLegend(map);
     //Ensures that the legend loads with the correct first year
-    updateLegend('1775')
+    updateLegend('1775');
+    
+    
+    //createSectionWatchers();
+    //addScrollListener();
 
 }
+function createSectionWatchers(){
+    var exploreWatcher = scrollMonitor.create($('#explore'));
+}
+
+function addScrollListener(){
+    window.addEventListener('scroll', function(e) {
+        
+    });
+}
+
 
 //Function: Load all the data using AJAX//
 function loadData(map, year){
