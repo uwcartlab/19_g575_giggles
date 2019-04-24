@@ -6,7 +6,6 @@
 //set to arbitrary "low" number here
 //test by changing to time stamps within the dataset
 TimeStamp = -9000000000000;
-
 // A Map (data structure) to sort the layers by year
 var yearMap = new Map();
 // A Map (data structure) to hold the layerGroups
@@ -30,9 +29,9 @@ function createMap(){
 	map = L.map('map',{
 		//Sets the longitude and latitude of where the map center is
 			center: [37,-97],
-            zoom: 4,
+            zoom: 5,
             maxZoom:8,
-            minZoom:4,
+            minZoom:5,
             maxBounds: bounds,
             maxBoundsViscosity: 1.0,
             doubleClickZoom: false
@@ -325,13 +324,13 @@ function createLegend(map){
                 $(container).append('<div id="temporal-legend">')
                 //Start attribute legend div string to further be manipulated below 
                 var div = L.DomUtil.create('div', 'attribute-legend');
-                    categories = ['Native Land','Selected Native Land'];
+                    categories = ['Native Land','Searched Native Land'];
                     symbols=['../images/NativeLand.svg','../images/SelectedTribe.svg',]
                 // Add labels and images to legend with year benchmark
                 //div.innerHTML += '<p id=title><strong>LEGEND: 1775 </strong></p>'
 
                 for (var i = 0; i < symbols.length; i++) {
-                    div.innerHTML += "<p>" + categories[i] + "</p>" + (" <img src="+ symbols[i] +" height='100' width='100'>") +'<br>';
+                    div.innerHTML += "<p>" + categories[i] + "</p>" + (" <img src="+ symbols[i] +" height='100' width='100'>");
                 };
             //Add attribute legend to container
             $(container).append(div);
@@ -344,7 +343,7 @@ function createLegend(map){
 //Function: Update the legend with new attribute//
 function updateLegend(value){
     //Create Content for legend using the year and text
-	var content = '<p id=title><strong>LEGEND:'+ value + '</strong></p>'
+	var content = '<p id=title><strong>Year: '+ value + '</strong></p>'
 	//Replace legend content with updated content
 	$('#temporal-legend').html(content);
 };

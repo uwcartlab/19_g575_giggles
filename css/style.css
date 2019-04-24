@@ -75,6 +75,7 @@ html,body{
     margin: 0.2em 0;
     max-width: 200px;
     max-height: 200px;
+    font-family: 'Rubik', sans-serif;
 }
 
 .leaflet-popup{ pointer-events: none; }
@@ -85,16 +86,22 @@ html,body{
     background: white;
     border-radius: 15px;
     text-align: center;
-    min-width: 125px;
+    min-width: 175px;
+    font-family: 'Sanchez', serif;
+    font-size: 1.25em;
 
 }
 
-.legend p{
+.attribute-legend p{
     color: black !important;
     margin: 0;
+    font-family: 'Sanchez', serif;
+    margin-bottom:0;
+
 
 }
 
 #title{
-    margin-bottom: 30px !important;
+    margin-bottom: 10px !important;
+    font-size: 1.33em;
 }
