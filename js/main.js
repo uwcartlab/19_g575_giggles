@@ -19,9 +19,10 @@ var map;
 //The data layers 
 var dataLayer;
 //Area value
-var area=0;
+var area=1597786.476;
+var landLost=0;
 
-
+var landGained=0;
 
 //Function: Initialize map
 function createMap(){
@@ -152,7 +153,6 @@ function processData(data, map){
         style: myStyle,
         onEachFeature: onEachFeature
     });
-    console.log(area)
 
     
     
@@ -175,18 +175,19 @@ function updateLayerGroups(selectedYear){
     
     // Create an array of the key values in reverse
     var keys = Array.from(layerGroups.keys()).sort().reverse();
-    
     // If we have moved forward in time, we will need to remove layers
     if (selectedYear > prevYear) {
         for(i = 0; i < keys.length; i++) {
-            if (keys[i] >= prevYear && keys[i] <= selectedYear) {
+            if (keys[i] > prevYear && keys[i] <= selectedYear) {
+                landLost += layerGroups.get(keys[i]).getLayers()[0].feature.properties.Square_Mil;
                 map.removeLayer(layerGroups.get(keys[i]));
             }
         }
-    // If we have moved forward in time, we will need to add layers
+    // If we have moved backwards in time, we will need to add layers
     } else if (selectedYear < prevYear) {
         for(i = 0; i < keys.length; i++) {
             if (keys[i] <= prevYear && keys[i] > selectedYear) {
+                landGained += layerGroups.get(keys[i]).getLayers()[0].feature.properties.Square_Mil;
                 map.addLayer(layerGroups.get(keys[i]));
                 //layerGroups.get(keys[i]).bringToFront();
             }
@@ -242,8 +243,9 @@ function createTimeline(map){
         // Put function calls that use the slider value here
             //console.log(value);
             //updateLegend(map,value);
-            updateLegend(value)
             updateLayerGroups(value);
+            updateLegend(value)
+
             prevYear = value;
         },{
         // Styling the slider
@@ -270,7 +272,6 @@ function onEachFeature(feature, layer) {
         var popup=L.responsivePopup({offset: [25,25], autoPanPadding: [40,40], hasTip: false }).setContent(popupContent);
         layer.bindPopup(popup)
     };
-    area += feature.properties.Square_Mil;
     // Add event listeners to open the popup on hover
     layer.on({
         mouseover: highlightFeature,
@@ -354,7 +355,8 @@ function createLegend(map){
 //Function: Update the legend with new attribute//
 function updateLegend(value){
     //Create Content for legend using the year and text
-	var content = '<p id=legend-title><strong>Year: '+ value + '</strong></p>'
+	var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  parseInt((landLost-landGained)/(area)*(100)) + '%'
+    '</strong></p>'
 	//Replace legend content with updated content
 	$('#temporal-legend').html(content);
 };
