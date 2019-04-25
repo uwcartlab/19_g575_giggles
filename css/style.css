@@ -28,8 +28,15 @@ article.container {
     text-align: center;
 }
 
-#title{
+#date{
     font-size:2em;
+    color: #DC143C;
+
+}
+
+#title{
+    color: #DC143C;
+
 }
 
 /* HTML STYLING */
