@@ -21,7 +21,7 @@ var dataLayer;
 //Area value
 var area=0;
 
-var endDate = 1776;
+var endDate = 1775;
 
 
 //Function: Initialize map
