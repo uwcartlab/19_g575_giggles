@@ -21,7 +21,7 @@ var dataLayer;
 //Area value
 var area=1597786.476;
 var landLost=0;
-
+var endDate=1775;
 var landGained=0;
 
 //Function: Initialize map
@@ -72,7 +72,7 @@ function createMap(){
 function ajaxCompleted(map){
     createLayerGroups();
     // Create the sequence slider
-    createTimeline(map);
+    var timelineSlider = createTimeline(map);
     addSearch(map);
     //Call create legend function
     createLegend(map);
@@ -80,19 +80,68 @@ function ajaxCompleted(map){
     updateLegend('1775');
     
     
-    //createSectionWatchers();
-    //addScrollListener();
+    createSectionWatchers(timelineSlider);
+    
+    
 
 }
-function createSectionWatchers(){
-    var exploreWatcher = scrollMonitor.create($('#explore'));
-}
+function createSectionWatchers(timelineSlider){
+    var introWatcher = scrollMonitor.create($('#intro'));
+    var d1622Watcher = scrollMonitor.create($('#1622'));
+    var d1675Watcher = scrollMonitor.create($('#1675'));
+    var d1707Watcher = scrollMonitor.create($('#1707'));
+    var d1722Watcher = scrollMonitor.create($('#1722'));
+    var d1736Watcher = scrollMonitor.create($('#1736'));
+    var d1739Watcher = scrollMonitor.create($('#1739'));
+    var d1740Watcher = scrollMonitor.create($('#1740'));
+    var d1759Watcher = scrollMonitor.create($('#1759'));
+    var d1763Watcher = scrollMonitor.create($('#1763'));
+    var d1765Watcher = scrollMonitor.create($('#1765'));
+    
 
-function addScrollListener(){
-    window.addEventListener('scroll', function(e) {
-        
+    introWatcher.enterViewport(function () {
+        //console.log('intro');
+        //console.log(timelineSlider);
+    });
+    
+    d1765Watcher.enterViewport(function () {
+        console.log('Entering 1765');
+        slideToDate(1790, timelineSlider);
     });
 }
+
+// This function makes use of the timeout function in order to
+// gradually increment/decrement the timeline slider to a specific
+// date.
+function slideToDate(newEndDate, timelineSlider){
+    // Update the global endDate value
+    endDate = newEndDate;
+    // Update the slider after a 10 millisecond delay
+    setTimeout(function(){updateSlider(timelineSlider)}, 10);
+    
+}
+
+// This function works with slideToDate to increment/decrement
+// the timeline slider to a specific date.
+function updateSlider(timelineSlider){
+    // Increment or decrement the slider towards the endDate
+    if(endDate > timelineSlider.slider.value){
+        timelineSlider.slider.value++;
+    } else if (endDate < timelineSlider.slider.value){
+        timelineSlider.slider.value--;
+    }
+    // Update everything with the new slider value
+    updateLegend(timelineSlider.slider.value)
+    updateLayerGroups(timelineSlider.slider.value);
+    prevYear = timelineSlider.slider.value;
+    // If we have not reached our end date yet, call this function again
+    // with a 10 millisecond delay
+    if(timelineSlider.slider.value != endDate){
+        setTimeout(function(){updateSlider(timelineSlider)}, 10);
+    }
+}
+
+
 
 
 //Function: Load all the data using AJAX//
@@ -241,12 +290,12 @@ function createTimeline(map){
     // Create slider for timeline
     var timelineSlider = L.control.slider(function(value) {
         // Put function calls that use the slider value here
-            //console.log(value);
-            //updateLegend(map,value);
             updateLayerGroups(value);
             updateLegend(value)
 
             prevYear = value;
+        // Update the endDate global variable if someone manually changes the timeline value
+        endDate = value;
         },{
         // Styling the slider
         size: window.innerHeight + 'px',
@@ -262,6 +311,7 @@ function createTimeline(map){
         showValue: false
         }).addTo(map);
     
+    return timelineSlider;
 }
 
 function onEachFeature(feature, layer) {
