@@ -18,6 +18,9 @@ var prevYear = 1775;
 var map;
 //The data layers 
 var dataLayer;
+//Area value
+var area=0;
+
 
 
 //Function: Initialize map
@@ -149,6 +152,8 @@ function processData(data, map){
         style: myStyle,
         onEachFeature: onEachFeature
     });
+    console.log(area)
+
     
     
 };
@@ -257,17 +262,6 @@ function createTimeline(map){
     
 }
 
-//Function: Create and format popup//
-function createPopup(response,map) {
-    features=response.features
-    var i;
-    for (i=0; i<features.length;i++){
-        nation=features[i].properties.Nation_Cor
-        //console.log(nation)
-        //Bind details to popup(module 5)
-    }
-};
-
 function onEachFeature(feature, layer) {
     // Does this feature have a property named Nation_Cor?
     if (feature.properties && feature.properties.Nation_Cor) {
@@ -275,7 +269,8 @@ function onEachFeature(feature, layer) {
         //Create responsive popup that cannot extend beyond borders
         var popup=L.responsivePopup({offset: [25,25], autoPanPadding: [40,40], hasTip: false }).setContent(popupContent);
         layer.bindPopup(popup)
-    }
+    };
+    area += feature.properties.Square_Mil;
     // Add event listeners to open the popup on hover
     layer.on({
         mouseover: highlightFeature,
