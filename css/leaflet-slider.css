@@ -82,7 +82,7 @@ a.leaflet-control-slider-toggle {
 }
 .leaflet-control-slider.leaflet-control-slider-vertical .leaflet-slider-container {
   width:36px;
-  -webkit-transform:rotate(180deg);
+  /*-webkit-transform:rotate(180deg);*/
 }
 
 .leaflet-control-slider.leaflet-control-slider-vertical .leaflet-slider-container {
