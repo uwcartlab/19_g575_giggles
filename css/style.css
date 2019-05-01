@@ -67,10 +67,12 @@ article.container {
 
 #info-pane{
     height: 100vh;
-    width: 24.99vw;
+    width: 22.99vw;
+    margin-left: 1vw;
     display: inline-block;
     float: left;
     background-color: #414142;
+    
 }
 
 #dates-container{
@@ -85,8 +87,16 @@ article.container {
 
 #date-1776{
     margin: 0;
-    position: relative;
-    top: 1vh;
+    position: fixed;
+    right: 71.52vw;
+    top: 1.2vh;
+}
+
+#date-1787{
+    margin: 0;
+    position: fixed;
+    right: 71.52vw;
+    top: 9.3vh;
 }
 
 #timelineSlider{
