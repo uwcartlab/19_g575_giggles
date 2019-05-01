@@ -152,7 +152,7 @@ html,body{
     background: white;
     border-radius: 15px;
     text-align: center;
-    width: 300px;
+    width: 200px;
     font-family: 'Sanchez', serif;
     font-size: 1.25em;
 
@@ -169,7 +169,7 @@ html,body{
 
 #legend-title{
     margin-bottom: 10px !important;
-    font-size: 1.33em;
+    font-size: .9em;
 }
 
 #intro {
