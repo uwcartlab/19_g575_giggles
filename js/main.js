@@ -82,9 +82,20 @@ function ajaxCompleted(map){
     
     createSectionWatchers(timelineSlider);
     
+    makeDatesClickable(timelineSlider);
+    
     
 
 }
+
+function makeDatesClickable(timelineSlider){
+    
+    $('#date-1776').addEventListener("click", slideToDate(1776, timelineSlider));
+    $('#date-1787').addEventListener("click", slideToDate(1787, timelineSlider));
+    $('#date-1791').addEventListener("click", slideToDate(1791, timelineSlider));
+    $('#date-1803').addEventListener("click", slideToDate(1814, timelineSlider));
+}
+
 function createSectionWatchers(timelineSlider){
     var introWatcher = scrollMonitor.create($('#intro'));
     var d1776Watcher = scrollMonitor.create($('#1776'));
