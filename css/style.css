@@ -171,17 +171,3 @@ html,body{
     margin-bottom: 10px !important;
     font-size: .9em;
 }
-
-#intro {
-    background-image: url(../images/);
-    background-position: 0% 0%;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    text-align: center;
-    padding-top: 40vh;
-    color: tomato;
-    height: 100vh;
-}
