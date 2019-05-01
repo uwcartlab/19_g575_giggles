@@ -6,6 +6,11 @@ html, body {
     background-color: #414142;
 }
 
+img { 
+  width: 100%; 
+  height: auto;
+}
+
 /* HTML STLYING */
 #wrapper {
   position:absolute;
@@ -224,7 +229,7 @@ html,body{
     background: white;
     border-radius: 15px;
     text-align: center;
-    min-width: 175px;
+    width: 200px;
     font-family: 'Sanchez', serif;
     font-size: 1.25em;
 
@@ -241,5 +246,19 @@ html,body{
 
 #legend-title{
     margin-bottom: 10px !important;
-    font-size: 1.33em;
+    font-size: .9em;
+}
+
+#intro {
+    background-image: url(../images/);
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    padding-top: 40vh;
+    color: tomato;
+    height: 100vh;
 }
