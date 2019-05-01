@@ -1,14 +1,33 @@
 /*Stylesheet by Timothy Prestby and Joe Marks 2019*/
-
-
-
 html, body {
     background-color: #414142;
+    margin: 0;
+}
+#intropage {
+    background-image: url(../images/intro.jpg);
+    background-position: 0% 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    padding-top: 40vh;
+    color: tomato;
+    height: 60vh;
+    width: 99vw;
+    overflow: hidden;
+    z-index: 100000000000000;
+    margin: 0;
+    position: relative;
+}
+#container{
+    overflow:hidden;
+    position: absolute;
+    margin-bottom: 500px;
 }
 
 img { 
   width: 100%; 
   height: auto;
+  
 }
 
 /* HTML STLYING */
@@ -16,7 +35,6 @@ img {
   position:absolute;
   height:100%;
   width:100%;
-    /*overflow: hidden;*/
 }
 
 a {
@@ -194,7 +212,7 @@ article.container {
     float: right;
     position: fixed;
     top: 0px;
-    /*z-index: -99;*/
+    z-index: -99;
     
 }
 
