@@ -93,15 +93,92 @@ article.container {
 #date-1776{
     margin: 0;
     position: fixed;
-    right: 71.52vw;
-    top: 1.2vh;
+    right: 71.32vw;
+    top: 1.1vh;
 }
 
 #date-1787{
     margin: 0;
     position: fixed;
-    right: 71.52vw;
+    right: 71.32vw;
     top: 9.3vh;
+}
+
+#date-1791{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 12.3vh;
+}
+
+#date-1803{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 21.2vh;
+}
+
+#date-1814{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 29.4vh;
+}
+
+#date-1819{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 33.1vh;
+}
+
+#date-1830{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 41.3vh;
+}
+
+#date-1848{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 54.7vh;
+}
+
+#date-1851{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 57.0vh;
+}
+
+#date-1876{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 75.7vh;
+}
+
+#date-1887{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 83.9vh;
+}
+
+#date-1897{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 91.3vh;
+}
+
+#date-1906{
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
+    top: 98.1vh;
 }
 
 #timelineSlider{
