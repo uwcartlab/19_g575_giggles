@@ -10,7 +10,7 @@ html, body {
     background-size: cover;
     text-align: center;
     padding-top: 40vh;
-    color: tomato;
+    color: #DC143C;
     height: 60vh;
     width: 99vw;
     overflow: hidden;
@@ -106,6 +106,10 @@ article.container {
     text-align: right;
     z-index: 9000;
     color: #d8d8d8;
+}
+
+#filler{
+    height:110vh;
 }
 
 #date-1776{
