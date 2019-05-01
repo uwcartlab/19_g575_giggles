@@ -87,26 +87,76 @@ function ajaxCompleted(map){
 }
 function createSectionWatchers(timelineSlider){
     var introWatcher = scrollMonitor.create($('#intro'));
-    var d1622Watcher = scrollMonitor.create($('#1622'));
-    var d1675Watcher = scrollMonitor.create($('#1675'));
-    var d1707Watcher = scrollMonitor.create($('#1707'));
-    var d1722Watcher = scrollMonitor.create($('#1722'));
-    var d1736Watcher = scrollMonitor.create($('#1736'));
-    var d1739Watcher = scrollMonitor.create($('#1739'));
-    var d1740Watcher = scrollMonitor.create($('#1740'));
-    var d1759Watcher = scrollMonitor.create($('#1759'));
-    var d1763Watcher = scrollMonitor.create($('#1763'));
-    var d1765Watcher = scrollMonitor.create($('#1765'));
+    var d1776Watcher = scrollMonitor.create($('#1776'));
+    var d1787Watcher = scrollMonitor.create($('#1787'));
+    var d1791Watcher = scrollMonitor.create($('#1791'));
+    var d1803Watcher = scrollMonitor.create($('#1803'));
+    var d1814Watcher = scrollMonitor.create($('#1814'));
+    var d1819Watcher = scrollMonitor.create($('#1819'));
+    var d1830Watcher = scrollMonitor.create($('#1830'));
+    var d1848Watcher = scrollMonitor.create($('#1848'));
+    var d1851Watcher = scrollMonitor.create($('#1851'));
+    var d1876Watcher = scrollMonitor.create($('#1876'));
+    var d1887Watcher = scrollMonitor.create($('#1887'));
+    var d1897Watcher = scrollMonitor.create($('#1897'));
+    var d1906Watcher = scrollMonitor.create($('#1906'));
     
 
-    introWatcher.enterViewport(function () {
+    introWatcher.fullyEnterViewport(function () {
         //console.log('intro');
         //console.log(timelineSlider);
     });
     
-    d1765Watcher.enterViewport(function () {
-        console.log('Entering 1765');
-        slideToDate(1790, timelineSlider);
+    d1776Watcher.fullyEnterViewport(function () {
+        slideToDate(1776, timelineSlider);
+    });
+    
+    d1787Watcher.fullyEnterViewport(function () {
+        slideToDate(1787, timelineSlider);
+    });
+    
+    d1791Watcher.fullyEnterViewport(function () {
+        slideToDate(1791, timelineSlider);
+    });
+    
+    d1803Watcher.fullyEnterViewport(function () {
+        slideToDate(1803, timelineSlider);
+    });
+    
+    d1814Watcher.fullyEnterViewport(function () {
+        slideToDate(1814, timelineSlider);
+    });
+    
+    d1819Watcher.fullyEnterViewport(function () {
+        slideToDate(1819, timelineSlider);
+    });
+    
+    d1830Watcher.fullyEnterViewport(function () {
+        slideToDate(1830, timelineSlider);
+    });
+    
+    d1848Watcher.fullyEnterViewport(function () {
+        slideToDate(1848, timelineSlider);
+    });
+    
+    d1851Watcher.fullyEnterViewport(function () {
+        slideToDate(1851, timelineSlider);
+    });
+    
+    d1876Watcher.fullyEnterViewport(function () {
+        slideToDate(1876, timelineSlider);
+    });
+    
+    d1887Watcher.fullyEnterViewport(function () {
+        slideToDate(1887, timelineSlider);
+    });
+    
+    d1897Watcher.fullyEnterViewport(function () {
+        slideToDate(1897, timelineSlider);
+    });
+    
+    d1906Watcher.fullyEnterViewport(function () {
+        slideToDate(1906, timelineSlider);
     });
 }
 
