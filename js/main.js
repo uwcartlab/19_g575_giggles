@@ -405,8 +405,13 @@ function createLegend(map){
 //Function: Update the legend with new attribute//
 function updateLegend(value){
     //Create Content for legend using the year and text
+    if(value==1775){
+        var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  0 + '%'
+        '</strong></p>'
+    
+    } else{
 	var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  parseInt((landLost-landGained)/(area)*(100)) + '%'
-    '</strong></p>'
+    '</strong></p>'}
 	//Replace legend content with updated content
 	$('#temporal-legend').html(content);
 };
