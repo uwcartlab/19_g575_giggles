@@ -79,10 +79,14 @@ function ajaxCompleted(map){
     //Ensures that the legend loads with the correct first year
     updateLegend('1775');
     
+    //$('#date-1776').html('WORK DAMMIT');
+    
+    //makeDatesClickable(timelineSlider);
     
     createSectionWatchers(timelineSlider);
     
     makeDatesClickable(timelineSlider);
+    
     
     
 
@@ -90,10 +94,59 @@ function ajaxCompleted(map){
 
 function makeDatesClickable(timelineSlider){
     
-    $('#date-1776').addEventListener("click", slideToDate(1776, timelineSlider));
-    $('#date-1787').addEventListener("click", slideToDate(1787, timelineSlider));
-    $('#date-1791').addEventListener("click", slideToDate(1791, timelineSlider));
-    $('#date-1803').addEventListener("click", slideToDate(1814, timelineSlider));
+    document.getElementById('date-1776').addEventListener("click", function(){
+        slideToDate(1776, timelineSlider); 
+        document.getElementById('1776').scrollIntoView();
+    });
+    document.getElementById('date-1787').addEventListener("click", function(){
+        slideToDate(1787, timelineSlider); 
+        document.getElementById('1787').scrollIntoView();
+    });
+    document.getElementById('date-1791').addEventListener("click", function(){
+        slideToDate(1791, timelineSlider); 
+        document.getElementById('1791').scrollIntoView();
+    });
+    document.getElementById('date-1803').addEventListener("click", function(){
+        slideToDate(1803, timelineSlider); 
+        document.getElementById('1803').scrollIntoView();
+    });
+    document.getElementById('date-1814').addEventListener("click", function(){
+        slideToDate(1814, timelineSlider); 
+        document.getElementById('1814').scrollIntoView();
+    });
+    document.getElementById('date-1819').addEventListener("click", function(){
+        slideToDate(1819, timelineSlider); 
+        document.getElementById('1819').scrollIntoView();
+    });
+    document.getElementById('date-1830').addEventListener("click", function(){
+        slideToDate(1830, timelineSlider); 
+        document.getElementById('1830').scrollIntoView();
+    });
+    document.getElementById('date-1848').addEventListener("click", function(){
+        slideToDate(1848, timelineSlider); 
+        document.getElementById('1848').scrollIntoView();
+    });
+    document.getElementById('date-1851').addEventListener("click", function(){
+        slideToDate(1851, timelineSlider); 
+        document.getElementById('1851').scrollIntoView();
+    });
+    document.getElementById('date-1876').addEventListener("click", function(){
+        slideToDate(1876, timelineSlider); 
+        document.getElementById('1876').scrollIntoView();
+    });
+    document.getElementById('date-1887').addEventListener("click", function(){
+        slideToDate(1887, timelineSlider); 
+        document.getElementById('1887').scrollIntoView();
+    });
+    document.getElementById('date-1897').addEventListener("click", function(){
+        slideToDate(1897, timelineSlider); 
+        document.getElementById('1897').scrollIntoView();
+    });
+    document.getElementById('date-1906').addEventListener("click", function(){
+        slideToDate(1906, timelineSlider); 
+        document.getElementById('1906').scrollIntoView();
+    });
+    
 }
 
 function createSectionWatchers(timelineSlider){
@@ -176,6 +229,7 @@ function createSectionWatchers(timelineSlider){
 // date.
 function slideToDate(newEndDate, timelineSlider){
     // Update the global endDate value
+    // TODO: Look at this as possible reason for dates going to wrong timeline date on click
     endDate = newEndDate;
     // Update the slider after a 10 millisecond delay
     setTimeout(function(){updateSlider(timelineSlider)}, 10);
