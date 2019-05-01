@@ -1,5 +1,11 @@
 /*Stylesheet by Timothy Prestby and Joe Marks 2019*/
 
+
+
+html, body {
+    background-color: #414142;
+}
+
 /* HTML STLYING */
 #wrapper {
   position:absolute;
@@ -61,10 +67,26 @@ article.container {
 
 #info-pane{
     height: 100vh;
-    width: 27.99vw;
+    width: 24.99vw;
     display: inline-block;
     float: left;
     background-color: #414142;
+}
+
+#dates-container{
+    height: 100vh;
+    width: 2.59vw; 
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    z-index: 9000;
+    color: #d8d8d8;
+}
+
+#date-1776{
+    margin: 0;
+    position: relative;
+    top: 1vh;
 }
 
 #timelineSlider{
