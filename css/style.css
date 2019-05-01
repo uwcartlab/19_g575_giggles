@@ -8,6 +8,10 @@
     /*overflow: hidden;*/
 }
 
+a {
+  color: #DC143C;
+}
+
 
 article.container {
   background: #414142;
