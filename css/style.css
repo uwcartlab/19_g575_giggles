@@ -4,7 +4,7 @@ html, body {
     margin: 0;
 }
 #intropage {
-    background-image: url(../img/intro.jpg);
+    background-image: url(../images/HeaderImage.jpg);
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
