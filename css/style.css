@@ -4,12 +4,12 @@ html, body {
     margin: 0;
 }
 #intropage {
-    background-image: url(../img/intro.jpg);
+    background-image: url(../images/HeaderImage.jpg);
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
-    padding-top: 40vh;
+    padding-bottom: 40vh;
     color: #DC143C;
     height: 60vh;
     width: 99vw;
@@ -22,19 +22,61 @@ html, body {
     font-family: 'Rubik', sans-serif;
     font-size: 5em;
     text-shadow: 3px 3px 3px black;
+
 }
 
 #intropage h2{
     font-size: 3em;
     text-shadow: 2px 2px 2px black;
     font-family: 'Rubik', sans-serif;
+    margin-bottom: 1vh;
 
 }
 
+#intropage h3{
+    font-size: 2em;
+    color: white;
+    text-shadow: 2px 2px 2px #DC143C;
+    font-family: 'Sanchez', serif;
+
+    
+
+}
+#intropage p{
+    font-size: 1.25em;
+    color: white;
+    text-shadow: 2px 2px 2px #DC143C;
+    font-family: 'Sanchez', serif;
+
+
+
+}
+
+#source{
+font-size: .9em !important;
+}
 #container{
     overflow:hidden;
     position: absolute;
-    margin-bottom: 500px;
+}
+
+#left{
+    float: left;
+    padding-left: 2.5vw;
+    padding-bottom: 5vh;
+}
+#right{
+    float:right;
+    padding-top: 25vh;
+    padding-right: 2.5vw;
+
+}
+
+#clear{
+    float:left;
+    padding-top: 15vh;
+    padding-left: 2.5vw;
+
 }
 
 img { 
