@@ -79,10 +79,6 @@ function ajaxCompleted(map){
     //Ensures that the legend loads with the correct first year
     updateLegend('1775');
     
-    //$('#date-1776').html('WORK DAMMIT');
-    
-    //makeDatesClickable(timelineSlider);
-    
     createSectionWatchers(timelineSlider);
     
     makeDatesClickable(timelineSlider);
@@ -94,62 +90,106 @@ function ajaxCompleted(map){
 
 function makeDatesClickable(timelineSlider){
     
+    // Set a click event for each date to scroll to the corresponding div
+    // NOTE: A few events needed an extra "+1" to be noticed by the scroll monitor
+    
     document.getElementById('date-1776').addEventListener("click", function(){
-        slideToDate(1776, timelineSlider); 
-        document.getElementById('1776').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1776').offset().top
+        }, 1000);
+        
     });
     document.getElementById('date-1787').addEventListener("click", function(){
-        slideToDate(1787, timelineSlider); 
-        document.getElementById('1787').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1787').offset().top + 1
+        }, 1000);
+
     });
     document.getElementById('date-1791').addEventListener("click", function(){
-        slideToDate(1791, timelineSlider); 
-        document.getElementById('1791').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1791').offset().top
+        }, 1000);
+
     });
     document.getElementById('date-1803').addEventListener("click", function(){
-        slideToDate(1803, timelineSlider); 
-        document.getElementById('1803').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1803').offset().top
+        }, 1000);
+
     });
     document.getElementById('date-1814').addEventListener("click", function(){
-        slideToDate(1814, timelineSlider); 
-        document.getElementById('1814').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1814').offset().top + 1
+        }, 1000);
+
     });
     document.getElementById('date-1819').addEventListener("click", function(){
-        slideToDate(1819, timelineSlider); 
-        document.getElementById('1819').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1819').offset().top
+        }, 1000);
+
     });
     document.getElementById('date-1830').addEventListener("click", function(){
-        slideToDate(1830, timelineSlider); 
-        document.getElementById('1830').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1830').offset().top
+        }, 1000);
+
     });
     document.getElementById('date-1848').addEventListener("click", function(){
-        slideToDate(1848, timelineSlider); 
-        document.getElementById('1848').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1848').offset().top + 1
+        }, 1000);
+
     });
     document.getElementById('date-1851').addEventListener("click", function(){
-        slideToDate(1851, timelineSlider); 
-        document.getElementById('1851').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1851').offset().top
+        }, 1000);
+
     });
     document.getElementById('date-1876').addEventListener("click", function(){
-        slideToDate(1876, timelineSlider); 
-        document.getElementById('1876').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1876').offset().top
+        }, 1000);
+
     });
     document.getElementById('date-1887').addEventListener("click", function(){
-        slideToDate(1887, timelineSlider); 
-        document.getElementById('1887').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1887').offset().top
+        }, 1000);
+
     });
     document.getElementById('date-1897').addEventListener("click", function(){
-        slideToDate(1897, timelineSlider); 
-        document.getElementById('1897').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1897').offset().top
+        }, 1000);
+
     });
     document.getElementById('date-1906').addEventListener("click", function(){
-        slideToDate(1906, timelineSlider); 
-        document.getElementById('1906').scrollIntoView();
+
+        $('html, body').animate({
+            scrollTop: $('#1906').offset().top
+        }, 1000);
+
     });
     
 }
 
 function createSectionWatchers(timelineSlider){
+    
+    // Create watchers (scroll monitors) for each date
     var introWatcher = scrollMonitor.create($('#intro'));
     var d1776Watcher = scrollMonitor.create($('#1776'));
     var d1787Watcher = scrollMonitor.create($('#1787'));
@@ -164,8 +204,9 @@ function createSectionWatchers(timelineSlider){
     var d1887Watcher = scrollMonitor.create($('#1887'));
     var d1897Watcher = scrollMonitor.create($('#1897'));
     var d1906Watcher = scrollMonitor.create($('#1906'));
-    
 
+    // Add watch events to move timeline to corresponding date
+    
     introWatcher.fullyEnterViewport(function () {
         //console.log('intro');
         //console.log(timelineSlider);
@@ -229,7 +270,6 @@ function createSectionWatchers(timelineSlider){
 // date.
 function slideToDate(newEndDate, timelineSlider){
     // Update the global endDate value
-    // TODO: Look at this as possible reason for dates going to wrong timeline date on click
     endDate = newEndDate;
     // Update the slider after a 10 millisecond delay
     setTimeout(function(){updateSlider(timelineSlider)}, 10);

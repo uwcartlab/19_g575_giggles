@@ -95,6 +95,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 1.1vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1787{
@@ -102,6 +104,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 9.3vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1791{
@@ -109,6 +113,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 12.3vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1803{
@@ -116,6 +122,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 21.2vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1814{
@@ -123,6 +131,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 29.4vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1819{
@@ -130,6 +140,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 33.1vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1830{
@@ -137,6 +149,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 41.3vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1848{
@@ -144,6 +158,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 54.7vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1851{
@@ -151,6 +167,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 57.0vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1876{
@@ -158,6 +176,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 75.7vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1887{
@@ -165,6 +185,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 83.9vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1897{
@@ -172,6 +194,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 91.3vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #date-1906{
@@ -179,6 +203,8 @@ article.container {
     position: fixed;
     right: 71.32vw;
     top: 98.1vh;
+    z-index: 9001;
+    cursor: pointer;
 }
 
 #timelineSlider{
