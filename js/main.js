@@ -26,6 +26,9 @@ var landGained=0;
 
 //Function: Initialize map
 function createMap(){
+    //TODO: Make this work better
+    window.scrollTo(0,0);
+    
     //Set Max bounds for map to limit panning
     var bounds = [[51.3457868, -62.9513812],
     [22.7433195,-127.7844079]];
@@ -61,7 +64,7 @@ function createMap(){
     
     // Change attributions; include disclaimer
     // TODO: Add an actual disclaimer; maybe find a link to a good one
-    map.attributionControl.setPrefix('DISCLAIMER: For visualization purposes only.  Not to be used in a court of law to represent tribal boundaries. | <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+    map.attributionControl.setPrefix('<div id = disclaimerLink>DISCLAIMER</div> | <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
     
     
     loadData(map);
@@ -83,9 +86,38 @@ function ajaxCompleted(map){
     
     makeDatesClickable(timelineSlider);
     
+    addDisclaimer();
+    //$('#disclaimer').fadeOut(1);
+    //$('#disclaimerBackground').fadeOut(1); 
     
-    
+}
 
+function addDisclaimer(){
+    $('#disclaimerLink').mouseover(function(){
+        this.style.textDecoration = "underline";
+        console.log("test");
+    });
+    $('#disclaimerLink').mouseout(function(){
+        this.style.textDecoration = "initial";
+    });
+    $('#disclaimerLink').click(function(){
+        showDisclaimer()
+    });
+    $('#xOut').click(function(){
+        hideDisclaimer();
+    })
+};
+
+function showDisclaimer(){
+    $('#disclaimer').fadeIn(1000);
+    $('#disclaimerBackground').fadeIn(1000);
+}
+
+function hideDisclaimer(){
+    //$('#disclaimer').hide();
+    //$('#disclaimerBackground').hide();
+    $('#disclaimer').fadeOut(1000);
+    $('#disclaimerBackground').fadeOut(1000);
 }
 
 function makeDatesClickable(timelineSlider){
@@ -274,20 +306,20 @@ function makeDatesClickable(timelineSlider){
 function createSectionWatchers(timelineSlider){
     
     // Create watchers (scroll monitors) for each date
-    var introWatcher = scrollMonitor.create($('#intro'));
-    var d1776Watcher = scrollMonitor.create($('#1776'));
-    var d1787Watcher = scrollMonitor.create($('#1787'));
-    var d1791Watcher = scrollMonitor.create($('#1791'));
-    var d1803Watcher = scrollMonitor.create($('#1803'));
-    var d1814Watcher = scrollMonitor.create($('#1814'));
-    var d1819Watcher = scrollMonitor.create($('#1819'));
-    var d1830Watcher = scrollMonitor.create($('#1830'));
-    var d1848Watcher = scrollMonitor.create($('#1848'));
-    var d1851Watcher = scrollMonitor.create($('#1851'));
-    var d1876Watcher = scrollMonitor.create($('#1876'));
-    var d1887Watcher = scrollMonitor.create($('#1887'));
-    var d1897Watcher = scrollMonitor.create($('#1897'));
-    var d1906Watcher = scrollMonitor.create($('#1906'));
+    var introWatcher = scrollMonitor.create($('#intro'), 1);
+    var d1776Watcher = scrollMonitor.create($('#1776'), 1);
+    var d1787Watcher = scrollMonitor.create($('#1787'), 1);
+    var d1791Watcher = scrollMonitor.create($('#1791'), 1);
+    var d1803Watcher = scrollMonitor.create($('#1803'), 1);
+    var d1814Watcher = scrollMonitor.create($('#1814'), 1);
+    var d1819Watcher = scrollMonitor.create($('#1819'), 1);
+    var d1830Watcher = scrollMonitor.create($('#1830'), 1);
+    var d1848Watcher = scrollMonitor.create($('#1848'), 1);
+    var d1851Watcher = scrollMonitor.create($('#1851'), 1);
+    var d1876Watcher = scrollMonitor.create($('#1876'), 1);
+    var d1887Watcher = scrollMonitor.create($('#1887'), 1);
+    var d1897Watcher = scrollMonitor.create($('#1897'), 1);
+    var d1906Watcher = scrollMonitor.create($('#1906'), 1);
 
     // Add watch events to move timeline to corresponding date
     
@@ -344,62 +376,6 @@ function createSectionWatchers(timelineSlider){
     });
     
     d1906Watcher.fullyEnterViewport(function () {
-        slideToDate(1906, timelineSlider);
-    });
-    
-    introWatcher.enterViewport(function () {
-        slideToDate(1775, timelineSlider);
-    });
-    
-    d1776Watcher.enterViewport(function () {
-        slideToDate(1776, timelineSlider);
-    });
-    
-    d1787Watcher.enterViewport(function () {
-        slideToDate(1787, timelineSlider);
-    });
-    
-    d1791Watcher.enterViewport(function () {
-        slideToDate(1791, timelineSlider);
-    });
-    
-    d1803Watcher.enterViewport(function () {
-        slideToDate(1803, timelineSlider);
-    });
-    
-    d1814Watcher.enterViewport(function () {
-        slideToDate(1814, timelineSlider);
-    });
-    
-    d1819Watcher.enterViewport(function () {
-        slideToDate(1819, timelineSlider);
-    });
-    
-    d1830Watcher.enterViewport(function () {
-        slideToDate(1830, timelineSlider);
-    });
-    
-    d1848Watcher.enterViewport(function () {
-        slideToDate(1848, timelineSlider);
-    });
-    
-    d1851Watcher.enterViewport(function () {
-        slideToDate(1851, timelineSlider);
-    });
-    
-    d1876Watcher.enterViewport(function () {
-        slideToDate(1876, timelineSlider);
-    });
-    
-    d1887Watcher.enterViewport(function () {
-        slideToDate(1887, timelineSlider);
-    });
-    
-    d1897Watcher.enterViewport(function () {
-        slideToDate(1897, timelineSlider);
-    });
-    
-    d1906Watcher.enterViewport(function () {
         slideToDate(1906, timelineSlider);
     });
 }

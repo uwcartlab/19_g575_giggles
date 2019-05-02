@@ -90,6 +90,46 @@ article.container {
     height: 100vh;
 }
 
+#disclaimerLink{
+    display: inline-block;
+    color: rgb(0,125,174);
+    cursor: pointer;
+}
+
+#disclaimer{
+    display: block;
+    height: 30vh;
+    width: 35vw;
+    top: 35vh;
+    left: 32.5vw;
+    z-index: 9005;
+    position: fixed;
+    text-align: center;
+    background-color: #FFF;
+    border-radius: 25px;
+    font-family: sans-serif;   
+}
+
+#xOut{
+    float: right;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    padding-right: 1vw;
+    padding-top: 1vh;
+    cursor: pointer;
+}
+
+#disclaimerBackground{
+    height: 100vh;
+    width: 100vw;
+    display: block;
+    position: fixed;
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 9004;
+}
+
 /* HTML STYLING */
 
 /* Defines a horizontal center for leaflet controls */ 
