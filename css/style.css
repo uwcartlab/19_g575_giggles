@@ -85,6 +85,11 @@ article.container {
 
 }
 
+.event{
+    display: inline-block;
+    height: 100vh;
+}
+
 /* HTML STYLING */
 
 /* Defines a horizontal center for leaflet controls */ 

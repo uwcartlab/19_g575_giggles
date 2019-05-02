@@ -91,7 +91,6 @@ function ajaxCompleted(map){
 function makeDatesClickable(timelineSlider){
     
     // Set a click event for each date to scroll to the corresponding div
-    // NOTE: A few events needed an extra "+1" to be noticed by the scroll monitor
     
     document.getElementById('date-1776').addEventListener("click", function(){
 
@@ -103,7 +102,7 @@ function makeDatesClickable(timelineSlider){
     document.getElementById('date-1787').addEventListener("click", function(){
 
         $('html, body').animate({
-            scrollTop: $('#1787').offset().top + 1
+            scrollTop: $('#1787').offset().top
         }, 1000);
 
     });
@@ -124,7 +123,7 @@ function makeDatesClickable(timelineSlider){
     document.getElementById('date-1814').addEventListener("click", function(){
 
         $('html, body').animate({
-            scrollTop: $('#1814').offset().top + 1
+            scrollTop: $('#1814').offset().top
         }, 1000);
 
     });
@@ -145,7 +144,7 @@ function makeDatesClickable(timelineSlider){
     document.getElementById('date-1848').addEventListener("click", function(){
 
         $('html, body').animate({
-            scrollTop: $('#1848').offset().top + 1
+            scrollTop: $('#1848').offset().top
         }, 1000);
 
     });
@@ -185,6 +184,91 @@ function makeDatesClickable(timelineSlider){
 
     });
     
+    
+    // Add mouseover events to underline the dates when hovered
+    
+    document.getElementById('date-1776').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1787').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1791').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1803').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1814').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1819').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1830').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1848').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1851').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1876').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1887').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1897').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    document.getElementById('date-1906').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
+    
+    // Add mouseout events to return the sytling to normal
+    
+    document.getElementById('date-1776').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1787').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1791').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1803').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1814').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1819').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1830').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1848').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1851').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1876').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1887').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1897').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    document.getElementById('date-1906').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
+    
 }
 
 function createSectionWatchers(timelineSlider){
@@ -208,8 +292,7 @@ function createSectionWatchers(timelineSlider){
     // Add watch events to move timeline to corresponding date
     
     introWatcher.fullyEnterViewport(function () {
-        //console.log('intro');
-        //console.log(timelineSlider);
+        slideToDate(1775, timelineSlider);
     });
     
     d1776Watcher.fullyEnterViewport(function () {
@@ -261,6 +344,62 @@ function createSectionWatchers(timelineSlider){
     });
     
     d1906Watcher.fullyEnterViewport(function () {
+        slideToDate(1906, timelineSlider);
+    });
+    
+    introWatcher.enterViewport(function () {
+        slideToDate(1775, timelineSlider);
+    });
+    
+    d1776Watcher.enterViewport(function () {
+        slideToDate(1776, timelineSlider);
+    });
+    
+    d1787Watcher.enterViewport(function () {
+        slideToDate(1787, timelineSlider);
+    });
+    
+    d1791Watcher.enterViewport(function () {
+        slideToDate(1791, timelineSlider);
+    });
+    
+    d1803Watcher.enterViewport(function () {
+        slideToDate(1803, timelineSlider);
+    });
+    
+    d1814Watcher.enterViewport(function () {
+        slideToDate(1814, timelineSlider);
+    });
+    
+    d1819Watcher.enterViewport(function () {
+        slideToDate(1819, timelineSlider);
+    });
+    
+    d1830Watcher.enterViewport(function () {
+        slideToDate(1830, timelineSlider);
+    });
+    
+    d1848Watcher.enterViewport(function () {
+        slideToDate(1848, timelineSlider);
+    });
+    
+    d1851Watcher.enterViewport(function () {
+        slideToDate(1851, timelineSlider);
+    });
+    
+    d1876Watcher.enterViewport(function () {
+        slideToDate(1876, timelineSlider);
+    });
+    
+    d1887Watcher.enterViewport(function () {
+        slideToDate(1887, timelineSlider);
+    });
+    
+    d1897Watcher.enterViewport(function () {
+        slideToDate(1897, timelineSlider);
+    });
+    
+    d1906Watcher.enterViewport(function () {
         slideToDate(1906, timelineSlider);
     });
 }
