@@ -4,7 +4,7 @@ html, body {
     margin: 0;
 }
 #intropage {
-    background-image: url(../img/intro.jpg);
+    background-image: url(../images/HeaderImage.jpg);
     background-position: 0% 0%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -83,6 +83,11 @@ article.container {
 #title{
     color: #DC143C;
 
+}
+
+.event{
+    display: inline-block;
+    height: 100vh;
 }
 
 /* HTML STYLING */
