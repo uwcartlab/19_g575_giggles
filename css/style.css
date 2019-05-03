@@ -155,6 +155,7 @@ article.container {
 .event{
     display: inline-block;
     height: 100vh;
+    padding-right: 0vw;
 }
 
 #info-pane{
@@ -184,121 +185,75 @@ article.container {
 /*///////////////////////////////////////////////////*/
 
 
-#date-1776{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1776-{
     top: 1.1vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1787{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1787-{
     top: 9.3vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1791{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
-    top: 12.3vh;
-    z-index: 9001;
-    cursor: pointer;
+#date-1791-{
+    top: 12.2vh;
 }
 
-#date-1803{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1803-{
     top: 21.2vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1814{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1814-{
     top: 29.4vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1819{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1819-{
     top: 33.1vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1830{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1830-{
     top: 41.3vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1848{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1848-{
     top: 54.7vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1851{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1851-{
     top: 57.0vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1876{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1876-{
     top: 75.7vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1887{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1887-{
     top: 83.9vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
-#date-1897{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
+#date-1897-{
     top: 91.3vh;
+}
+
+#date-1906-{
+    top: 98.1vh;
+}
+
+.timelineEntries {
+    margin: 0;
+    position: fixed;
+    right: 71.32vw;
     z-index: 9001;
     cursor: pointer;
 }
 
-#date-1906{
-    margin: 0;
-    position: fixed;
-    right: 71.32vw;
-    top: 98.1vh;
-    z-index: 9001;
-    cursor: pointer;
+.timelinePointers {
+    display: inline;
+    font-size: 1em;
+    text-shadow: -3px 0px 3px white, 0px 1px 2px white, 3px 0px 3px white, 0px -1px 2px white;
+}
+.timelineDates {
+    float: left;
+    display: inline;
+    font-weight: bold;
 }
 
 /*//////////////Stylize Disclaimer ///////////////////*/
@@ -312,16 +267,23 @@ article.container {
 
 #disclaimer{
     display: block;
-    height: 30vh;
-    width: 35vw;
+    /*height: 26vh;
+    width: 35vw;*/
     top: 35vh;
     left: 32.5vw;
     z-index: 9005;
     position: fixed;
     text-align: center;
-    background-color: #FFF;
+    background-color: #414142;
     border-radius: 25px;
     font-family: sans-serif;   
+    color: #DC143C;
+    text-shadow: 2px 2px 2px black;
+}
+
+#disclaimerContent{
+    color:  #d8d8d8;
+    padding: 0px 12px 5px 12px;
 }
 
 #xOut{
@@ -332,6 +294,8 @@ article.container {
     padding-right: 1vw;
     padding-top: 1vh;
     cursor: pointer;
+    color: black;
+    text-shadow: none;
 }
 
 #disclaimerBackground{
