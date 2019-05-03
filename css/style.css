@@ -182,118 +182,61 @@ article.container {
 
 
 #date-1776-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 1.1vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1787-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 9.3vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1791-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
-    top: 12.3vh;
-    z-index: 9001;
-    cursor: pointer;
+    top: 12.2vh;
 }
 
 #date-1803-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 21.2vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1814-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 29.4vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1819-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 33.1vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1830-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 41.3vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1848-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 54.7vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1851-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 57.0vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1876-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 75.7vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1887-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 83.9vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1897-{
-    margin: 0;
-    position: fixed;
-    right: 71.20vw;
     top: 91.3vh;
-    z-index: 9001;
-    cursor: pointer;
 }
 
 #date-1906-{
+    top: 98.1vh;
+}
+
+.timelineEntries {
     margin: 0;
     position: fixed;
-    right: 71.20vw;
-    top: 98.1vh;
+    right: 71.32vw;
     z-index: 9001;
     cursor: pointer;
 }
@@ -320,14 +263,14 @@ article.container {
 
 #disclaimer{
     display: block;
-    height: 26vh;
-    width: 35vw;
+    /*height: 26vh;
+    width: 35vw;*/
     top: 35vh;
     left: 32.5vw;
     z-index: 9005;
     position: fixed;
     text-align: center;
-    background-color: rgb(152, 152, 152);
+    background-color: #414142;
     border-radius: 25px;
     font-family: sans-serif;   
     color: #DC143C;
@@ -335,7 +278,8 @@ article.container {
 }
 
 #disclaimerContent{
-color:  #d8d8d8;
+    color:  #d8d8d8;
+    padding: 0px 12px 5px 12px;
 }
 
 #xOut{
