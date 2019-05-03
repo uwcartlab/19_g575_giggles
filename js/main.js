@@ -657,12 +657,10 @@ function createLegend(map){
                 //Start attribute legend div string to further be manipulated below 
                 var div = L.DomUtil.create('div', 'attribute-legend');
                     categories = ['Native Land','Searched Native Land'];
-                    symbols=['../images/NativeLand.svg','../images/SelectedTribe.svg',]
-                // Add labels and images to legend with year benchmark
-                //div.innerHTML += '<p id=title><strong>LEGEND: 1775 </strong></p>'
+                    symbols=['images/NativeLand.svg','images/SelectedTribe.svg',]
 
                 for (var i = 0; i < symbols.length; i++) {
-                    div.innerHTML += "<p>" + categories[i] + "</p>" + (" <img src="+ symbols[i] +" height='100' width='100'>");
+                    div.innerHTML += "<p>" + categories[i] + "</p>" + (" <img id='small' src="+ symbols[i] +" height='75' width='75'>");
                 };
             //Add attribute legend to container
             $(container).append(div);

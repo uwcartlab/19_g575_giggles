@@ -2,7 +2,13 @@
 html, body {
     background-color: #414142;
     margin: 0;
+    height: 100%;
+    overflow-y: scroll;
 }
+
+/*//////////////Stylize intro page///////////////////*/
+/*///////////////////////////////////////////////////*/
+
 #intropage {
     background-image: url(../images/HeaderImage.jpg);
     background-position: 0% 0%;
@@ -18,11 +24,11 @@ html, body {
     margin: 0;
     position: relative;
 }
+
 #intropage h1 {
     font-family: 'Rubik', sans-serif;
     font-size: 5em;
     text-shadow: 3px 3px 3px black;
-
 }
 
 #intropage h2{
@@ -30,7 +36,6 @@ html, body {
     text-shadow: 2px 2px 2px black;
     font-family: 'Rubik', sans-serif;
     margin-bottom: 1vh;
-
 }
 
 #intropage h3{
@@ -38,23 +43,19 @@ html, body {
     color: white;
     text-shadow: 2px 2px 2px #DC143C;
     font-family: 'Sanchez', serif;
-
-    
-
 }
+
 #intropage p{
     font-size: 1.25em;
     color: white;
     text-shadow: 2px 2px 2px #DC143C;
     font-family: 'Sanchez', serif;
-
-
-
 }
 
 #source{
 font-size: .9em !important;
 }
+
 #container{
     overflow:hidden;
     position: absolute;
@@ -65,27 +66,37 @@ font-size: .9em !important;
     padding-left: 2.5vw;
     padding-bottom: 5vh;
 }
+
 #right{
     float:right;
     padding-top: 25vh;
     padding-right: 2.5vw;
-
 }
 
 #clear{
     float:left;
     padding-top: 15vh;
     padding-left: 2.5vw;
-
 }
+
+/*//////////////Stylize InfoPanel ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
+
+section div img {
+    margin-top:20px;
+}
+
+section div p {
+    margin-top:20px;
+}
+
 
 img { 
   width: 100%; 
-  height: auto;
-  
+  height: auto;  
 }
 
-/* HTML STLYING */
 #wrapper {
   position:absolute;
   height:100%;
@@ -104,7 +115,6 @@ article.container {
   width: 100%;
   max-width: 600px;
   float: left;
-
 }
 
 .article_paragraph {
@@ -117,75 +127,28 @@ article.container {
 }
 
 #date{
-    font-size:2em;
-    color: #DC143C;
-
+    font-size:2.25em;
+    color: #DC143C; 
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+    margin-bottom: 0;
 }
 
 #title{
     color: #DC143C;
+    text-align: center;
+    font-size: 2em;
+    text-shadow: 2px 2px 2px black;
+    margin-bottom: 0;
+    margin-top: 10px;
+
+
 
 }
 
 .event{
     display: inline-block;
     height: 100vh;
-}
-
-#disclaimerLink{
-    display: inline-block;
-    color: rgb(0,125,174);
-    cursor: pointer;
-}
-
-#disclaimer{
-    display: block;
-    height: 30vh;
-    width: 35vw;
-    top: 35vh;
-    left: 32.5vw;
-    z-index: 9005;
-    position: fixed;
-    text-align: center;
-    background-color: #FFF;
-    border-radius: 25px;
-    font-family: sans-serif;   
-}
-
-#xOut{
-    float: right;
-    font-weight: bold;
-    font-family: sans-serif;
-    font-size: 1.5em;
-    padding-right: 1vw;
-    padding-top: 1vh;
-    cursor: pointer;
-}
-
-#disclaimerBackground{
-    height: 100vh;
-    width: 100vw;
-    display: block;
-    position: fixed;
-    background-color: #000;
-    opacity: 0.7;
-    z-index: 9004;
-}
-
-/* HTML STYLING */
-
-/* Defines a horizontal center for leaflet controls */ 
-.leaflet-verticalcenter {
-    position: absolute;
-    z-index: 1000;
-    pointer-events: none;
-    top: 50%; /* possible because the placeholder's parent is the map */
-    transform: translate(-23%, -50%); /* using the CSS3 Transform technique */
-    padding-top: 10px;
-}
-
-.leaflet-verticalcenter .leaflet-control {
-    margin-bottom: 10px;
 }
 
 #info-pane{
@@ -195,7 +158,6 @@ article.container {
     display: inline-block;
     float: left;
     background-color: #414142;
-    
 }
 
 #dates-container{
@@ -211,6 +173,10 @@ article.container {
 #filler{
     height:110vh;
 }
+
+/*//////////////Stylize Events ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
 
 #date-1776{
     margin: 0;
@@ -329,6 +295,66 @@ article.container {
     cursor: pointer;
 }
 
+/*//////////////Stylize Disclaimer ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
+#disclaimerLink{
+    display: inline-block;
+    color: rgb(0,125,174);
+    cursor: pointer;
+}
+
+#disclaimer{
+    display: block;
+    height: 30vh;
+    width: 35vw;
+    top: 35vh;
+    left: 32.5vw;
+    z-index: 9005;
+    position: fixed;
+    text-align: center;
+    background-color: #FFF;
+    border-radius: 25px;
+    font-family: sans-serif;   
+}
+
+#xOut{
+    float: right;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    padding-right: 1vw;
+    padding-top: 1vh;
+    cursor: pointer;
+}
+
+#disclaimerBackground{
+    height: 100vh;
+    width: 100vw;
+    display: block;
+    position: fixed;
+    background-color: #000;
+    opacity: 0.7;
+    z-index: 9004;
+}
+
+
+/*//////////////Stylize Leaflet Objects ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
+.leaflet-verticalcenter {
+    position: absolute;
+    z-index: 1000;
+    pointer-events: none;
+    top: 50%; /* possible because the placeholder's parent is the map */
+    transform: translate(-23%, -50%); /* using the CSS3 Transform technique */
+    padding-top: 10px;
+}
+
+.leaflet-verticalcenter .leaflet-control {
+    margin-bottom: 10px;
+}
+
 #timelineSlider{
     padding-left: 0px;
     margin-bottom: 100px; 
@@ -343,7 +369,6 @@ article.container {
     position: fixed;
     top: 0px;
     z-index: -99;
-    
 }
 
 .leaflet-tile{
@@ -352,13 +377,6 @@ article.container {
 
 .leaflet-top{
     margin-left: 50px;
-}
-
-/*Fill up all screen real-esate*/
-html,body{
-    margin: 0;
-    height: 100%;
-    overflow-y: scroll;
 }
 
 /*Format Popup*/
@@ -371,7 +389,9 @@ html,body{
 
 .leaflet-popup{ pointer-events: none; }
 
-/*Format Legend*/
+/*//////////////Stylize Legend ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
 .legend-control-container {
     color: rgb(85, 85, 85);
     background: white;
@@ -380,7 +400,6 @@ html,body{
     width: 200px;
     font-family: 'Sanchez', serif;
     font-size: 1.25em;
-
 }
 
 .attribute-legend p{
@@ -388,11 +407,13 @@ html,body{
     margin: 0;
     font-family: 'Sanchez', serif;
     margin-bottom:0;
-
-
 }
 
 #legend-title{
     margin-bottom: 10px !important;
     font-size: .9em;
+}
+
+#small{
+    width:50%;
 }
