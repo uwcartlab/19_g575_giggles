@@ -89,6 +89,7 @@ section div img {
 
 section div p {
     margin-top:20px;
+    font-size:1.25em;
 }
 
 
@@ -300,7 +301,7 @@ article.container {
 
 #disclaimerLink{
     display: inline-block;
-    color: rgb(0,125,174);
+    color:white;
     cursor: pointer;
 }
 
@@ -388,6 +389,14 @@ article.container {
 }
 
 .leaflet-popup{ pointer-events: none; }
+
+.leaflet-container .leaflet-control-attribution{
+        background: rgba(255, 255, 255, 0.0) !important;
+        color:white !important;
+}
+.leaflet-container .leaflet-control-attribution a{
+    color:white;
+}
 
 /*//////////////Stylize Legend ///////////////////*/
 /*///////////////////////////////////////////////////*/

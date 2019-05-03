@@ -578,7 +578,7 @@ function createTimeline(map){
         collapsed: false,
         orientation: 'vertical',
         syncSlider: true,
-        showValue: false
+        showValue: false,
         }).addTo(map);
     
     return timelineSlider;
