@@ -401,9 +401,10 @@ function updateSlider(timelineSlider){
         timelineSlider.slider.value--;
     }
     // Update everything with the new slider value
-    updateLegend(timelineSlider.slider.value)
     updateLayerGroups(timelineSlider.slider.value);
     prevYear = timelineSlider.slider.value;
+    updateLegend(timelineSlider.slider.value)
+
     // If we have not reached our end date yet, call this function again
     // with a 10 millisecond delay
     if(timelineSlider.slider.value != endDate){
@@ -561,8 +562,6 @@ function createTimeline(map){
     var timelineSlider = L.control.slider(function(value) {
         // Put function calls that use the slider value here
             updateLayerGroups(value);
-            updateLegend(value)
-
             prevYear = value;
         // Update the endDate global variable if someone manually changes the timeline value
         endDate = value;
@@ -673,10 +672,11 @@ function createLegend(map){
 //Function: Update the legend with new attribute//
 function updateLegend(value){
     //Create Content for legend using the year and text
+    console.log(value)
     if(value==1775){
         var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  0 + '%'
         '</strong></p>'
-    
+        
     } else{
 	var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  parseInt((landLost-landGained)/(area)*(100)) + '%'
     '</strong></p>'}
