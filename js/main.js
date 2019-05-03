@@ -27,6 +27,8 @@ var landGained=0;
 //Function: Initialize map
 function createMap(){
     //TODO: Make this work better
+    window.scrollTo(0,0);
+    
     
     //Set Max bounds for map to limit panning
     var bounds = [[51.3457868, -62.9513812],
@@ -86,15 +88,13 @@ function ajaxCompleted(map){
     makeDatesClickable(timelineSlider);
     
     addDisclaimer();
-    //$('#disclaimer').fadeOut(1);
-    //$('#disclaimerBackground').fadeOut(1); 
+ 
     
 }
 
 function addDisclaimer(){
     $('#disclaimerLink').mouseover(function(){
         this.style.textDecoration = "underline";
-        console.log("test");
     });
     $('#disclaimerLink').mouseout(function(){
         this.style.textDecoration = "initial";
@@ -671,7 +671,7 @@ function createLegend(map){
 //Function: Update the legend with new attribute//
 function updateLegend(value){
     //Create Content for legend using the year and text
-    console.log(value)
+
     if(value==1775){
         var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  0 + '%'
         '</strong></p>'
@@ -685,4 +685,4 @@ function updateLegend(value){
     
 
 
-$(document).ready(function(){$(window).scrollTop(0);createMap;});
+$(document).ready(createMap);
