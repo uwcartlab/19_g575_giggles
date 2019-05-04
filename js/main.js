@@ -88,7 +88,6 @@ function ajaxCompleted(map){
     makeDatesClickable(timelineSlider);
     
     addDisclaimer();
- 
     
 }
 
@@ -473,8 +472,6 @@ function processData(data, map){
         onEachFeature: onEachFeature
     });
 
-    
-    
 };
 
 
@@ -531,8 +528,9 @@ function addSearch(map){
     // Add search control to map
     var controlSearch = new L.Control.Search({
         position: 'topright',
-        layer: searchedLayer,
-        collapsed: false
+        layer: dataLayer,
+        collapsed: false,
+        propertyName: 'Nation_Cor'
     })
     map.addControl(controlSearch);
 }
@@ -561,6 +559,7 @@ function createTimeline(map){
     var timelineSlider = L.control.slider(function(value) {
         // Put function calls that use the slider value here
             updateLayerGroups(value);
+            updateLegend(value);
             prevYear = value;
         // Update the endDate global variable if someone manually changes the timeline value
         endDate = value;
@@ -681,8 +680,6 @@ function updateLegend(value){
     '</strong></p>'}
 	//Replace legend content with updated content
 	$('#temporal-legend').html(content);
-};
-    
-
+};   
 
 $(document).ready(createMap);

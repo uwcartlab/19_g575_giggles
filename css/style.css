@@ -27,19 +27,19 @@ html, body {
 
 #intropage h1 {
     font-family: 'Rubik', sans-serif;
-    font-size: 5em;
+    font-size: 4em;
     text-shadow: 3px 3px 3px black;
 }
 
 #intropage h2{
-    font-size: 3em;
+    font-size: 2em;
     text-shadow: 2px 2px 2px black;
     font-family: 'Rubik', sans-serif;
     margin-bottom: 1vh;
 }
 
 #intropage h3{
-    font-size: 2em;
+    font-size: 1.75em;
     color: white;
     text-shadow: 2px 2px 2px #DC143C;
     font-family: 'Sanchez', serif;
