@@ -626,7 +626,7 @@ function filter(feature) {
     var layer = e.target;
     layer.setStyle({
         //weight: 5,
-        fillColor: '#999',
+        fillColor: '#DC143C',
         dashArray: '',
         fillOpacity: 1
     });
