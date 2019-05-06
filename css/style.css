@@ -111,7 +111,10 @@ img {
 }
 
 a {
+  font-size: 1.1em !important;
   color: #DC143C;
+  font-style: italic;
+  text-shadow: 3px 3px 3px black;
 }
 
 
