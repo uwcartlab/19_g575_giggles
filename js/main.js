@@ -473,7 +473,6 @@ function processData(data, map){
         style: myStyle,
         onEachFeature: onEachFeature
     });
-    console.log(sum)
 };
 
 
@@ -541,6 +540,14 @@ function addSearch(map){
         propertyName: 'Nation_Cor'
     })
     map.addControl(controlSearch);
+    
+    var searchControl = L.control.fuseSearch();
+    searchControl.addTo(map);
+    
+    jQuery.getJSON("data/NativeLand1880On.geojson", function(data) {
+
+        searchControl.indexFeatures(data.features, ['Nation_Cor']);
+    });
 }
 
 //Function: to create the sequence controls for the interactive timeline//
@@ -620,6 +627,8 @@ function onEachFeature(feature, layer) {
             yearMap.set(feature.properties.Year_value, [layer]);
         }
     }
+    
+    feature.layer = layer;
 };
 
 function filter(feature) {
