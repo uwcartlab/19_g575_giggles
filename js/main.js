@@ -23,7 +23,6 @@ var area=6741197.56764674;
 var landLost=0;
 var endDate=1775;
 var landGained=0;
-var sum=0;
 
 //Function: Initialize map
 function createMap(){
@@ -473,7 +472,6 @@ function processData(data, map){
         style: myStyle,
         onEachFeature: onEachFeature
     });
-    console.log(sum)
 };
 
 
@@ -528,18 +526,37 @@ function updateLayerGroups(selectedYear){
     
 };
 
+//Nation is the key
+
+
 function addSearch(map){
-    
     // Layer to contain searched elements
     var searchedLayer = new L.LayerGroup();
     // Add search control to map
-    //console.log(dataLayer._layers)
+    var test = new L.featureGroup();
+    map.addLayer(test);
     var controlSearch = new L.Control.Search({
         position: 'topright',
         layer: dataLayer,
+        marker: false,
+        initial:false,
         collapsed: false,
-        propertyName: 'Nation_Cor'
-    })
+        propertyName: 'Nation_Cor',
+        //580-583: Determing the lat long of the layers
+        //873 What locaion returns
+    });
+    controlSearch.on('search:locationfound', function(e) {
+		e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+		if(e.layer._popup)
+			e.layer.openPopup();
+
+	}).on('search:collapsed', function(e) {
+
+		featuresLayer.eachLayer(function(layer) {	//restore feature color
+			featuresLayer.resetStyle(layer);
+		});	
+    });
+    
     map.addControl(controlSearch);
 }
 
@@ -596,7 +613,6 @@ function onEachFeature(feature, layer) {
         //Create responsive popup that cannot extend beyond borders
         var popup=L.responsivePopup({offset: [25,25], autoPanPadding: [40,40], hasTip: false }).setContent(popupContent);
         layer.bindPopup(popup)
-        sum+=feature.properties.Square_Mil
     };
     // Add event listeners to open the popup on hover
     layer.on({
