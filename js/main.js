@@ -19,10 +19,11 @@ var map;
 //The data layers 
 var dataLayer;
 //Area value
-var area=1597786.476;
+var area=6741197.56764674;
 var landLost=0;
 var endDate=1775;
 var landGained=0;
+var sum=0;
 
 //Function: Initialize map
 function createMap(){
@@ -471,7 +472,7 @@ function processData(data, map){
         style: myStyle,
         onEachFeature: onEachFeature
     });
-
+    console.log(sum)
 };
 
 
@@ -495,7 +496,9 @@ function updateLayerGroups(selectedYear){
     if (selectedYear > prevYear) {
         for(i = 0; i < keys.length; i++) {
             if (keys[i] > prevYear && keys[i] <= selectedYear) {
-                landLost += layerGroups.get(keys[i]).getLayers()[0].feature.properties.Square_Mil;
+                for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
+                    landLost += layerGroups.get(keys[i]).getLayers()[j].feature.properties.Square_Mil
+                };
                 map.removeLayer(layerGroups.get(keys[i]));
             }
         }
@@ -503,7 +506,9 @@ function updateLayerGroups(selectedYear){
     } else if (selectedYear < prevYear) {
         for(i = 0; i < keys.length; i++) {
             if (keys[i] <= prevYear && keys[i] > selectedYear) {
-                landGained += layerGroups.get(keys[i]).getLayers()[0].feature.properties.Square_Mil;
+                for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
+                    landGained += layerGroups.get(keys[i]).getLayers()[j].feature.properties.Square_Mil
+                };
                 map.addLayer(layerGroups.get(keys[i]));
                 //layerGroups.get(keys[i]).bringToFront();
             }
@@ -518,6 +523,7 @@ function updateLayerGroups(selectedYear){
             //layerGroups.get(keys[i]).bringToFront();
         }
     }
+
     
 };
 
@@ -526,6 +532,7 @@ function addSearch(map){
     // Layer to contain searched elements
     var searchedLayer = new L.LayerGroup();
     // Add search control to map
+    //console.log(dataLayer._layers)
     var controlSearch = new L.Control.Search({
         position: 'topright',
         layer: dataLayer,
@@ -588,6 +595,7 @@ function onEachFeature(feature, layer) {
         //Create responsive popup that cannot extend beyond borders
         var popup=L.responsivePopup({offset: [25,25], autoPanPadding: [40,40], hasTip: false }).setContent(popupContent);
         layer.bindPopup(popup)
+        sum+=feature.properties.Square_Mil
     };
     // Add event listeners to open the popup on hover
     layer.on({
