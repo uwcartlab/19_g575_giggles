@@ -530,53 +530,72 @@ function updateLayerGroups(selectedYear){
 
 function addSearch(map){
     
-    // Layer to contain searched elements
-    var searchedLayer = new L.LayerGroup();
-    // Add search control to map
-    var controlSearch = new L.Control.Search({
-        position: 'topright',
-        layer: dataLayer,
-        collapsed: false,
-        propertyName: 'Nation_Cor'
-    })
-    map.addControl(controlSearch);
+    // Create Clear Selection to remove all highlight from map
     
+    L.Control.ClearSelection = L.Control.extend({
+        onAdd: function(map) {
+            var myDiv = L.DomUtil.create('div');
+            myDiv.style.background = '#414142';
+            myDiv.style.textAlign = 'center';
+            myDiv.style.fontFamily = 'sans-serif'; 
+            myDiv.style.fontSize = '1.2em';
+            myDiv.style.color = '#f7f5f5';
+            myDiv.style.padding = '3px 7px 3px 7px';
+            myDiv.style.borderRadius = '25px';
+            myDiv.style.cursor= 'pointer';
+            
+            myDiv.innerHTML = 'Clear Selection &times '
+            
+            myDiv.addEventListener('click', function() {
+                resetHighlight();
+            })
+            
+            myDiv.addEventListener('mouseover', function() {
+                this.style.textDecoration = "underline";
+            })
+            myDiv.addEventListener('mouseout', function() {
+                this.style.textDecoration = "initial";
+            })
+            
+
+            return myDiv;
+        },
+
+        onRemove: function(map) {
+            // Nothing to do here
+        }
+    });
+    
+    L.control.clearselection = function(opts) {
+        return new L.Control.ClearSelection(opts);
+    }
+    
+    // Add Clear Selection to map
+    L.control.clearselection({ position: 'topright' }).addTo(map);
+    
+    // Add search control to map
     var searchControl = L.control.fuseSearch();
     searchControl.addTo(map);
     
-    console.log("layerGroups:");
-    console.log(layerGroups);
+    // Get properties from layer groups to perform search on
     
-    console.log("layerGroups.entries:");
-    console.log(layerGroups.entries());
-    
+    // Get keys for indexing
     var keys = Array.from(layerGroups.keys()).sort().reverse();
-    console.log("keys:");
-    console.log(keys);
-    
-    // TODO: Pass only active layers
-    
+    // Create array to hold feature properties
     var featureProps = [];
-    
+    // Iterate through layer groups
     for(i = 0; i < keys.length; i++) {
         for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
+            // Save the feature information for future use
             layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature = layerGroups.get(keys[i]).getLayers()[j].feature;
+            // Save the layer information for future use
             layerGroups.get(keys[i]).getLayers()[j].feature.properties.layer = layerGroups.get(keys[i]).getLayers()[j]
+            // Add the properties to our array
             featureProps.push(layerGroups.get(keys[i]).getLayers()[j].feature.properties);
         }
     }
-    
-    console.log("featureProps");
-    console.log(featureProps);
-    
-    
-    
+    // Pass the properties to the search function
     searchControl.indexFeatures(featureProps, ['Nation_Cor']);
-    /*
-    jQuery.getJSON("data/NativeLand1880On.geojson", function(data) {
-
-        searchControl.indexFeatures(data.features, ['Nation_Cor']);
-    });*/
 }
 
 //Function: to create the sequence controls for the interactive timeline//
@@ -641,7 +660,7 @@ function onEachFeature(feature, layer) {
         dblclick: function(){
             window.open(feature.properties.LinkRoyce)
         },
-        mouseout: resetHighlight,
+        mouseout: deHighlight,
     });
     
     /*** Sorting data by year value ***/
@@ -671,20 +690,38 @@ function filter(feature) {
  //Function: highlight enumeration units and bars//
  function highlightFeature(e) {
     var layer = e.target;
+
+    layer.options.oldFillColor = layer._path.attributes.fill.value;
     layer.setStyle({
         //weight: 5,
         fillColor: '#DC143C',
         dashArray: '',
         fillOpacity: 1
     });
+     
 
     this.openPopup()
 }
 
 //Function: dehighlight regions//
-function resetHighlight(e) {
+function deHighlight(e) {
     this.closePopup()
-    dataLayer.resetStyle(e.target);
+    var layer = e.target;
+    layer.setStyle({
+        fillColor: layer.options.oldFillColor
+    });
+}
+
+function resetHighlight() {
+    // Create an array of the key values in reverse
+    var keys = Array.from(layerGroups.keys()).sort().reverse();
+    // Iterate through layers
+    for(i = 0; i < keys.length; i++) {
+        for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
+            dataLayer.resetStyle(layerGroups.get(keys[i]).getLayers()[j]);
+        }
+
+    }
 }
 
 //Function: create legend//
