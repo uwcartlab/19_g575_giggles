@@ -76,6 +76,7 @@ function createMap(){
 //Function: Add barebones to map//
 function ajaxCompleted(map){
     createLayerGroups();
+    
     // Create the sequence slider
     var timelineSlider = createTimeline(map);
     addSearch(map);
@@ -530,34 +531,73 @@ function updateLayerGroups(selectedYear){
 
 
 function addSearch(map){
-    // Layer to contain searched elements
-    var searchedLayer = new L.LayerGroup();
-    // Add search control to map
-    var test = new L.featureGroup();
-    map.addLayer(test);
-    var controlSearch = new L.Control.Search({
-        position: 'topright',
-        layer: dataLayer,
-        marker: false,
-        initial:false,
-        collapsed: false,
-        propertyName: 'Nation_Cor',
-        //580-583: Determing the lat long of the layers
-        //873 What locaion returns
-    });
-    controlSearch.on('search:locationfound', function(e) {
-		e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
-		if(e.layer._popup)
-			e.layer.openPopup();
+    
+    // Create Clear Selection to remove all highlight from map
+    
+    L.Control.ClearSelection = L.Control.extend({
+        onAdd: function(map) {
+            var myDiv = L.DomUtil.create('div');
+            myDiv.style.background = '#414142';
+            myDiv.style.textAlign = 'center';
+            myDiv.style.fontFamily = 'sans-serif'; 
+            myDiv.style.fontSize = '1.2em';
+            myDiv.style.color = '#f7f5f5';
+            myDiv.style.padding = '3px 7px 3px 7px';
+            myDiv.style.borderRadius = '25px';
+            myDiv.style.cursor= 'pointer';
+            
+            myDiv.innerHTML = 'Clear Selection &times '
+            
+            myDiv.addEventListener('click', function() {
+                resetHighlight();
+            })
+            
+            myDiv.addEventListener('mouseover', function() {
+                this.style.textDecoration = "underline";
+            })
+            myDiv.addEventListener('mouseout', function() {
+                this.style.textDecoration = "initial";
+            })
+            
 
-	}).on('search:collapsed', function(e) {
+            return myDiv;
+        },
 
-		featuresLayer.eachLayer(function(layer) {	//restore feature color
-			featuresLayer.resetStyle(layer);
-		});	
+        onRemove: function(map) {
+            // Nothing to do here
+        }
     });
     
-    map.addControl(controlSearch);
+    L.control.clearselection = function(opts) {
+        return new L.Control.ClearSelection(opts);
+    }
+    
+    // Add Clear Selection to map
+    L.control.clearselection({ position: 'topright' }).addTo(map);
+    
+    // Add search control to map
+    var searchControl = L.control.fuseSearch();
+    searchControl.addTo(map);
+    
+    // Get properties from layer groups to perform search on
+    
+    // Get keys for indexing
+    var keys = Array.from(layerGroups.keys()).sort().reverse();
+    // Create array to hold feature properties
+    var featureProps = [];
+    // Iterate through layer groups
+    for(i = 0; i < keys.length; i++) {
+        for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
+            // Save the feature information for future use
+            layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature = layerGroups.get(keys[i]).getLayers()[j].feature;
+            // Save the layer information for future use
+            layerGroups.get(keys[i]).getLayers()[j].feature.properties.layer = layerGroups.get(keys[i]).getLayers()[j]
+            // Add the properties to our array
+            featureProps.push(layerGroups.get(keys[i]).getLayers()[j].feature.properties);
+        }
+    }
+    // Pass the properties to the search function
+    searchControl.indexFeatures(featureProps, ['Nation_Cor']);
 }
 
 //Function: to create the sequence controls for the interactive timeline//
@@ -621,7 +661,7 @@ function onEachFeature(feature, layer) {
         dblclick: function(){
             window.open(feature.properties.LinkRoyce)
         },
-        mouseout: resetHighlight,
+        mouseout: deHighlight,
     });
     
     /*** Sorting data by year value ***/
@@ -636,6 +676,8 @@ function onEachFeature(feature, layer) {
             yearMap.set(feature.properties.Year_value, [layer]);
         }
     }
+    
+    feature.layer = layer;
 };
 
 function filter(feature) {
@@ -649,20 +691,38 @@ function filter(feature) {
  //Function: highlight enumeration units and bars//
  function highlightFeature(e) {
     var layer = e.target;
+
+    layer.options.oldFillColor = layer._path.attributes.fill.value;
     layer.setStyle({
         //weight: 5,
         fillColor: '#DC143C',
         dashArray: '',
         fillOpacity: 1
     });
+     
 
     this.openPopup()
 }
 
 //Function: dehighlight regions//
-function resetHighlight(e) {
+function deHighlight(e) {
     this.closePopup()
-    dataLayer.resetStyle(e.target);
+    var layer = e.target;
+    layer.setStyle({
+        fillColor: layer.options.oldFillColor
+    });
+}
+
+function resetHighlight() {
+    // Create an array of the key values in reverse
+    var keys = Array.from(layerGroups.keys()).sort().reverse();
+    // Iterate through layers
+    for(i = 0; i < keys.length; i++) {
+        for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
+            dataLayer.resetStyle(layerGroups.get(keys[i]).getLayers()[j]);
+        }
+
+    }
 }
 
 //Function: create legend//

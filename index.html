@@ -11,7 +11,12 @@
         <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
         <script type="text/javascript" src="lib/leaflet-src.js"></script>
         <script type="text/javascript" src="lib/leaflet-slider.js"></script>
-        <link rel="stylesheet" href="css/leaflet-slider.css">
+        <link rel="stylesheet" href="css/leaflet-slider.css">=
+        <!-- Add fuse search -->
+        <script type="text/javascript" src="lib/fuse.js"></script>
+        <script type="text/javascript" src="lib/leaflet.fusesearch.js"></script>
+        <link rel="stylesheet" href="css/leaflet.fusesearch.css">
+        <!-- End fuse search -->
         <script src="lib/leaflet-providers.js"></script>
         <!--<script src="lib/require.js"></script>
         <script src="lib/scrollMonitor.js"></script>
@@ -29,7 +34,7 @@
         
         <div id = 'disclaimerBackground'></div>
         <div id = 'disclaimer'>
-            <div id = xOut>X</div>
+            <div id = xOut>&times;</div>
             <h1>Disclaimer</h1>
             <div id = 'disclaimerContent'>
                 This map is for visualization purposes only.  <br><br>
