@@ -112,8 +112,10 @@ img {
 
 a {
     color: #DC143C;
-  font-style: italic;
-text-decoration-line: none;
+    font-style: italic;
+    text-decoration-line: none;
+    text-shadow: 1px 1px 1px black;
+
 }
 a:hover{
     color: white;
@@ -267,6 +269,27 @@ article.container {
     font-weight: bold;
 }
 
+ul li{
+    list-style-type: square;
+}
+
+li a{
+    color:white;
+
+}
+
+li a:hover{
+    text-decoration-line: underline
+}
+
+.subtitle{
+    color: #DC143C;
+    text-shadow: 1px 1px 1px black;
+}
+
+sup{
+    font-size: .75em;
+}
 /*//////////////Stylize Disclaimer ///////////////////*/
 /*///////////////////////////////////////////////////*/
 
@@ -368,6 +391,10 @@ article.container {
     font-family: 'Rubik', sans-serif;
 }
 
+a.leaflet-popup-close-button {
+    color:white !important;
+    text-shadow: none !important;
+}
 .leaflet-popup{ pointer-events: none; }
 
 .leaflet-container .leaflet-control-attribution{
