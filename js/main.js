@@ -77,6 +77,7 @@ function createMap(){
 //Function: Add barebones to map//
 function ajaxCompleted(map){
     createLayerGroups();
+    
     // Create the sequence slider
     var timelineSlider = createTimeline(map);
     addSearch(map);
@@ -532,7 +533,6 @@ function addSearch(map){
     // Layer to contain searched elements
     var searchedLayer = new L.LayerGroup();
     // Add search control to map
-    //console.log(dataLayer._layers)
     var controlSearch = new L.Control.Search({
         position: 'topright',
         layer: dataLayer,
@@ -544,10 +544,39 @@ function addSearch(map){
     var searchControl = L.control.fuseSearch();
     searchControl.addTo(map);
     
+    console.log("layerGroups:");
+    console.log(layerGroups);
+    
+    console.log("layerGroups.entries:");
+    console.log(layerGroups.entries());
+    
+    var keys = Array.from(layerGroups.keys()).sort().reverse();
+    console.log("keys:");
+    console.log(keys);
+    
+    // TODO: Pass only active layers
+    
+    var featureProps = [];
+    
+    for(i = 0; i < keys.length; i++) {
+        for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
+            layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature = layerGroups.get(keys[i]).getLayers()[j].feature;
+            layerGroups.get(keys[i]).getLayers()[j].feature.properties.layer = layerGroups.get(keys[i]).getLayers()[j]
+            featureProps.push(layerGroups.get(keys[i]).getLayers()[j].feature.properties);
+        }
+    }
+    
+    console.log("featureProps");
+    console.log(featureProps);
+    
+    
+    
+    searchControl.indexFeatures(featureProps, ['Nation_Cor']);
+    /*
     jQuery.getJSON("data/NativeLand1880On.geojson", function(data) {
 
         searchControl.indexFeatures(data.features, ['Nation_Cor']);
-    });
+    });*/
 }
 
 //Function: to create the sequence controls for the interactive timeline//
