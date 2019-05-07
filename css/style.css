@@ -111,10 +111,15 @@ img {
 }
 
 a {
-  font-size: 1.1em !important;
-  color: #DC143C;
+    color: #DC143C;
   font-style: italic;
-  text-shadow: 3px 3px 3px black;
+text-decoration-line: none;
+}
+a:hover{
+    color: white;
+    text-decoration-line: none;
+
+
 }
 
 
@@ -224,6 +229,8 @@ article.container {
 #date-1851-{
     top: 57.0vh;
 }
+
+
 
 #date-1876-{
     top: 75.7vh;
