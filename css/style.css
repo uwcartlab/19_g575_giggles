@@ -395,6 +395,8 @@ sup{
 }
 .leaflet-slider{
     max-width: 99vh !important;
+    min-width: 99vh !important;
+
 
 }
 
