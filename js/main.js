@@ -167,6 +167,15 @@ function makeDatesClickable(timelineSlider){
             scrollTop: $('#1851').offset().top
         }, 1000);
     });
+    
+    document.getElementById('date-1871').addEventListener("click", function(){
+
+        $('html, body').animate({
+            scrollTop: $('#1871').offset().top
+        }, 1000);
+
+    });
+    document.getElementById('date-1876').addEventListener("click", function(){
 
     document.getElementById('date-1876').addEventListener("click", function(){
         $('html, body').animate({
@@ -221,6 +230,9 @@ function makeDatesClickable(timelineSlider){
     document.getElementById('date-1851').addEventListener("mouseover", function(){
         this.style.textDecoration = "underline";
     });
+    document.getElementById('date-1871').addEventListener("mouseover", function(){
+        this.style.textDecoration = "underline";
+    });
     document.getElementById('date-1876').addEventListener("mouseover", function(){
         this.style.textDecoration = "underline";
     });
@@ -262,6 +274,9 @@ function makeDatesClickable(timelineSlider){
     document.getElementById('date-1851').addEventListener("mouseout", function(){
         this.style.textDecoration = "initial";
     });
+    document.getElementById('date-1871').addEventListener("mouseout", function(){
+        this.style.textDecoration = "initial";
+    });
     document.getElementById('date-1876').addEventListener("mouseout", function(){
         this.style.textDecoration = "initial";
     });
@@ -289,6 +304,7 @@ function createSectionWatchers(timelineSlider){
     var d1830Watcher = scrollMonitor.create($('#1830'), 1);
     var d1848Watcher = scrollMonitor.create($('#1848'), 1);
     var d1851Watcher = scrollMonitor.create($('#1851'), 1);
+    var d1871Watcher = scrollMonitor.create($('#1871'), 1);
     var d1876Watcher = scrollMonitor.create($('#1876'), 1);
     var d1887Watcher = scrollMonitor.create($('#1887'), 1);
     var d1897Watcher = scrollMonitor.create($('#1897'), 1);
@@ -334,7 +350,9 @@ function createSectionWatchers(timelineSlider){
     d1851Watcher.fullyEnterViewport(function () {
         slideToDate(1851, timelineSlider);
     });
-    
+    d1871Watcher.fullyEnterViewport(function () {
+        slideToDate(1871, timelineSlider);
+    });
     d1876Watcher.fullyEnterViewport(function () {
         slideToDate(1876, timelineSlider);
     });
