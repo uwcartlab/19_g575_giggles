@@ -205,7 +205,7 @@ article.container {
 }
 
 #date-1787-{
-    top: 9.3vh;
+    top: 9.2vh;
 }
 
 #date-1791-{
@@ -213,47 +213,47 @@ article.container {
 }
 
 #date-1803-{
-    top: 21.2vh;
+    top: 21.17vh;
 }
 
 #date-1814-{
-    top: 29.4vh;
+    top: 29.2vh;
 }
 
 #date-1819-{
-    top: 33.1vh;
+    top: 33vh;
 }
 
 #date-1830-{
-    top: 41.3vh;
+    top: 41vh;
 }
 
 #date-1848-{
-    top: 54.7vh;
+    top: 54.5vh;
 }
 
 #date-1851-{
-    top: 57.0vh;
+    top: 56.8vh;
 }
 
 #date-1871-{
-    top: 71.7vh;
+    top: 71.5vh;
 }
 
 #date-1876-{
-    top: 75.7vh;
+    top: 75.2vh;
 }
 
 #date-1887-{
-    top: 83.9vh;
+    top: 83.3vh;
 }
 
 #date-1897-{
-    top: 91.3vh;
+    top: 90.7vh;
 }
 
 #date-1906-{
-    top: 98.1vh;
+    top: 97.6vh;
 }
 
 .timelineEntries {
@@ -394,7 +394,7 @@ sup{
     margin-bottom: 40px !important;
 }
 .leaflet-slider{
-    max-width: 100vw !important;
+    max-width: 99vh !important;
 
 }
 
