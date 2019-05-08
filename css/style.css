@@ -484,7 +484,14 @@ a.leaflet-popup-close-button {
     float: left;
     width: 92%;
     text-align: right;
+}
 
+.selected-item .selection-content:hover{
+    display: inline-block;
+    float: left;
+    width: 92%;
+    text-align: right;
+    text-decoration: underline;
 }
 
 .selected-item .selection-x{
