@@ -4,6 +4,7 @@ html, body {
     margin: 0;
     height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /*//////////////Stylize intro page///////////////////*/
@@ -124,14 +125,15 @@ a:hover{
 
 }
 
-
+/*SET BREAKPOINT at 1200*/
 article.container {
   background: #414142;
   color: #f7f5f5;
   opacity: 0.9;
-  width: 100%;
+  width: 22vw;
   max-width: 600px;
   float: left;
+  overflow-x: hidden !important;
 }
 
 .article_paragraph {
@@ -171,7 +173,8 @@ article.container {
 
 #info-pane{
     height: 100vh;
-    width: 22.99vw;
+    width: 50%;
+    max-width: 450px;
     margin-left: 1vw;
     display: inline-block;
     float: left;
@@ -186,6 +189,7 @@ article.container {
     text-align: right;
     z-index: 9000;
     color: #d8d8d8;
+    overflow-x: hidden;
 }
 
 #filler{
@@ -383,6 +387,15 @@ sup{
 
 .leaflet-top{
     margin-left: 50px;
+}
+
+.leaflet-slider-container {
+    height: 96vh !important;
+    margin-bottom: 40px !important;
+}
+.leaflet-slider{
+    max-width: 100vw !important;
+
 }
 
 /*Format Popup*/
