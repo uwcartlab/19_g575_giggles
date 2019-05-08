@@ -548,33 +548,41 @@ function updateLayerGroups(selectedYear){
 
 function addSearch(map){
     
+    
+    // Add search control to map
+    var searchControl = L.control.fuseSearch();
+    searchControl.addTo(map);
+    
     // Create Clear Selection to remove all highlight from map
     
     L.Control.ClearSelection = L.Control.extend({
         onAdd: function(map) {
             var myDiv = L.DomUtil.create('div');
-            myDiv.style.background = '#414142';
-            myDiv.style.textAlign = 'center';
-            myDiv.style.fontFamily = 'sans-serif'; 
-            myDiv.style.fontSize = '1.2em';
-            myDiv.style.color = '#f7f5f5';
-            myDiv.style.padding = '3px 7px 3px 7px';
-            myDiv.style.borderRadius = '25px';
-            myDiv.style.cursor= 'pointer';
+            myDiv.className = 'selection-list';
+            /*var textnode = document.createTextNode("Selection List:");
+            myDiv.appendChild(textnode);
+            /*myP.style.background = '#414142';
+            myP.style.textAlign = 'center';
+            myP.style.fontFamily = 'sans-serif'; 
+            myP.style.fontSize = '1.2em';
+            myP.style.color = '#f7f5f5';
+            myP.style.padding = '3px 7px 3px 7px';
+            myP.style.borderRadius = '25px';
+            myP.style.cursor= 'pointer';
             
-            myDiv.innerHTML = 'Clear Selection &times '
+            myP.innerHTML = 'Clear Selection &times '
             
-            myDiv.addEventListener('click', function() {
+            myP.addEventListener('click', function() {
                 resetHighlight();
             })
             
-            myDiv.addEventListener('mouseover', function() {
+            myP.addEventListener('mouseover', function() {
                 this.style.textDecoration = "underline";
             })
-            myDiv.addEventListener('mouseout', function() {
+            myP.addEventListener('mouseout', function() {
                 this.style.textDecoration = "initial";
             })
-            
+            */
 
             return myDiv;
         },
@@ -590,10 +598,6 @@ function addSearch(map){
     
     // Add Clear Selection to map
     L.control.clearselection({ position: 'topright' }).addTo(map);
-    
-    // Add search control to map
-    var searchControl = L.control.fuseSearch();
-    searchControl.addTo(map);
     
     // Get properties from layer groups to perform search on
     

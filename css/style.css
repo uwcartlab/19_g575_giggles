@@ -435,3 +435,28 @@ a.leaflet-popup-close-button {
 #small{
     width:50%;
 }
+
+/*//////////////Stylize Selection List ///////////////////*/
+/*///////////////////////////////////////////////////*/
+.selection-list .selection-list-title{
+    color: #f7f5f5;
+    text-align: left;
+}
+
+.selection-list {
+    max-height: 33%;
+    margin: 5px 5px 5px 5px;
+    overflow: auto;
+    background-color: #414142;
+    border-radius: 5px;
+    
+}
+
+.selected-item {
+    color : #f7f5f5;
+    text-align: right;
+}
+
+.selected-item.clickable {
+    cursor: pointer;
+}
