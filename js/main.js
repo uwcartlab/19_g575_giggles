@@ -23,7 +23,7 @@ var landGained=0;
 //Function: Initialize map
 function createMap(){
     //TODO: Make this work better
-    window.scrollTo(0,0);
+    //window.scrollTo(0,0);
     
     //Set Max bounds for map to limit panning
     var bounds = [[51.3457868, -62.9513812],
@@ -512,32 +512,19 @@ function updateLayerGroups(selectedYear){
 };
 
 function addSearch(map){
+
+    
+    
+    // Add search control to map
+    var searchControl = L.control.fuseSearch();
+    searchControl.addTo(map);
+    
     // Create Clear Selection to remove all highlight from map
     L.Control.ClearSelection = L.Control.extend({
         onAdd: function(map) {
             var myDiv = L.DomUtil.create('div');
-            myDiv.style.background = '#414142';
-            myDiv.style.textAlign = 'center';
-            myDiv.style.fontFamily = 'sans-serif'; 
-            myDiv.style.fontSize = '1.2em';
-            myDiv.style.color = '#f7f5f5';
-            myDiv.style.padding = '3px 7px 3px 7px';
-            myDiv.style.borderRadius = '25px';
-            myDiv.style.cursor= 'pointer';
-            myDiv.innerHTML = 'Clear Selection &times '
-            
-            myDiv.addEventListener('click', function() {
-                resetHighlight();
-            })
-            
-            myDiv.addEventListener('mouseover', function() {
-                this.style.textDecoration = "underline";
-            })
+            myDiv.className = 'selection-list';
 
-            myDiv.addEventListener('mouseout', function() {
-                this.style.textDecoration = "initial";
-            })
-            
             return myDiv;
         },
 
@@ -552,11 +539,7 @@ function addSearch(map){
     // Add Clear Selection to map
     L.control.clearselection({ position: 'topright' }).addTo(map);
     
-    // Add search control to map
-    var searchControl = L.control.fuseSearch();
-    searchControl.addTo(map);
-    
-    // Get properties from layer groups to perform search on://
+    // Get properties from layer groups to perform search on
     
     // Get keys for indexing
     var keys = Array.from(layerGroups.keys()).sort().reverse();

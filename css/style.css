@@ -452,3 +452,48 @@ a.leaflet-popup-close-button {
 #small{
     width:50%;
 }
+
+/*//////////////Stylize Selection List ///////////////////*/
+/*///////////////////////////////////////////////////*/
+.selection-list .selection-list-title{
+    color: #f7f5f5;
+    text-align: left;
+    padding: 3px 7px 0px 7px;
+    font-weight: bold;
+    font-size: 1.2em;
+    
+}
+
+.selection-list {
+    max-height: 33vh;
+    max-width: 20vw;
+    /*padding: 3px 7px 3px 7px;*/
+    overflow: auto;
+    background-color: #414142;
+    border-radius: 5px;
+    
+}
+
+.selected-item {
+    color : #f7f5f5;
+    padding: 0px 7px 3px 7px;
+}
+
+.selected-item .selection-content{
+    display: inline-block;
+    float: left;
+    width: 92%;
+    text-align: right;
+
+}
+
+.selected-item .selection-x{
+    display: inline-block;
+    float: right;
+    width: 4%;
+    padding-left: 2px;
+}
+
+.selected-item.clickable {
+    cursor: pointer;
+}
