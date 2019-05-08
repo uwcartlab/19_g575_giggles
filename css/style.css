@@ -45,6 +45,13 @@ html, body {
     font-family: 'Sanchez', serif;
 }
 
+#intropage h4{
+    font-size: 6em;
+    text-shadow: 2px 2px 2px black;
+    font-family: 'Rubik', sans-serif;
+    margin-bottom: 1vh;
+}
+
 #intropage p{
     font-size: 1.25em;
     color: white;
@@ -77,6 +84,16 @@ font-size: .9em !important;
     float:left;
     padding-top: 15vh;
     padding-left: 2.5vw;
+}
+
+#arrows{
+    float:left;
+    padding-top: 25vh;
+    padding-left: 2.5vw;
+    display: block;
+    left: 50%;
+    bottom: 5%;
+    /*transform: translate(-25%, 0%);*/
 }
 
 /*//////////////Stylize InfoPanel ///////////////////*/
