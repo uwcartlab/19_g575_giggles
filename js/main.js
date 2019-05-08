@@ -27,7 +27,7 @@ var landGained=0;
 //Function: Initialize map
 function createMap(){
     //TODO: Make this work better
-    window.scrollTo(0,0);
+    //window.scrollTo(0,0);
     
     
     //Set Max bounds for map to limit panning
