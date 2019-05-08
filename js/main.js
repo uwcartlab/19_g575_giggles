@@ -167,7 +167,7 @@ function makeDatesClickable(timelineSlider){
             scrollTop: $('#1851').offset().top
         }, 1000);
     });
-    
+
     document.getElementById('date-1871').addEventListener("click", function(){
 
         $('html, body').animate({
@@ -175,8 +175,7 @@ function makeDatesClickable(timelineSlider){
         }, 1000);
 
     });
-    document.getElementById('date-1876').addEventListener("click", function(){
-
+    
     document.getElementById('date-1876').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1876').offset().top
