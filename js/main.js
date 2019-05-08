@@ -63,6 +63,7 @@ function createMap(){
     map.attributionControl.setPrefix('<div id = disclaimerLink>DISCLAIMER</div> | <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
     //Add data to the map
     loadData(map);
+    
 }
 
 //Function: Add barebones to map//
@@ -175,7 +176,7 @@ function makeDatesClickable(timelineSlider){
         }, 1000);
 
     });
-    
+
     document.getElementById('date-1876').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1876').offset().top
@@ -736,3 +737,7 @@ function updateLegend(value){
 };   
 
 $(document).ready(createMap);
+
+//Scroll to the top on reload
+window.onbeforeunload = function () {
+    window.scrollTo(0,0)};
