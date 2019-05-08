@@ -88,11 +88,12 @@ font-size: .9em !important;
 
 #arrows{
     float:left;
-    padding-top: 25vh;
-    padding-left: 2.5vw;
-    display: block;
-    left: 50%;
-    bottom: 5%;
+    padding-top: 40vh;
+    padding-left: 4.4vw;
+    display: inline-block;
+    /*left: 60%;
+    bottom: 0%;*/
+    font-size: .5em;
     /*transform: translate(-25%, 0%);*/
 }
 
@@ -465,7 +466,7 @@ a.leaflet-popup-close-button {
 }
 
 .selection-list {
-    max-height: 33vh;
+    max-height: 30vh;
     max-width: 20vw;
     /*padding: 3px 7px 3px 7px;*/
     overflow: auto;
