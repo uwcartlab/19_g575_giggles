@@ -530,34 +530,7 @@ function updateLayerGroups(selectedYear){
 
 
 function addSearch(map){
-    // Layer to contain searched elements
-    var searchedLayer = new L.LayerGroup();
-    // Add search control to map
-    var test = new L.featureGroup();
-    map.addLayer(test);
-    var controlSearch = new L.Control.Search({
-        position: 'topright',
-        layer: dataLayer,
-        marker: false,
-        initial:false,
-        collapsed: false,
-        propertyName: 'Nation_Cor',
-        //580-583: Determing the lat long of the layers
-        //873 What locaion returns
-    });
-    controlSearch.on('search:locationfound', function(e) {
-		e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
-		if(e.layer._popup)
-			e.layer.openPopup();
-
-	}).on('search:collapsed', function(e) {
-
-		featuresLayer.eachLayer(function(layer) {	//restore feature color
-			featuresLayer.resetStyle(layer);
-		});	
-    });
-    
-    map.addControl(controlSearch);
+   
 }
 
 //Function: to create the sequence controls for the interactive timeline//
