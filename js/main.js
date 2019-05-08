@@ -1,10 +1,6 @@
 //Main  Code//
 
-//http://tombatossals.github.io/angular-leaflet-directive/examples/0000-viewer.html#/basic/geojson-center-example
-//^^For centering search result
-//global var for time stamp
-//set to arbitrary "low" number here
-//test by changing to time stamps within the dataset
+//Global var for time stamp
 TimeStamp = -9000000000000;
 // A Map (data structure) to sort the layers by year
 var yearMap = new Map();
@@ -29,13 +25,12 @@ function createMap(){
     //TODO: Make this work better
     window.scrollTo(0,0);
     
-    
     //Set Max bounds for map to limit panning
     var bounds = [[51.3457868, -62.9513812],
     [22.7433195,-127.7844079]];
 
 	map = L.map('map',{
-		//Sets the longitude and latitude of where the map center is
+		//Sets default properties of the map
 			center: [37,-96.55],
             zoom: 5,
             maxZoom:8,
@@ -45,8 +40,8 @@ function createMap(){
             doubleClickZoom: false,
             scrollWheelZoom: false,
             keyboard: false
-            
-		});
+        });
+        
 		//Add OSM baselayer
 		L.tileLayer.provider('CartoDB.DarkMatterNoLabels').addTo(map);
 		//Remove tile outlines
@@ -55,9 +50,9 @@ function createMap(){
 			L.GridLayer.include({
 				_initTile: function (tile) {
 					originalInitTile.call(this, tile);
-		
+                    //Fix tile edges
 					var tileSize = this.getTileSize();
-		
+                    //Add the dimensions
 					tile.style.width = tileSize.x + .5 + 'px';
 					tile.style.height = tileSize.y + 1 + 'px';
 				}
@@ -65,18 +60,15 @@ function createMap(){
 		})()
     
     // Change attributions; include disclaimer
-    // TODO: Add an actual disclaimer; maybe find a link to a good one
     map.attributionControl.setPrefix('<div id = disclaimerLink>DISCLAIMER</div> | <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
-    
-    
+    //Add data to the map
     loadData(map);
-    
 }
 
 //Function: Add barebones to map//
 function ajaxCompleted(map){
+    //Create layer groups from GeoJSON
     createLayerGroups();
-    
     // Create the sequence slider
     var timelineSlider = createTimeline(map);
     addSearch(map);
@@ -84,13 +76,12 @@ function ajaxCompleted(map){
     createLegend(map);
     //Ensures that the legend loads with the correct first year
     updateLegend('1775');
-    
+    //Allow for scrollytelling watchers
     createSectionWatchers(timelineSlider);
-    
+    //Add affordances to click dates
     makeDatesClickable(timelineSlider);
-    
-    addDisclaimer();
-    
+    //Insert Disclaimer
+    addDisclaimer();  
 }
 
 function addDisclaimer(){
@@ -111,114 +102,98 @@ function addDisclaimer(){
 function showDisclaimer(){
     $('#disclaimer').fadeIn(1000);
     $('#disclaimerBackground').fadeIn(1000);
-}
+};
 
 function hideDisclaimer(){
     //$('#disclaimer').hide();
     //$('#disclaimerBackground').hide();
     $('#disclaimer').fadeOut(1000);
     $('#disclaimerBackground').fadeOut(1000);
-}
+};
 
 function makeDatesClickable(timelineSlider){
     
     // Set a click event for each date to scroll to the corresponding div
-    
     document.getElementById('date-1776').addEventListener("click", function(){
-
         $('html, body').animate({
             scrollTop: $('#1776').offset().top
         }, 1000);
-        
     });
-    document.getElementById('date-1787').addEventListener("click", function(){
 
+    document.getElementById('date-1787').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1787').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1791').addEventListener("click", function(){
 
+    document.getElementById('date-1791').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1791').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1803').addEventListener("click", function(){
 
+    document.getElementById('date-1803').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1803').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1814').addEventListener("click", function(){
 
+    document.getElementById('date-1814').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1814').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1819').addEventListener("click", function(){
 
+    document.getElementById('date-1819').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1819').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1830').addEventListener("click", function(){
 
+    document.getElementById('date-1830').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1830').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1848').addEventListener("click", function(){
 
+    document.getElementById('date-1848').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1848').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1851').addEventListener("click", function(){
 
+    document.getElementById('date-1851').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1851').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1876').addEventListener("click", function(){
 
+    document.getElementById('date-1876').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1876').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1887').addEventListener("click", function(){
 
+    document.getElementById('date-1887').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1887').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1897').addEventListener("click", function(){
 
+    document.getElementById('date-1897').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1897').offset().top
         }, 1000);
-
     });
-    document.getElementById('date-1906').addEventListener("click", function(){
 
+    document.getElementById('date-1906').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1906').offset().top
         }, 1000);
-
     });
     
     
     // Add mouseover events to underline the dates when hovered
-    
     document.getElementById('date-1776').addEventListener("mouseover", function(){
         this.style.textDecoration = "underline";
     });
@@ -260,7 +235,6 @@ function makeDatesClickable(timelineSlider){
     });
     
     // Add mouseout events to return the sytling to normal
-    
     document.getElementById('date-1776').addEventListener("mouseout", function(){
         this.style.textDecoration = "initial";
     });
@@ -300,7 +274,6 @@ function makeDatesClickable(timelineSlider){
     document.getElementById('date-1906').addEventListener("mouseout", function(){
         this.style.textDecoration = "initial";
     });
-    
 }
 
 function createSectionWatchers(timelineSlider){
@@ -321,8 +294,7 @@ function createSectionWatchers(timelineSlider){
     var d1897Watcher = scrollMonitor.create($('#1897'), 1);
     var d1906Watcher = scrollMonitor.create($('#1906'), 1);
 
-    // Add watch events to move timeline to corresponding date
-    
+    // Add watch events to move timeline to corresponding date  
     introWatcher.fullyEnterViewport(function () {
         slideToDate(1775, timelineSlider);
     });
@@ -388,7 +360,6 @@ function slideToDate(newEndDate, timelineSlider){
     endDate = newEndDate;
     // Update the slider after a 10 millisecond delay
     setTimeout(function(){updateSlider(timelineSlider)}, 10);
-    
 }
 
 // This function works with slideToDate to increment/decrement
@@ -411,9 +382,6 @@ function updateSlider(timelineSlider){
         setTimeout(function(){updateSlider(timelineSlider)}, 10);
     }
 }
-
-
-
 
 //Function: Load all the data using AJAX//
 function loadData(map, year){
@@ -489,7 +457,6 @@ function createLayerGroups() {
 
 // Updates group layers on map to match selected year on timeline
 function updateLayerGroups(selectedYear){
-    
     // Create an array of the key values in reverse
     var keys = Array.from(layerGroups.keys()).sort().reverse();
     // If we have moved forward in time, we will need to remove layers
@@ -502,6 +469,7 @@ function updateLayerGroups(selectedYear){
                 map.removeLayer(layerGroups.get(keys[i]));
             }
         }
+
     // If we have moved backwards in time, we will need to add layers
     } else if (selectedYear < prevYear) {
         for(i = 0; i < keys.length; i++) {
@@ -513,27 +481,20 @@ function updateLayerGroups(selectedYear){
                 //layerGroups.get(keys[i]).bringToFront();
             }
         }
+
     } else if (selectedYear == 1775 && prevYear == 1775) {
         // We want to add the groups to the map starting with most recent
-        // and working our way back (using our reverse order keys array)
-
+        // Work our way back (using our reverse order keys array)
         // Iterate through layer groups and add them to the map
         for(i = 0; i < keys.length; i++) {
             layerGroups.get(keys[i]).addTo(map);
             //layerGroups.get(keys[i]).bringToFront();
         }
     }
-
-    
 };
 
-//Nation is the key
-
-
 function addSearch(map){
-    
     // Create Clear Selection to remove all highlight from map
-    
     L.Control.ClearSelection = L.Control.extend({
         onAdd: function(map) {
             var myDiv = L.DomUtil.create('div');
@@ -545,7 +506,6 @@ function addSearch(map){
             myDiv.style.padding = '3px 7px 3px 7px';
             myDiv.style.borderRadius = '25px';
             myDiv.style.cursor= 'pointer';
-            
             myDiv.innerHTML = 'Clear Selection &times '
             
             myDiv.addEventListener('click', function() {
@@ -555,16 +515,15 @@ function addSearch(map){
             myDiv.addEventListener('mouseover', function() {
                 this.style.textDecoration = "underline";
             })
+
             myDiv.addEventListener('mouseout', function() {
                 this.style.textDecoration = "initial";
             })
             
-
             return myDiv;
         },
 
         onRemove: function(map) {
-            // Nothing to do here
         }
     });
     
@@ -579,7 +538,7 @@ function addSearch(map){
     var searchControl = L.control.fuseSearch();
     searchControl.addTo(map);
     
-    // Get properties from layer groups to perform search on
+    // Get properties from layer groups to perform search on://
     
     // Get keys for indexing
     var keys = Array.from(layerGroups.keys()).sort().reverse();
@@ -608,13 +567,12 @@ function createTimeline(map){
         var corners = map._controlCorners,
             l = 'leaflet-',
             container = map._controlContainer;
-
+        //Create corners for controls
         function createCorner(vSide, hSide) {
             var className = l + vSide + ' ' + l + hSide;
 
             corners[vSide + hSide] = L.DomUtil.create('div', className, container);
         }
-
         createCorner('verticalcenter', 'left');
         createCorner('verticalcenter', 'right');
     }
@@ -676,7 +634,6 @@ function onEachFeature(feature, layer) {
             yearMap.set(feature.properties.Year_value, [layer]);
         }
     }
-    
     feature.layer = layer;
 };
 
@@ -691,16 +648,13 @@ function filter(feature) {
  //Function: highlight enumeration units and bars//
  function highlightFeature(e) {
     var layer = e.target;
-
+    //Access old styles
     layer.options.oldFillColor = layer._path.attributes.fill.value;
     layer.setStyle({
-        //weight: 5,
         fillColor: '#DC143C',
         dashArray: '',
         fillOpacity: 1
     });
-     
-
     this.openPopup()
 }
 
@@ -721,7 +675,6 @@ function resetHighlight() {
         for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
             dataLayer.resetStyle(layerGroups.get(keys[i]).getLayers()[j]);
         }
-
     }
 }
 
@@ -740,7 +693,7 @@ function createLegend(map){
                 var div = L.DomUtil.create('div', 'attribute-legend');
                     categories = ['Native Land','Searched Native Land'];
                     symbols=['images/NativeLand.svg','images/SelectedTribe.svg',]
-
+                //Iterate through the symbols
                 for (var i = 0; i < symbols.length; i++) {
                     div.innerHTML += "<p>" + categories[i] + "</p>" + (" <img id='small' src="+ symbols[i] +" height='75' width='75'>");
                 };
@@ -755,11 +708,9 @@ function createLegend(map){
 //Function: Update the legend with new attribute//
 function updateLegend(value){
     //Create Content for legend using the year and text
-
     if(value==1775){
         var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  0 + '%'
         '</strong></p>'
-        
     } else{
 	var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  parseInt((landLost-landGained)/(area)*(100)) + '%'
     '</strong></p>'}
