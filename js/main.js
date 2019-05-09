@@ -60,9 +60,9 @@ function createMap(){
 	map = L.map('map',{
 		//Sets default properties of the map
 			center: [37,-96.55],
-            zoom: 5,
+            zoom: 4,
             maxZoom:8,
-            minZoom:5,
+            minZoom:4,
             maxBounds: bounds,
             maxBoundsViscosity: 1.0,
             doubleClickZoom: false,
@@ -559,8 +559,17 @@ function updateLayerGroups(selectedYear){
         for(i = 0; i < keys.length; i++) {
             if (keys[i] <= prevYear && keys[i] > selectedYear) {
                 for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
+                    if(layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature.layer._path.attributes.fill.value='#DC143C'){
+                        layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature.layer.setStyle({
+                            fillColor: '#ffffff',
+                            dashArray: '',
+                            fillOpacity: 1
+                        });
+                    
+                    }
                     landGained += layerGroups.get(keys[i]).getLayers()[j].feature.properties.Square_Mil
                 };
+
                 map.addLayer(layerGroups.get(keys[i]));
                 //layerGroups.get(keys[i]).bringToFront();
             }
@@ -1022,6 +1031,3 @@ function convertOffset(x, y, degrees) {
 
 $(document).ready(createMap);
 
-//Scroll to the top on reload
-window.onbeforeunload = function () {
-    window.scrollTo(0,0)};

@@ -4,6 +4,7 @@ html, body {
     margin: 0;
     height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 /*//////////////Stylize intro page///////////////////*/
@@ -142,14 +143,14 @@ a:hover{
 
 }
 
-
 article.container {
   background: #414142;
   color: #f7f5f5;
   opacity: 0.9;
-  width: 100%;
+  width: 22vw;
   max-width: 600px;
   float: left;
+  overflow-x: hidden !important;
 }
 
 .article_paragraph {
@@ -189,7 +190,8 @@ article.container {
 
 #info-pane{
     height: 100vh;
-    width: 22.99vw;
+    width: 50%;
+    max-width: 450px;
     margin-left: 1vw;
     display: inline-block;
     float: left;
@@ -204,6 +206,7 @@ article.container {
     text-align: right;
     z-index: 9000;
     color: #d8d8d8;
+    overflow-x: hidden;
 }
 
 #filler{
@@ -223,7 +226,7 @@ within updateDatePlacement()
 }
 
 #date-1787-{
-    top: 9.3vh;
+    top: 9.2vh;
 }
 
 #date-1791-{
@@ -231,43 +234,43 @@ within updateDatePlacement()
 }
 
 #date-1803-{
-    top: 21.2vh;
+    top: 21.17vh;
 }
 
 #date-1814-{
-    top: 29.4vh;
+    top: 29.2vh;
 }
 
 #date-1819-{
-    top: 33.1vh;
+    top: 33vh;
 }
 
 #date-1830-{
-    top: 41.3vh;
+    top: 41vh;
 }
 
 #date-1848-{
-    top: 54.7vh;
+    top: 54.5vh;
 }
 
 #date-1851-{
-    top: 57.0vh;
+    top: 56.8vh;
 }
 
 #date-1871-{
-    top: 71.7vh;
+    top: 71.5vh;
 }
 
 #date-1876-{
-    top: 75.7vh;
+    top: 75.2vh;
 }
 
 #date-1887-{
-    top: 83.9vh;
+    top: 83.3vh;
 }
 
 #date-1897-{
-    top: 91.3vh;
+    top: 90.7vh;
 }
 
 #date-1906-{
@@ -407,6 +410,17 @@ sup{
     margin-left: 50px;
 }
 
+.leaflet-slider-container {
+    height: 96vh !important;
+    margin-bottom: 40px !important;
+}
+.leaflet-slider{
+    max-width: 99vh !important;
+    min-width: 99vh !important;
+
+
+}
+
 /*Format Popup*/
 .leaflet-popup-content p{
     margin: 0.2em 0;
@@ -520,4 +534,122 @@ a.leaflet-popup-close-button {
     position: fixed;
     background-color: #000;
     opacity: 0.7;
+}
+/*//////////////Stylize For Smaller desktop/Laptop ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
+@media only screen and (max-width: 1400px) and (min-width:1200px) {
+    #intropage h3  {
+    font-size: .9em;
+    }
+
+    #intropage p  {
+        font-size: .9em;
+        }
+
+    #source {
+        font-size:.8em;
+    }
+}
+
+/*//////////////Stylize For Tablets ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
+@media only screen and (max-width: 1200px) and (min-width:768px) {
+    article.container {
+        background: #414142;
+        color: #f7f5f5;
+        opacity: 0.9;
+        width:30vw;
+        float: left;
+        overflow-x: hidden !important;
+      }
+
+      #info-pane{
+        height: 100vh;
+        width: 100%;
+        max-width: 600px;
+        margin-left: 1vw;
+        display: inline-block;
+        float: left;
+        background-color: #414142;
+    }
+
+    .article_paragraph {
+        max-width: 200px;
+        margin: 18px auto;
+      }
+    
+    body{
+        font-size: .9em !important;
+    }
+
+    #map{
+        height: 100vh;
+        width: 64.1vw;
+        right: 0px;
+        display: inline-block;
+        float: right;
+        position: fixed;
+        top: 0px;
+        z-index: -99;
+    }
+
+    .timelineEntries {
+        margin: 0;
+        position: fixed;
+        right: 62.99vw;
+        z-index: 9001;
+        cursor: pointer;
+    }
+
+    #intropage{
+        margin: 0 auto;
+    }
+
+    #intropage h2{
+        margin-bottom:80px;
+
+    }
+
+    #intropage h3  {
+        font-size: .9em;
+        text-align: center !important;
+    }
+
+    #right{
+        clear:both;
+        text-align: center !important;
+        float: none;
+        padding:0;
+        margin-bottom:80px;
+    }
+
+    #left{
+        clear:both;
+        text-align:center !important;
+        float:none;
+        padding: 0;
+        margin-bottom:80px;
+    }
+
+    #disclaimer{
+        left:12.5vw;
+    }
+
+    #clear{
+        text-align: center !important;
+        float: none;
+        padding:0;
+    }
+
+    #intropage p  {
+        font-size: .9em;
+        }
+
+    #source {
+        font-size:.8em;
+    }
+    
+
 }
