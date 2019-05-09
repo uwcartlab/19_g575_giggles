@@ -214,6 +214,10 @@ article.container {
 /*///////////////////////////////////////////////////*/
 
 
+/*
+This is no longer needed.  There is math done within main.js to calculate the proper positioning
+within updateDatePlacement()
+
 #date-1776-{
     top: 1.1vh;
 }
@@ -267,8 +271,8 @@ article.container {
 }
 
 #date-1906-{
-    top: 98.1vh;
-}
+    top: 3px;
+}*/
 
 .timelineEntries {
     margin: 0;
@@ -504,4 +508,16 @@ a.leaflet-popup-close-button {
 
 .selected-item.clickable {
     cursor: pointer;
+}
+
+/*//////////////Stylize Spinner Div ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
+#spinnerDiv {
+    height: 100%;
+    width: 100%;
+    z-index: 9006;
+    position: fixed;
+    background-color: #000;
+    opacity: 0.7;
 }

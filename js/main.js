@@ -19,11 +19,39 @@ var area=6741197.56764674;
 var landLost=0;
 var endDate=1775;
 var landGained=0;
+// Spinner
+var spinner;
 
 //Function: Initialize map
 function createMap(){
-    //TODO: Make this work better
-    //window.scrollTo(0,0);
+
+    
+    
+    // Start a spinner
+    var opts = {
+      lines: 13, // The number of lines to draw
+      length: 38, // The length of each line
+      width: 17, // The line thickness
+      radius: 45, // The radius of the inner circle
+      scale: 1, // Scales overall size of the spinner
+      corners: 1, // Corner roundness (0..1)
+      color: '#ffffff', // CSS color or array of colors
+      fadeColor: 'transparent', // CSS color or array of colors
+      speed: 1, // Rounds per second
+      rotate: 0, // The rotation offset
+      animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
+      direction: 1, // 1: clockwise, -1: counterclockwise
+      zIndex: 2e9, // The z-index (defaults to 2000000000)
+      className: 'spinner', // The CSS class to assign to the spinner
+      top: '50%', // Top position relative to parent
+      left: '50%', // Left position relative to parent
+      shadow: '0 0 1px transparent', // Box-shadow for the lines
+      position: 'absolute' // Element positioning
+    };
+
+    var target = document.getElementById('spinnerDiv');
+    spinner = new Spinner(opts).spin(target);
+    
     
     //Set Max bounds for map to limit panning
     var bounds = [[51.3457868, -62.9513812],
@@ -71,7 +99,8 @@ function ajaxCompleted(map){
     //Create layer groups from GeoJSON
     createLayerGroups();
     // Create the sequence slider
-    var timelineSlider = createTimeline(map);
+    var timelineSlider;
+    timelineSlider = createTimeline(map);
     addSearch(map);
     //Call create legend function
     createLegend(map);
@@ -80,9 +109,25 @@ function ajaxCompleted(map){
     //Allow for scrollytelling watchers
     createSectionWatchers(timelineSlider);
     //Add affordances to click dates
-    makeDatesClickable(timelineSlider);
+    makeDatesClickable();
     //Insert Disclaimer
     addDisclaimer();  
+    
+    // Stop the spinner
+    spinner.stop();
+    $('#spinnerDiv').fadeOut(500);
+    
+    /*
+    WARNING: DOES NOT WORK
+    // Add an event listener to the window, so if it's resized, the timeline is remade to the correct size
+    window.addEventListener("resize", (function() {
+        map.removeControl(timelineSlider);
+        timelineSlider = createTimeline(map);
+        //Allow for scrollytelling watchers
+        removeSectionWatchers();
+        createSectionWatchers(timelineSlider);
+        updateDatePlacement();
+    }));*/
 }
 
 function addDisclaimer(){
@@ -101,18 +146,18 @@ function addDisclaimer(){
 };
 
 function showDisclaimer(){
-    $('#disclaimer').fadeIn(1000);
-    $('#disclaimerBackground').fadeIn(1000);
+    $('#disclaimer').fadeIn(500);
+    $('#disclaimerBackground').fadeIn(500);
 };
 
 function hideDisclaimer(){
     //$('#disclaimer').hide();
     //$('#disclaimerBackground').hide();
-    $('#disclaimer').fadeOut(1000);
-    $('#disclaimerBackground').fadeOut(1000);
+    $('#disclaimer').fadeOut(500);
+    $('#disclaimerBackground').fadeOut(500);
 };
 
-function makeDatesClickable(timelineSlider){
+function makeDatesClickable(){
     
     // Set a click event for each date to scroll to the corresponding div
     document.getElementById('date-1776').addEventListener("click", function(){
@@ -370,6 +415,27 @@ function createSectionWatchers(timelineSlider){
     });
 }
 
+function removeSectionWatchers(){
+    
+    // Destroy watchers (scroll monitors) for each date
+    if(introWatcher != undefined){introWatcher.destroy();};
+    if(d1776Watcher != undefined){d1776Watcher.destroy();};
+    if(d1787Watcher != undefined){d1787Watcher.destroy();};
+    if(d1791Watcher != undefined){d1791Watcher.destroy();};
+    if(d1803Watcher != undefined){d1803Watcher.destroy();};
+    if(d1814Watcher != undefined){d1814Watcher.destroy();};
+    if(d1819Watcher != undefined){d1819Watcher.destroy();};
+    if(d1830Watcher != undefined){d1830Watcher.destroy();};
+    if(d1848Watcher != undefined){d1848Watcher.destroy();};
+    if(d1851Watcher != undefined){d1851Watcher.destroy();};
+    if(d1871Watcher != undefined){d1871Watcher.destroy();};
+    if(d1876Watcher != undefined){d1876Watcher.destroy();};
+    if(d1887Watcher != undefined){d1887Watcher.destroy();};
+    if(d1897Watcher != undefined){d1897Watcher.destroy();};
+    if(d1906Watcher != undefined){d1906Watcher.destroy();};
+    
+}
+
 // This function makes use of the timeout function in order to
 // gradually increment/decrement the timeline slider to a specific
 // date.
@@ -602,7 +668,38 @@ function createTimeline(map){
         showValue: false,
         }).addTo(map);
     
+    // After adding it to the map, update the arrangement of the dates along the timline
+    updateDatePlacement();
+
     return timelineSlider;
+}
+
+// Function to update date's vertical spacing along the timeline to match the current height of the timeline
+function updateDatePlacement() {
+    
+    // Variables for the math of calculating the position along the timeline
+    var slideSelectorHeight = 15;
+    var timelineHeight = (Number(document.getElementById("timelineSlider").style.width.split("px")[0]))-slideSelectorHeight;
+    console.log(timelineHeight);
+    var numYears = 1906-1775;
+    var timelineOffsetHeight = 3.75; //1/4 slideSelectorHeight
+    var yearPerPx = timelineHeight/numYears;
+
+    // Update date placement along timeline
+    document.getElementById('date-1776-').style.top = ((1776-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1787-').style.top = ((1787-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1791-').style.top = ((1791-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1803-').style.top = ((1803-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1814-').style.top = ((1814-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1819-').style.top = ((1819-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1830-').style.top = ((1830-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1848-').style.top = ((1848-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1851-').style.top = ((1851-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1871-').style.top = ((1871-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1876-').style.top = ((1876-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1887-').style.top = ((1887-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1897-').style.top = ((1897-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1906-').style.top = ((1906-1775)*yearPerPx+timelineOffsetHeight) + 'px';
 }
 
 function onEachFeature(feature, layer) {
@@ -718,6 +815,210 @@ function updateLegend(value){
 	//Replace legend content with updated content
 	$('#temporal-legend').html(content);
 };   
+
+/*****************************************************************************************
+
+    The following is the code from spin.js
+    I couldn't get import/export to work, so I'm cheating by placing it in directly
+
+*****************************************************************************************/
+
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var defaults = {
+    lines: 12,
+    length: 7,
+    width: 5,
+    radius: 10,
+    scale: 1.0,
+    corners: 1,
+    color: '#000',
+    fadeColor: 'transparent',
+    animation: 'spinner-line-fade-default',
+    rotate: 0,
+    direction: 1,
+    speed: 1,
+    zIndex: 2e9,
+    className: 'spinner',
+    top: '50%',
+    left: '50%',
+    shadow: '0 0 1px transparent',
+    position: 'absolute',
+};
+var Spinner = /** @class */ (function () {
+    function Spinner(opts) {
+        if (opts === void 0) { opts = {}; }
+        this.opts = __assign({}, defaults, opts);
+    }
+    /**
+     * Adds the spinner to the given target element. If this instance is already
+     * spinning, it is automatically removed from its previous target by calling
+     * stop() internally.
+     */
+    Spinner.prototype.spin = function (target) {
+        this.stop();
+        this.el = document.createElement('div');
+        this.el.className = this.opts.className;
+        this.el.setAttribute('role', 'progressbar');
+        css(this.el, {
+            position: this.opts.position,
+            width: 0,
+            zIndex: this.opts.zIndex,
+            left: this.opts.left,
+            top: this.opts.top,
+            transform: "scale(" + this.opts.scale + ")",
+        });
+        if (target) {
+            target.insertBefore(this.el, target.firstChild || null);
+        }
+        drawLines(this.el, this.opts);
+        return this;
+    };
+    /**
+     * Stops and removes the Spinner.
+     * Stopped spinners may be reused by calling spin() again.
+     */
+    Spinner.prototype.stop = function () {
+        if (this.el) {
+            if (typeof requestAnimationFrame !== 'undefined') {
+                cancelAnimationFrame(this.animateId);
+            }
+            else {
+                clearTimeout(this.animateId);
+            }
+            if (this.el.parentNode) {
+                this.el.parentNode.removeChild(this.el);
+            }
+            this.el = undefined;
+        }
+        return this;
+    };
+    return Spinner;
+}());
+
+/**
+ * Sets multiple style properties at once.
+ */
+function css(el, props) {
+    for (var prop in props) {
+        el.style[prop] = props[prop];
+    }
+    return el;
+}
+/**
+ * Returns the line color from the given string or array.
+ */
+function getColor(color, idx) {
+    return typeof color == 'string' ? color : color[idx % color.length];
+}
+/**
+ * Internal method that draws the individual lines.
+ */
+function drawLines(el, opts) {
+    var borderRadius = (Math.round(opts.corners * opts.width * 500) / 1000) + 'px';
+    var shadow = 'none';
+    if (opts.shadow === true) {
+        shadow = '0 2px 4px #000'; // default shadow
+    }
+    else if (typeof opts.shadow === 'string') {
+        shadow = opts.shadow;
+    }
+    var shadows = parseBoxShadow(shadow);
+    for (var i = 0; i < opts.lines; i++) {
+        var degrees = ~~(360 / opts.lines * i + opts.rotate);
+        var backgroundLine = css(document.createElement('div'), {
+            position: 'absolute',
+            top: -opts.width / 2 + "px",
+            width: (opts.length + opts.width) + 'px',
+            height: opts.width + 'px',
+            background: getColor(opts.fadeColor, i),
+            borderRadius: borderRadius,
+            transformOrigin: 'left',
+            transform: "rotate(" + degrees + "deg) translateX(" + opts.radius + "px)",
+        });
+        var delay = i * opts.direction / opts.lines / opts.speed;
+        delay -= 1 / opts.speed; // so initial animation state will include trail
+        var line = css(document.createElement('div'), {
+            width: '100%',
+            height: '100%',
+            background: getColor(opts.color, i),
+            borderRadius: borderRadius,
+            boxShadow: normalizeShadow(shadows, degrees),
+            animation: 1 / opts.speed + "s linear " + delay + "s infinite " + opts.animation,
+        });
+        backgroundLine.appendChild(line);
+        el.appendChild(backgroundLine);
+    }
+}
+function parseBoxShadow(boxShadow) {
+    var regex = /^\s*([a-zA-Z]+\s+)?(-?\d+(\.\d+)?)([a-zA-Z]*)\s+(-?\d+(\.\d+)?)([a-zA-Z]*)(.*)$/;
+    var shadows = [];
+    for (var _i = 0, _a = boxShadow.split(','); _i < _a.length; _i++) {
+        var shadow = _a[_i];
+        var matches = shadow.match(regex);
+        if (matches === null) {
+            continue; // invalid syntax
+        }
+        var x = +matches[2];
+        var y = +matches[5];
+        var xUnits = matches[4];
+        var yUnits = matches[7];
+        if (x === 0 && !xUnits) {
+            xUnits = yUnits;
+        }
+        if (y === 0 && !yUnits) {
+            yUnits = xUnits;
+        }
+        if (xUnits !== yUnits) {
+            continue; // units must match to use as coordinates
+        }
+        shadows.push({
+            prefix: matches[1] || '',
+            x: x,
+            y: y,
+            xUnits: xUnits,
+            yUnits: yUnits,
+            end: matches[8],
+        });
+    }
+    return shadows;
+}
+/**
+ * Modify box-shadow x/y offsets to counteract rotation
+ */
+function normalizeShadow(shadows, degrees) {
+    var normalized = [];
+    for (var _i = 0, shadows_1 = shadows; _i < shadows_1.length; _i++) {
+        var shadow = shadows_1[_i];
+        var xy = convertOffset(shadow.x, shadow.y, degrees);
+        normalized.push(shadow.prefix + xy[0] + shadow.xUnits + ' ' + xy[1] + shadow.yUnits + shadow.end);
+    }
+    return normalized.join(', ');
+}
+function convertOffset(x, y, degrees) {
+    var radians = degrees * Math.PI / 180;
+    var sin = Math.sin(radians);
+    var cos = Math.cos(radians);
+    return [
+        Math.round((x * cos + y * sin) * 1000) / 1000,
+        Math.round((-x * sin + y * cos) * 1000) / 1000,
+    ];
+}
+
+/*****************************************************************************************
+
+    This ends the code from spin.js
+
+*****************************************************************************************/
 
 $(document).ready(createMap);
 
