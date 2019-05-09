@@ -125,7 +125,6 @@ a:hover{
 
 }
 
-/*SET BREAKPOINT at 1200*/
 article.container {
   background: #414142;
   color: #f7f5f5;
@@ -449,4 +448,58 @@ a.leaflet-popup-close-button {
 
 #small{
     width:50%;
+}
+
+/*//////////////Stylize For Tablets ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
+@media only screen and (max-width: 1200px) and (min-width:768px) {
+    article.container {
+        background: #414142;
+        color: #f7f5f5;
+        opacity: 0.9;
+        width:30vw;
+        float: left;
+        overflow-x: hidden !important;
+      }
+
+      #info-pane{
+        height: 100vh;
+        width: 100%;
+        max-width: 600px;
+        margin-left: 1vw;
+        display: inline-block;
+        float: left;
+        background-color: #414142;
+    }
+
+    .article_paragraph {
+        max-width: 200px;
+        margin: 18px auto;
+      }
+    
+    body{
+        font-size: .9em !important;
+    }
+
+    #map{
+        height: 100vh;
+        width: 64.1vw;
+        right: 0px;
+        display: inline-block;
+        float: right;
+        position: fixed;
+        top: 0px;
+        z-index: -99;
+    }
+
+    .timelineEntries {
+        margin: 0;
+        position: fixed;
+        right: 62.99vw;
+        z-index: 9001;
+        cursor: pointer;
+    }
+    
+
 }
