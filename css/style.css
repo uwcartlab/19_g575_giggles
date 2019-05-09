@@ -450,6 +450,23 @@ a.leaflet-popup-close-button {
     width:50%;
 }
 
+/*//////////////Stylize For Smaller desktop/Laptop ///////////////////*/
+/*///////////////////////////////////////////////////*/
+
+@media only screen and (max-width: 1400px) and (min-width:1200px) {
+    #intropage h3  {
+    font-size: .9em;
+    }
+
+    #intropage p  {
+        font-size: .9em;
+        }
+
+    #source {
+        font-size:.8em;
+    }
+}
+
 /*//////////////Stylize For Tablets ///////////////////*/
 /*///////////////////////////////////////////////////*/
 
@@ -499,6 +516,54 @@ a.leaflet-popup-close-button {
         right: 62.99vw;
         z-index: 9001;
         cursor: pointer;
+    }
+
+    #intropage{
+        margin: 0 auto;
+    }
+
+    #intropage h2{
+        margin-bottom:80px;
+
+    }
+
+    #intropage h3  {
+        font-size: .9em;
+        text-align: center !important;
+    }
+
+    #right{
+        clear:both;
+        text-align: center !important;
+        float: none;
+        padding:0;
+        margin-bottom:80px;
+    }
+
+    #left{
+        clear:both;
+        text-align:center !important;
+        float:none;
+        padding: 0;
+        margin-bottom:80px;
+    }
+
+    #disclaimer{
+        left:12.5vw;
+    }
+
+    #clear{
+        text-align: center !important;
+        float: none;
+        padding:0;
+    }
+
+    #intropage p  {
+        font-size: .9em;
+        }
+
+    #source {
+        font-size:.8em;
     }
     
 

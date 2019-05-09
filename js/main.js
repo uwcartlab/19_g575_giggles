@@ -747,6 +747,3 @@ function updateLegend(value){
 
 $(document).ready(createMap);
 
-//Scroll to the top on reload
-window.onbeforeunload = function () {
-    window.scrollTo(0,0)};
