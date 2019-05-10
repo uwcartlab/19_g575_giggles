@@ -653,3 +653,37 @@ a.leaflet-popup-close-button {
     
 
 }
+
+@media only screen and (max-width: 768px)  {
+    .leaflet-slider-container {
+        height: 1vh !important;
+        margin-bottom: 40px !important;
+    }
+
+    .leaflet-slider{
+        max-width: 99vw !important;
+        min-width: 99vw !important;
+    
+    
+    }
+
+    article.container {
+        margin-top: 200px;
+        background: none;
+        width: 100%;
+        opacity: 0.9;
+      }
+
+      #map{
+          height: 66.66%;
+          width: 100%;
+      }
+      .info-panel{
+        padding: 0 0 0 0;
+        height: 33%;
+        position: absolute;
+        bottom: 0px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+      }
+}

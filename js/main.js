@@ -91,25 +91,37 @@ function createMap(){
     map.attributionControl.setPrefix('<div id = disclaimerLink>DISCLAIMER</div> | <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
     //Add data to the map
     loadData(map);
+
     
-}
+    //Responsive design for mobile
+    if($(window).width()<768){
+        $('#dates-container').remove();
+    }
+};
 
 //Function: Add barebones to map//
 function ajaxCompleted(map){
     //Create layer groups from GeoJSON
     createLayerGroups();
-    // Create the sequence slider
+
+    //Responsive design for mobile
     var timelineSlider;
     timelineSlider = createTimeline(map);
     addSearch(map);
     //Call create legend function
+    
     createLegend(map);
     //Ensures that the legend loads with the correct first year
     updateLegend('1775');
     //Allow for scrollytelling watchers
+    
+    //Responsive design for mobile
+    if($(window).width()>768){
+
     createSectionWatchers(timelineSlider);
     //Add affordances to click dates
     makeDatesClickable();
+    };
     //Insert Disclaimer
     addDisclaimer();  
     
@@ -117,17 +129,6 @@ function ajaxCompleted(map){
     spinner.stop();
     $('#spinnerDiv').fadeOut(500);
     
-    /*
-    WARNING: DOES NOT WORK
-    // Add an event listener to the window, so if it's resized, the timeline is remade to the correct size
-    window.addEventListener("resize", (function() {
-        map.removeControl(timelineSlider);
-        timelineSlider = createTimeline(map);
-        //Allow for scrollytelling watchers
-        removeSectionWatchers();
-        createSectionWatchers(timelineSlider);
-        updateDatePlacement();
-    }));*/
 }
 
 function addDisclaimer(){
@@ -654,6 +655,9 @@ function createTimeline(map){
     }
     addControlPlaceholders(map);
 
+    //Responsive design for mobile
+    if($(window).width()>768){
+
     // Create slider for timeline
     var timelineSlider = L.control.slider(function(value) {
         // Put function calls that use the slider value here
@@ -662,7 +666,8 @@ function createTimeline(map){
             prevYear = value;
         // Update the endDate global variable if someone manually changes the timeline value
         endDate = value;
-        },{
+        }, 
+        {
         // Styling the slider
         size: window.innerHeight + 'px',
         position: 'verticalcenterleft',
@@ -676,10 +681,40 @@ function createTimeline(map){
         syncSlider: true,
         showValue: false,
         }).addTo(map);
+    } else{
+          // Create slider for timeline
+    var timelineSlider = L.control.slider(function(value) {
+        // Put function calls that use the slider value here
+            updateLayerGroups(value);
+            updateLegend(value);
+            prevYear = value;
+        // Update the endDate global variable if someone manually changes the timeline value
+        endDate = value;
+        }, 
+        {
+        // Styling the slider
+        size: window.innerHeight + 'px',
+        position: 'bottomleft',
+        id: 'timelineSlider',
+        min: 1775,
+        max: 1906,
+        value: 1775,
+        step: 1,
+        collapsed: false,
+        orientation: 'horizontal',
+        syncSlider: true,
+        showValue: false,
+        }).addTo(map);
+  
+    }
     
+        
+    //Responsive design for mobile
+    if($(window).width()>768){
+
     // After adding it to the map, update the arrangement of the dates along the timline
     updateDatePlacement();
-
+    };
     return timelineSlider;
 }
 
