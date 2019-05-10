@@ -1,7 +1,7 @@
 //Main  Code//
 
 //Global var for time stamp
-TimeStamp = -9000000000000;
+var TimeStamp = -9000000000000;
 // A Map (data structure) to sort the layers by year
 var yearMap = new Map();
 // A Map (data structure) to hold the layerGroups
@@ -1071,3 +1071,13 @@ function convertOffset(x, y, degrees) {
 *****************************************************************************************/
 
 $(document).ready(createMap);
+
+
+$(window).resize(function(){
+//Responsive design for mobile
+
+if($(window).width()<600 && $(window).width()>570){
+    location.reload();
+
+}
+});

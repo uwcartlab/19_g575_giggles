@@ -653,7 +653,7 @@ a.leaflet-popup-close-button {
 
 }
 
-@media only screen and (max-width: 599)  {
+@media only screen and (max-width: 600px)  {
     .leaflet-slider-container {
         height: .1vh !important;
         margin-bottom: 0px !important;
