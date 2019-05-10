@@ -563,7 +563,7 @@ function updateLayerGroups(selectedYear){
         for(i = 0; i < keys.length; i++) {
             if (keys[i] <= prevYear && keys[i] > selectedYear) {
                 for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
-                    if(layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature.layer._path.attributes.fill.value='#DC143C'){
+                    if(layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature.layer._path.attributes.fill.value=='#DC143C'){
                         layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature.layer.setStyle({
                             fillColor: '#ffffff',
                             dashArray: '',
