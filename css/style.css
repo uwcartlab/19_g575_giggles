@@ -218,31 +218,31 @@ article.container {
 
 
 #date-1776-{
-    top: .95vh;
+    top: 1.0vh;
 }
 
 #date-1787-{
-    top: 9.15vh;
+    top: 9.2vh;
 }
 
 #date-1791-{
-    top: 12.15vh;
+    top: 12.2vh;
 }
 
 #date-1803-{
-    top: 21.15vh;
+    top: 21.2vh;
 }
 
 #date-1814-{
-    top: 29.25vh;
+    top: 29.3vh;
 }
 
 #date-1819-{
-    top: 32.95vh;
+    top: 33.0vh;
 }
 
 #date-1830-{
-    top: 41.15vh;
+    top: 41.2vh;
 }
 
 #date-1848-{
@@ -375,16 +375,16 @@ sup{
     pointer-events: none;
     top: 50%; /* possible because the placeholder's parent is the map */
     transform: translate(-23%, -50%); /* using the CSS3 Transform technique */
-    padding-top: 10px;
+    padding-top: 1.031991744vh;
 }
 
 .leaflet-verticalcenter .leaflet-control {
-    margin-bottom: 10px;
+    margin-bottom: 1.031991744vh;
 }
 
 #timelineSlider{
     padding-left: 0px;
-    margin-bottom: 100px; 
+    margin-bottom: 10.31991744vh; 
 }
 
 #map{
@@ -408,7 +408,7 @@ sup{
 
 .leaflet-slider-container {
     height: 96vh !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 4.127966976vh !important;
 }
 .leaflet-slider{
     max-width: 99vh !important;

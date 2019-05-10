@@ -97,6 +97,7 @@ function createMap(){
     if($(window).width()<768){
         $('#dates-container').remove();
     }
+    
 };
 
 //Function: Add barebones to map//
