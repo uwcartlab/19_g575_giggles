@@ -1,7 +1,7 @@
 /*Stylesheet by Timothy Prestby and Joe Marks 2019*/
 html, body {
     background-color: #414142;
-    margin: 0;
+    margin: auto;
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -19,7 +19,7 @@ html, body {
     padding-bottom: 40vh;
     color: #DC143C;
     height: 60vh;
-    width: 99vw;
+    width: 100vw;
     overflow: hidden;
     z-index: 100000000000000;
     margin: 0;
@@ -66,7 +66,11 @@ font-size: .9em !important;
 
 #container{
     overflow:hidden;
-    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    width:100%;
+    height:100%;
 }
 
 #left{
@@ -84,7 +88,6 @@ font-size: .9em !important;
 #clear{
     float:left;
     padding-top: 15vh;
-    padding-left: 2.5vw;
 }
 
 #arrows{
@@ -210,7 +213,7 @@ article.container {
 }
 
 #filler{
-    height:110vh;
+    height:65vh;
 }
 
 /*//////////////Stylize Events ///////////////////*/
@@ -582,7 +585,7 @@ a.leaflet-popup-close-button {
 
     #map{
         height: 100vh;
-        width: 64.1vw;
+        width: 63.1vw;
         right: 0px;
         display: inline-block;
         float: right;
@@ -594,7 +597,7 @@ a.leaflet-popup-close-button {
     .timelineEntries {
         margin: 0;
         position: fixed;
-        right: 62.99vw;
+        right: 61.5vw;
         z-index: 9001;
         cursor: pointer;
     }
@@ -650,15 +653,35 @@ a.leaflet-popup-close-button {
 
 }
 
-@media only screen and (max-width: 768px)  {
+@media only screen and (max-width: 767px)  {
     .leaflet-slider-container {
-        height: 1vh !important;
-        margin-bottom: 40px !important;
+        height: .1vh !important;
+        margin-bottom: 0px !important;
+        width: 100vw;
+        background-color: rgba(245, 222, 179, 0) !important;
+
     }
 
+    .leaflet-control-slider input.leaflet-slider{
+        background-color: rgba(245, 222, 179, 0) !important;
+    }
+
+    .leaflet-left .leaflet-control{
+        margin-left: 0 !important;
+    }
+
+    .leaflet-control-slider{
+        height:30px;
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+        background: rgba(0, 0, 0, 0) !important;
+    }
+
+    .leaflet-bottom .leaflet-control {
+        margin-bottom: 0px !important;
+    }
     .leaflet-slider{
-        max-width: 99vw !important;
-        min-width: 99vw !important;
+        max-width: 95vw !important;
+        min-width: 95vw !important;
     
     
     }
@@ -666,20 +689,135 @@ a.leaflet-popup-close-button {
     article.container {
         margin-top: 200px;
         background: none;
-        width: 100%;
+        width: 90%;
         opacity: 0.9;
+        float: none;
+        margin: auto;
       }
 
-      #map{
-          height: 66.66%;
-          width: 100%;
-      }
-      .info-panel{
-        padding: 0 0 0 0;
-        height: 33%;
-        position: absolute;
-        bottom: 0px;
-        overflow-y: scroll;
-        overflow-x: hidden;
-      }
+    #map{
+        height: 66.66%;
+        width: 100%;
+        z-index: 0;
+
+    }
+
+    #info-pane{
+    width:100%;
+    bottom: 0px;
+    margin: auto;
+    }
+
+    #intropage h1{
+    font-size: 3em;
+    }
+
+    #intropage h2{
+    font-size: 1.5em;
+    }
+
+    #intropage h3  {
+        font-size: 1.3em;
+        text-align: center !important;
+    }
+
+    
+    #right{
+        clear:both;
+        text-align: center !important;
+        float: none;
+        padding:0;
+        margin-bottom:20px;
+        font-size: .75em;
+    }
+
+    #left{
+        clear:both;
+        text-align:center !important;
+        float:none;
+        padding: 0;
+        margin-bottom:20px;
+        font-size: .75em;
+
+    }
+
+    #clear{
+        padding-top: 0;
+        font-size: .75em;
+
+    }
+
+    #disclaimer{
+        font-size:.75em;
+        left:2vw;
+        right: 2vw;
+    }
+
+    article.container{
+        font-size: .75em;
+
+        
+    }
+
+    .legend-control-container{
+        height: 50%;
+        width:50%;
+        font-size: .8em;
+    }
+
+    #timelineSlider{
+        margin-bottom:0;
+    }
+
+}
+
+@media only screen and (max-width: 400px)  {
+    
+    #intropage h1{
+    font-size: 1.4em;
+    text-shadow: 2px 2px 2px black;
+    }
+
+    #intropage h2{
+    font-size: 1em;
+    text-shadow: 3px 3px 3px black;
+    padding-bottom: 10px;
+    }
+
+    #intropage h3  {
+        font-size: 1em;
+        text-align: center !important;
+    }
+
+    
+    #right{
+        clear:both;
+        text-align: center !important;
+        float: none;
+        padding:0;
+        margin-bottom:0px;
+        font-size: .70em;
+    }
+
+    #left{
+        clear:both;
+        text-align:center !important;
+        float:none;
+        padding: 0;
+        margin-bottom:0px;
+        font-size: .70em;
+
+    }
+
+    #clear{
+        padding-top: 0;
+        font-size: .70em;
+
+    }
+    
+    #arrows{
+        z-index:1000;
+        position: fixed;
+    }
+
 }

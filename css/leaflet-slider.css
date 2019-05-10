@@ -1,7 +1,7 @@
 .leaflet-control-slider {
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
     /* The color defined here is visible at the top of the scroll bar (was FFF)*/
-    background: none repeat scroll 0% 0% #414142 !important;
+    background: none repeat scroll 0% 0% #414142 ;
     /* Changed the border radius from 5 to 0 */
     border-radius: 0px !important;
 }
@@ -48,7 +48,7 @@ a.leaflet-control-slider-toggle {
 .leaflet-control-slider input.leaflet-slider {
     margin:0px;
     /* This is where I changed the background color */
-    background-color: #414142 !important;
+    background-color: #414142;
 }
 .leaflet-control-slider input.leaflet-slider , .leaflet-control-slider .leaflet-slider-container {
     display:none;

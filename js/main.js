@@ -96,6 +96,8 @@ function createMap(){
     //Responsive design for mobile
     if($(window).width()<768){
         $('#dates-container').remove();
+        $('.leaflet-control-attribution').remove();
+        $('.leaflet-control-zoom').remove();
     }
     
 };
@@ -117,7 +119,7 @@ function ajaxCompleted(map){
     //Allow for scrollytelling watchers
     
     //Responsive design for mobile
-    if($(window).width()>768){
+    if($(window).width()>=768){
 
     createSectionWatchers(timelineSlider);
     //Add affordances to click dates
@@ -657,7 +659,7 @@ function createTimeline(map){
     addControlPlaceholders(map);
 
     //Responsive design for mobile
-    if($(window).width()>768){
+    if($(window).width()>=768){
 
     // Create slider for timeline
     var timelineSlider = L.control.slider(function(value) {
@@ -711,7 +713,7 @@ function createTimeline(map){
     
         
     //Responsive design for mobile
-    if($(window).width()>768){
+    if($(window).width()>=768){
 
     // After adding it to the map, update the arrangement of the dates along the timline
     // As of 5-9, this does not keep up with the responsive design.  Assigned using vh instead.
