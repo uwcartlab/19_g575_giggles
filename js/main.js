@@ -714,7 +714,7 @@ function createTimeline(map){
     if($(window).width()>768){
 
     // After adding it to the map, update the arrangement of the dates along the timline
-    // As of 5-9, this does not keep up with the responsive design.
+    // As of 5-9, this does not keep up with the responsive design.  Assigned using vh instead.
     //updateDatePlacement();
         
         
