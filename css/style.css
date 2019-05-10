@@ -217,65 +217,61 @@ article.container {
 /*///////////////////////////////////////////////////*/
 
 
-/*
-This is no longer needed.  There is math done within main.js to calculate the proper positioning
-within updateDatePlacement()
-
 #date-1776-{
-    top: 1.1vh;
+    top: .95vh;
 }
 
 #date-1787-{
-    top: 9.2vh;
+    top: 9.15vh;
 }
 
 #date-1791-{
-    top: 12.2vh;
+    top: 12.15vh;
 }
 
 #date-1803-{
-    top: 21.17vh;
+    top: 21.15vh;
 }
 
 #date-1814-{
-    top: 29.2vh;
+    top: 29.25vh;
 }
 
 #date-1819-{
-    top: 33vh;
+    top: 32.95vh;
 }
 
 #date-1830-{
-    top: 41vh;
+    top: 41.15vh;
 }
 
 #date-1848-{
-    top: 54.5vh;
+    top: 54.55vh;
 }
 
 #date-1851-{
-    top: 56.8vh;
+    top: 56.75vh;
 }
 
 #date-1871-{
-    top: 71.5vh;
+    top: 71.55vh;
 }
 
 #date-1876-{
-    top: 75.2vh;
+    top: 75.25vh;
 }
 
 #date-1887-{
-    top: 83.3vh;
+    top: 83.45vh;
 }
 
 #date-1897-{
-    top: 90.7vh;
+    top: 90.85vh;
 }
 
 #date-1906-{
-    top: 3px;
-}*/
+    top: 97.55vh;
+}
 
 .timelineEntries {
     margin: 0;
