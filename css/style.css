@@ -23,7 +23,7 @@ html, body {
     overflow: hidden;
     z-index: 100000000000000;
     margin: 0;
-    position: relative;
+    position: absolute;
 }
 
 #intropage h1 {
@@ -554,7 +554,7 @@ a.leaflet-popup-close-button {
 /*//////////////Stylize For Tablets ///////////////////*/
 /*///////////////////////////////////////////////////*/
 
-@media only screen and (max-width: 1200px) and (min-width:768px) {
+@media only screen and (max-width: 1200px) and (min-width:600px) {
     article.container {
         background: #414142;
         color: #f7f5f5;
@@ -566,7 +566,7 @@ a.leaflet-popup-close-button {
 
       #info-pane{
         height: 100vh;
-        width: 100%;
+        width: 30%;
         max-width: 600px;
         margin-left: 1vw;
         display: inline-block;
@@ -653,7 +653,7 @@ a.leaflet-popup-close-button {
 
 }
 
-@media only screen and (max-width: 767px)  {
+@media only screen and (max-width: 599)  {
     .leaflet-slider-container {
         height: .1vh !important;
         margin-bottom: 0px !important;
