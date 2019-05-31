@@ -17,7 +17,7 @@ html, body {
     background-size: cover;
     text-align: center;
     padding-bottom: 40vh;
-    color: #DC143C;
+    color: #008080;
     height: 60vh;
     width: 100vw;
     overflow: hidden;
@@ -42,7 +42,7 @@ html, body {
 #intropage h3{
     font-size: 1.75em;
     color: white;
-    text-shadow: 2px 2px 2px #DC143C;
+    text-shadow: 2px 2px 2px #008080;
     font-family: 'Sanchez', serif;
 }
 
@@ -56,7 +56,7 @@ html, body {
 #intropage p{
     font-size: 1.25em;
     color: white;
-    text-shadow: 2px 2px 2px #DC143C;
+    text-shadow: 2px 2px 2px #008080;
     font-family: 'Sanchez', serif;
 }
 
@@ -105,9 +105,9 @@ font-size: .9em !important;
 /*///////////////////////////////////////////////////*/
 #bold{
     font-size: 1.1em !important;
-    color: #DC143C;
+    color: #008080;
     font-style: italic;
-    text-shadow: 3px 3px 3px black;
+    text-shadow: 1px 1px 1px black;
 }
 
 section div img {
@@ -133,7 +133,7 @@ img {
 }
 
 a {
-    color: #DC143C;
+    color: #008080;
     font-style: italic;
     text-decoration-line: none;
     text-shadow: 1px 1px 1px black;
@@ -167,14 +167,14 @@ article.container {
 
 #date{
     font-size:2.25em;
-    color: #DC143C; 
+    color: #008080; 
     text-align: center;
     text-shadow: 2px 2px 2px black;
     margin-bottom: 0;
 }
 
 #title{
-    color: #DC143C;
+    color: #008080;
     text-align: center;
     font-size: 2em;
     text-shadow: 2px 2px 2px black;
@@ -309,7 +309,7 @@ li a:hover{
 }
 
 .subtitle{
-    color: #DC143C;
+    color: #008080;
     text-shadow: 1px 1px 1px black;
 }
 
@@ -337,7 +337,7 @@ sup{
     background-color: #414142;
     border-radius: 25px;
     font-family: sans-serif;   
-    color: #DC143C;
+    color: #008080;
     text-shadow: 2px 2px 2px black;
 }
 

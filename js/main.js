@@ -563,7 +563,7 @@ function updateLayerGroups(selectedYear){
         for(i = 0; i < keys.length; i++) {
             if (keys[i] <= prevYear && keys[i] > selectedYear) {
                 for(j=0; j<layerGroups.get(keys[i]).getLayers().length; j++){
-                    if(layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature.layer._path.attributes.fill.value=='#DC143C'){
+                    if(layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature.layer._path.attributes.fill.value=='#008080'){
                         layerGroups.get(keys[i]).getLayers()[j].feature.properties.feature.layer.setStyle({
                             fillColor: '#ffffff',
                             dashArray: '',
@@ -799,7 +799,7 @@ function filter(feature) {
     //Access old styles
     layer.options.oldFillColor = layer._path.attributes.fill.value;
     layer.setStyle({
-        fillColor: '#DC143C',
+        fillColor: '#008080',
         dashArray: '',
         fillOpacity: 1
     });
