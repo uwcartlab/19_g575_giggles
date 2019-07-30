@@ -56,7 +56,7 @@ function createMap(){
     //Set Max bounds for map to limit panning
     var bounds = [[51.3457868, -62.9513812],
     [22.7433195,-127.7844079]];
-
+    if (screen.width > 1200){
 	map = L.map('map',{
 		//Sets default properties of the map
 			center: [37,-96.55],
@@ -69,6 +69,37 @@ function createMap(){
             scrollWheelZoom: false,
             keyboard: false
         });
+    }
+
+    if (screen.width <= 1200 && screen.width > 600){
+        map = L.map('map',{
+            //Sets default properties of the map
+                center: [37,-96.55],
+                zoom: 3,
+                maxZoom:8,
+                minZoom:3,
+                maxBounds: bounds,
+                maxBoundsViscosity: 1.0,
+                doubleClickZoom: false,
+                scrollWheelZoom: false,
+                keyboard: false
+            });
+        }
+    if (screen.width <= 600){
+        map = L.map('map',{
+            //Sets default properties of the map
+                center: [37,-96.55],
+                zoom: 3,
+                maxZoom:8,
+                minZoom:3,
+                maxBounds: bounds,
+                maxBoundsViscosity: 1.0,
+                doubleClickZoom: false,
+                scrollWheelZoom: false,
+                keyboard: false
+            });
+        }
+    
         
 		//Add OSM baselayer
 		L.tileLayer.provider('CartoDB.DarkMatterNoLabels').addTo(map);
@@ -799,7 +830,7 @@ function filter(feature) {
     //Access old styles
     layer.options.oldFillColor = layer._path.attributes.fill.value;
     layer.setStyle({
-        fillColor: '#008080',
+        fillColor: '#006600',
         dashArray: '',
         fillOpacity: 1
     });
