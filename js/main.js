@@ -766,7 +766,6 @@ function updateDatePlacement() {
     // Variables for the math of calculating the position along the timeline
     var slideSelectorHeight = 15;
     var timelineHeight = (Number(document.getElementById("timelineSlider").style.width.split("px")[0]))-slideSelectorHeight;
-    console.log(timelineHeight);
     var numYears = 1906-1775;
     var timelineOffsetHeight = 3.75; //1/4 slideSelectorHeight
     var yearPerPx = timelineHeight/numYears;
