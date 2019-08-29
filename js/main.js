@@ -266,15 +266,15 @@ function makeDatesClickable(){
         }, 100);
     });
 
-    document.getElementById('date-1887').addEventListener("click", function(){
+    document.getElementById('date-1879').addEventListener("click", function(){
         $('html, body').animate({
-            scrollTop: $('#1887').offset().top
+            scrollTop: $('#1879').offset().top
         }, 100);
     });
 
-    document.getElementById('date-1897').addEventListener("click", function(){
+    document.getElementById('date-1887').addEventListener("click", function(){
         $('html, body').animate({
-            scrollTop: $('#1897').offset().top
+            scrollTop: $('#1887').offset().top
         }, 100);
     });
 
@@ -319,10 +319,10 @@ function makeDatesClickable(){
     document.getElementById('date-1876').addEventListener("mouseover", function(){
         this.style.textDecoration = "underline";
     });
-    document.getElementById('date-1887').addEventListener("mouseover", function(){
+    document.getElementById('date-1879').addEventListener("mouseover", function(){
         this.style.textDecoration = "underline";
     });
-    document.getElementById('date-1897').addEventListener("mouseover", function(){
+    document.getElementById('date-1887').addEventListener("mouseover", function(){
         this.style.textDecoration = "underline";
     });
     document.getElementById('date-1906').addEventListener("mouseover", function(){
@@ -363,10 +363,10 @@ function makeDatesClickable(){
     document.getElementById('date-1876').addEventListener("mouseout", function(){
         this.style.textDecoration = "initial";
     });
-    document.getElementById('date-1887').addEventListener("mouseout", function(){
+    document.getElementById('date-1879').addEventListener("mouseout", function(){
         this.style.textDecoration = "initial";
     });
-    document.getElementById('date-1897').addEventListener("mouseout", function(){
+    document.getElementById('date-1887').addEventListener("mouseout", function(){
         this.style.textDecoration = "initial";
     });
     document.getElementById('date-1906').addEventListener("mouseout", function(){
@@ -389,8 +389,8 @@ function createSectionWatchers(timelineSlider){
     var d1851Watcher = scrollMonitor.create($('#1851'), 1);
     var d1871Watcher = scrollMonitor.create($('#1871'), 1);
     var d1876Watcher = scrollMonitor.create($('#1876'), 1);
+    var d1879Watcher = scrollMonitor.create($('#1879'), 1);
     var d1887Watcher = scrollMonitor.create($('#1887'), 1);
-    var d1897Watcher = scrollMonitor.create($('#1897'), 1);
     var d1906Watcher = scrollMonitor.create($('#1906'), 1);
 
     // Add watch events to move timeline to corresponding date  
@@ -439,14 +439,14 @@ function createSectionWatchers(timelineSlider){
     d1876Watcher.fullyEnterViewport(function () {
         slideToDate(1876, timelineSlider);
     });
+    d1879Watcher.fullyEnterViewport(function () {
+        slideToDate(1879, timelineSlider);
+    });
     
     d1887Watcher.fullyEnterViewport(function () {
         slideToDate(1887, timelineSlider);
     });
     
-    d1897Watcher.fullyEnterViewport(function () {
-        slideToDate(1897, timelineSlider);
-    });
     
     d1906Watcher.fullyEnterViewport(function () {
         slideToDate(1906, timelineSlider);
@@ -468,8 +468,8 @@ function removeSectionWatchers(){
     if(d1851Watcher != undefined){d1851Watcher.destroy();};
     if(d1871Watcher != undefined){d1871Watcher.destroy();};
     if(d1876Watcher != undefined){d1876Watcher.destroy();};
+    if(d1879Watcher != undefined){d1879Watcher.destroy();};
     if(d1887Watcher != undefined){d1887Watcher.destroy();};
-    if(d1897Watcher != undefined){d1897Watcher.destroy();};
     if(d1906Watcher != undefined){d1906Watcher.destroy();};
     
 }
@@ -783,8 +783,8 @@ function updateDatePlacement() {
     document.getElementById('date-1851-').style.top = ((1851-1775)*yearPerPx+timelineOffsetHeight) + 'px';
     document.getElementById('date-1871-').style.top = ((1871-1775)*yearPerPx+timelineOffsetHeight) + 'px';
     document.getElementById('date-1876-').style.top = ((1876-1775)*yearPerPx+timelineOffsetHeight) + 'px';
+    document.getElementById('date-1879-').style.top = ((1879-1775)*yearPerPx+timelineOffsetHeight) + 'px';
     document.getElementById('date-1887-').style.top = ((1887-1775)*yearPerPx+timelineOffsetHeight) + 'px';
-    document.getElementById('date-1897-').style.top = ((1897-1775)*yearPerPx+timelineOffsetHeight) + 'px';
     document.getElementById('date-1906-').style.top = ((1906-1775)*yearPerPx+timelineOffsetHeight) + 'px';
 }
 
