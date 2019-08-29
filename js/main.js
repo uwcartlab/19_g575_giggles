@@ -64,7 +64,7 @@ function createMap(){
 		//Sets default properties of the map
 			center: [37,-96.55],
             zoom: 4,
-            maxZoom:8,
+            maxZoom:12,
             minZoom:4,
             maxBounds: bounds,
             maxBoundsViscosity: 1.0,
@@ -201,87 +201,87 @@ function makeDatesClickable(){
     document.getElementById('date-1776').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1776').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1787').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1787').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1791').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1791').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1803').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1803').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1814').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1814').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1819').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1819').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1830').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1830').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1848').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1848').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1851').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1851').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1871').addEventListener("click", function(){
 
         $('html, body').animate({
             scrollTop: $('#1871').offset().top
-        }, 1000);
+        }, 100);
 
     });
 
     document.getElementById('date-1876').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1876').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1887').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1887').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1897').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1897').offset().top
-        }, 1000);
+        }, 100);
     });
 
     document.getElementById('date-1906').addEventListener("click", function(){
         $('html, body').animate({
             scrollTop: $('#1906').offset().top
-        }, 1000);
+        }, 100);
     });
     
     
