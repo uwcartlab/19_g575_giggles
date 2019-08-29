@@ -870,7 +870,7 @@ function createLegend(map){
                 $(container).append('<div id="temporal-legend">')
                 //Start attribute legend div string to further be manipulated below 
                 var div = L.DomUtil.create('div', 'attribute-legend');
-                    categories = ['Native Land','Searched Native Land'];
+                    categories = ['Native Land','Highlighted Native Land'];
                     symbols=['images/NativeLand.svg','images/SelectedTribe.svg',]
                 //Iterate through the symbols
                 for (var i = 0; i < symbols.length; i++) {
