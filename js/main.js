@@ -895,9 +895,13 @@ function updateLegend(value){
     if(value==1775){
         var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  0 + '%'
         '</strong></p>'
-    } else{
-	var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  parseInt((landLost-landGained)/(area)*(100)) + '%'
-    '</strong></p>'}
+    }
+    if(value==1906){
+        var content = '<p id=legend-title><strong>Year: 2010 ' + '<br>' + ' Approximate Land Lost: ' +  parseInt((landLost-landGained)/(area)*(100)) + '%'
+        '</strong></p>'}
+    else{
+        var content = '<p id=legend-title><strong>Year: '+ value + '<br>' + ' Approximate Land Lost: ' +  parseInt((landLost-landGained)/(area)*(100)) + '%'
+        '</strong></p>'}
 	//Replace legend content with updated content
 	$('#temporal-legend').html(content);
 };   
