@@ -22,6 +22,9 @@ var landGained=0;
 // Spinner
 var spinner;
 
+// Timeline slider
+var timelineSlider;
+
 //Function: Initialize map
 function createMap(){
 
@@ -139,7 +142,7 @@ function ajaxCompleted(map){
     createLayerGroups();
 
     //Responsive design for mobile
-    var timelineSlider;
+    // var timelineSlider;
     timelineSlider = createTimeline(map);
     addSearch(map);
     //Call create legend function
@@ -693,7 +696,8 @@ function createTimeline(map){
     if($(window).width()>=600){
 
     // Create slider for timeline
-    var timelineSlider = L.control.slider(function(value) {
+    // var timelineSlider = L.control.slider(function(value) {
+    timelineSlider = L.control.slider(function(value) {
         // Put function calls that use the slider value here
             updateLayerGroups(value);
             updateLegend(value);
@@ -717,7 +721,8 @@ function createTimeline(map){
         }).addTo(map);
     } else{
           // Create slider for timeline
-    var timelineSlider = L.control.slider(function(value) {
+    // var timelineSlider = L.control.slider(function(value) {
+    timelineSlider = L.control.slider(function(value) {
         // Put function calls that use the slider value here
             updateLayerGroups(value);
             updateLegend(value);
